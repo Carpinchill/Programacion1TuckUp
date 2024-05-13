@@ -4,17 +4,47 @@ using UnityEngine;
 
 public class ChargedWater : MonoBehaviour
 {
+    private GameObject player;
     [SerializeField]
     private int damage;
+    [SerializeField]
+    private int venomDuration;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.gameObject.layer == Layers.Player)
+        if (collision.gameObject.layer == Layers.Player)
         {
-            collision.gameObject.GetComponent<Movement>().TakeDamage(damage);
-        } 
+            Debug.Log("Im still poisoned");
+            player = collision.gameObject;
+            StartCoroutine(Poisoned(venomDuration, damage, player));
+            collision.gameObject.GetComponent<Movement>().speed -= 2.1f;
+            collision.gameObject.GetComponent<Movement>().dashCooldown += 10000000f;
+        }
     }
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.layer == Layers.Player)
+        {
+            collision.gameObject.GetComponent<Movement>().speed += 2.1f;
+            collision.gameObject.GetComponent<Movement>().dashCooldown -= 10000000f;
+            player = null;
+        }
+    }
+    IEnumerator Poisoned(int poisonDuration, int poisonDamage, GameObject player)
+    {
+        Movement movement = player.GetComponent<Movement>();
+
+        for (int i = poisonDuration; i > 0; i--)
+        {  
+            movement.TakeDamage(poisonDamage);
+            yield return new WaitForSeconds(1.5f);
+        }    
+
+        Debug.Log("The poison is over...");
+    }
+
 }
+
 
 
 public class Layers

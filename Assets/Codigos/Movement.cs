@@ -4,35 +4,39 @@ using UnityEngine;
 
 public class Movement : MonoBehaviour
 {
-    [SerializeField]
-    private float speed = 5f;
+    //---------------------------------- V A R I A B L E S ----------------------------------------------------------------------------
+    public Attack attack;
+
+    public float speed = 5f;
 
     private Rigidbody2D rb2d;
 
-    [SerializeField]
-    public float maxHealth = 7f;
+    public int maxHealth = 20;
 
-    [SerializeField]
-    private float currentHealth;
+    public float currentHealth;
 
     public GameObject DashEffect;
 
-    private bool isDashing = false;
+    public bool isDashing = false;
 
     [SerializeField]
-    public float dashDuration = 0.25f;
+    private float dashDuration;
 
     [SerializeField]
-    public float dashForce = 15f;
+    private float dashForce;
 
-    private Vector2 dashDirection;
+    public float dashCooldown = 1.2f;
+
+    private float lastDashTime;
 
     float lastH, lastV;
 
     private Animator animator;
 
 
-    //cuando inicia pone el primer frame, setea la salud al maximo, desactiva el efecto del dash y agarra el rigidbody
+    //---------------------------------- A W A K E ----------------------------------------------------------------------------
+
+    //cuando inicia pone el primer frame, setea la salud al maximo, desactiva el efecto del dash y las hitbox y agarra el rigidbody
     private void Awake()
     {
         DashEffect.SetActive(false);
@@ -41,10 +45,16 @@ public class Movement : MonoBehaviour
         animator = GetComponent<Animator>();
     }
 
+    //---------------------------------- F. U P D A T E ----------------------------------------------------------------------------
+
+
     private void FixedUpdate()
     {
         Move();
     }
+
+    //---------------------------------- L. U P D A T E ----------------------------------------------------------------------------
+
 
     //setea las animaciones correspondientes
     private void LateUpdate()
@@ -53,6 +63,9 @@ public class Movement : MonoBehaviour
         animator.SetFloat("LastV", lastV);
     }
 
+    //---------------------------------- M E T O D O S ----------------------------------------------------------------------------
+
+
 
     //con esto se mueve y guarda la ultima direccion hacia donde fue para el dash y las animaciones
     void Move()
@@ -60,7 +73,7 @@ public class Movement : MonoBehaviour
         float axisH = Input.GetAxisRaw("Horizontal");
         float axisV = Input.GetAxisRaw("Vertical");
 
-        rb2d.MovePosition((Vector2)transform.position + new Vector2(axisH, axisV).normalized * speed * Time.fixedDeltaTime);
+        rb2d.MovePosition((Vector2)transform.position + speed * Time.fixedDeltaTime * new Vector2(axisH, axisV).normalized);
 
         if(axisH != 0 || axisV != 0)
         { 
@@ -72,7 +85,7 @@ public class Movement : MonoBehaviour
     //chequea la ultima direccion y la pasa a la corutina para saber hacia donde dashear
     public void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && !isDashing) 
+        if (Input.GetKeyDown(KeyCode.Space) && !isDashing && Time.time >= lastDashTime + dashCooldown) 
         {
             float dashH = lastH != 0 ? lastH : Input.GetAxisRaw("Horizontal");
             float dashV = lastV != 0 ? lastV : Input.GetAxisRaw("Vertical");
@@ -81,16 +94,21 @@ public class Movement : MonoBehaviour
         }
     }
 
+    
+
     //este es el codigo para el dash
     IEnumerator Dash(Vector2 direction)
     {
+        lastDashTime = Time.time;
         isDashing = true;
         DashEffect.SetActive(true);
         rb2d.velocity = direction * dashForce;
         enabled = false;
+        attack.enabled = false;
        
         yield return new WaitForSeconds(dashDuration);
 
+        attack.enabled = true;
         enabled = true;
         isDashing = false;
         DashEffect.SetActive(false);
@@ -108,13 +126,13 @@ public class Movement : MonoBehaviour
         if (currentHealth <= 0)
         {
             Die();
-            return;
         }
         //aca va un sistema que baje la barra de vida
     }
 
     private void Die()
     {
-       
+        enabled = false;
+        attack.enabled = false;
     }
 }
