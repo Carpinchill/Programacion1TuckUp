@@ -1,0 +1,64 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 2
+  tags: []
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - 
+  - Water
+  - UI
+  - Player
+  - Enemies
+  - Poison
+  - HitboxPlayer
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: Background
+    uniqueID: 1063257291
+    locked: 0
+  - name: Walls
+    uniqueID: 921812445
+    locked: 0
+  - name: Default
+    uniqueID: 0
+    locked: 0
+  - name: Assets
+    uniqueID: 3030814607
+    locked: 0
+  - name: Enemies
+    uniqueID: 359745981
+    locked: 0
+  - name: Player
+    uniqueID: 761439869
+    locked: 0
+  - name: Invulnerable
+    uniqueID: 3655333335
+    locked: 0
+  - name: ForeGround
+    uniqueID: 3882012893
+    locked: 0
