@@ -9587,7 +9587,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.01323688, y: 0}
+  m_Offset: {x: 0.01323688, y: -0.4933614}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -9598,7 +9598,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.9205787, y: 2}
+  m_Size: {x: 0.9205787, y: 0.8739754}
   m_EdgeRadius: 0
 --- !u!95 &1074903717
 Animator:
@@ -35027,8 +35027,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1935892569}
   - component: {fileID: 1935892568}
-  - component: {fileID: 1935892567}
   - component: {fileID: 1935892570}
+  - component: {fileID: 1935892571}
   m_Layer: 8
   m_Name: Charged Water
   m_TagString: Untagged
@@ -35036,41 +35036,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!58 &1935892567
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1935892566}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 0.50000006
 --- !u!212 &1935892568
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -35132,8 +35097,8 @@ Transform:
   m_GameObject: {fileID: 1935892566}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 6.8, y: 20.1, z: 0}
-  m_LocalScale: {x: 3.1577923, y: 3.1577923, z: 3.1577923}
+  m_LocalPosition: {x: 6.9793, y: 20.3446, z: 0}
+  m_LocalScale: {x: 3.863832, y: 2.3469303, z: 3.1577923}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -35150,8 +35115,54 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b05fb8c79653284469a929f6c1c98a42, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  movement: {fileID: 1074903711}
   damage: 1
   venomDuration: 7
+--- !u!61 &1935892571
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1935892566}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.0014458895, y: -0.001972109}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.9965788, y: 0.75494176}
+  m_EdgeRadius: 0
 --- !u!1 &1998984309
 GameObject:
   m_ObjectHideFlags: 0

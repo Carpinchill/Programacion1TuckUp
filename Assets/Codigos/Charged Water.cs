@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class ChargedWater : MonoBehaviour
 {
+    public Movement movement;
     private GameObject player;
     [SerializeField]
     private int damage;
@@ -12,7 +13,7 @@ public class ChargedWater : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.layer == Layers.Player)
+        if (collision.gameObject.layer == Layers.Player && !movement.isDashing)
         {
             Debug.Log("Im still poisoned");
             player = collision.gameObject;
@@ -23,7 +24,7 @@ public class ChargedWater : MonoBehaviour
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.gameObject.layer == Layers.Player)
+        if (collision.gameObject.layer == Layers.Player && !movement.isDashing)
         {
             collision.gameObject.GetComponent<Movement>().speed += 2.1f;
             collision.gameObject.GetComponent<Movement>().dashCooldown -= 10000000f;
