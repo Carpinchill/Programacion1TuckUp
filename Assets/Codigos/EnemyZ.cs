@@ -2,19 +2,26 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy : MonoBehaviour
+public class EnemyZ : MonoBehaviour
 {
-    public float speed = 5f;        //velocidad del enemigo
+    public float speed = 5f;         //velocidad del enemigoZ
+
+    public EZ_bullet ZBullet;        //prefab bullet
+    public Transform EZ_spawnPointL; //spawn izq
+    public Transform EZ_spawnPointR; //spawn dcha
 
     public Transform[] waypoints;   //array para almacenar waypoints
     int currentWaypoint = 0;        //para ubicar en qué waypoint estamos
 
-    /*public PlayerRigidbodyMovement player;*/
-
     // Start is called before the first frame update
     void Start()
     {
-        
+        /*INSTANCIAR BALA
+        if(jugador está cerca)
+        {
+            EZ_bullet newBullet = Instantiate(EZ_bullet, EZ_spawnPointL.position, transform.rotation);
+            newBullet.EnemyZ = this;
+        }*/
     }
 
     // Update is called once per frame
