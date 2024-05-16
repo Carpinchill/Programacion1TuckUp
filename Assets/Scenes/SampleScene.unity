@@ -407,7 +407,7 @@ CustomCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -9581,7 +9581,7 @@ CapsuleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -9697,7 +9697,6 @@ GameObject:
   - component: {fileID: 1074903714}
   - component: {fileID: 1074903713}
   - component: {fileID: 1074903711}
-  - component: {fileID: 1074903718}
   - component: {fileID: 1074903716}
   - component: {fileID: 1074903717}
   m_Layer: 6
@@ -9719,7 +9718,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6f5e1bd655397b459f6497a73e9bbc7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attack: {fileID: 1074903718}
+  attack: {fileID: 2032179879}
   speed: 5
   maxHealth: 20
   currentHealth: 0
@@ -9890,26 +9889,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &1074903718
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1074903710}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7f5e2ee4d2711494c830173ba781a778, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Hitboxes:
-  - {fileID: 470142672}
-  - {fileID: 885647083}
-  - {fileID: 1925758856}
-  movement: {fileID: 1074903711}
-  comboResetTime: 1.3
-  attackLifeSpan: 0.3
-  attackCooldown: 0.5
 --- !u!1 &1147351923
 GameObject:
   m_ObjectHideFlags: 0
@@ -35389,7 +35368,7 @@ CircleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0.000000059604645, y: -0.000000029802322}
@@ -35633,6 +35612,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2032179878}
+  - component: {fileID: 2032179879}
   m_Layer: 0
   m_Name: Hitboxes
   m_TagString: Untagged
@@ -35658,6 +35638,26 @@ Transform:
   - {fileID: 1925758857}
   m_Father: {fileID: 1074903715}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2032179879
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2032179877}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f5e2ee4d2711494c830173ba781a778, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Hitboxes:
+  - {fileID: 470142672}
+  - {fileID: 885647083}
+  - {fileID: 1925758856}
+  movement: {fileID: 1074903711}
+  comboResetTime: 1.3
+  attackLifeSpan: 0.3
+  attackCooldown: 0.5
 --- !u!1 &2091347591
 GameObject:
   m_ObjectHideFlags: 0

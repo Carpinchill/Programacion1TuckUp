@@ -58,7 +58,6 @@ public class Attack : MonoBehaviour
         if (currentAttack > 0)
         {
             Hitboxes[currentAttack - 1].SetActive(false);           
-            
         }
 
         movement.enabled = false;
@@ -74,9 +73,10 @@ public class Attack : MonoBehaviour
 
     IEnumerator NextAttack (GameObject hitbox, float duration)
     {    
-        yield return new WaitForSeconds(duration);
-        movement.enabled = true;
+        yield return new WaitForSeconds(duration); 
         hitbox.SetActive(false);
+        yield return new WaitForSeconds(0.1f);
+        movement.enabled = true;
     }
 }
 

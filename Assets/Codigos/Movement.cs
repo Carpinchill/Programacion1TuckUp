@@ -108,10 +108,11 @@ public class Movement : MonoBehaviour
        
         yield return new WaitForSeconds(dashDuration);
 
-        attack.enabled = true;
-        enabled = true;
+        rb2d.velocity = Vector2.zero;
         isDashing = false;
+        enabled = true; 
         DashEffect.SetActive(false);
+        attack.enabled = true;
     }
 
     public void TakeDamage(float damage)
