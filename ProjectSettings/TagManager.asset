@@ -41,11 +41,11 @@ TagManager:
   - name: Background
     uniqueID: 1063257291
     locked: 0
-  - name: Walls
-    uniqueID: 921812445
-    locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Walls
+    uniqueID: 921812445
     locked: 0
   - name: Assets
     uniqueID: 3030814607
