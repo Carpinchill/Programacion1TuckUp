@@ -6,33 +6,23 @@ public class Movement : MonoBehaviour
 {
     //---------------------------------- V A R I A B L E S ----------------------------------------------------------------------------
     public Attack attack;
-
-    public float speed = 5f;
-
     private Rigidbody2D rb2d;
-
-    public int maxHealth = 20;
-
-    public float currentHealth;
-
     public GameObject DashEffect;
-
-    public bool isDashing = false;
-
-    [SerializeField]
-    private float dashDuration;
-
-    [SerializeField]
-    private float dashForce;
-
-    public float dashCooldown = 1.2f;
-
-    private float lastDashTime;
-
-    float lastH, lastV;
-
     private Animator animator;
 
+    public float speed = 5f;
+    public int maxHealth = 20;
+    public float currentHealth;
+
+    public bool isDashing = false;
+    [SerializeField]
+    private float dashDuration;
+    [SerializeField]
+    private float dashForce;
+    public float dashCooldown = 1.2f;
+    private float lastDashTime;
+
+    public float lastH, lastV;
 
     //---------------------------------- A W A K E ----------------------------------------------------------------------------
 
@@ -82,6 +72,7 @@ public class Movement : MonoBehaviour
         }
     }
 
+
     //chequea la ultima direccion y la pasa a la corutina para saber hacia donde dashear
     public void Update()
     {
@@ -115,13 +106,14 @@ public class Movement : MonoBehaviour
         attack.enabled = true;
     }
 
-    public void TakeDamage(float damage)
+    public void TakeDamage(float damage, Vector2 impactSource, float knockbackForce)
     {
         if (isDashing == false) 
-        { 
-        currentHealth -= damage;
-
-        Debug.Log("I received " + damage + " damage " + "My health is " + currentHealth);
+        {
+            Vector2 knockbackDirection = (transform.position - (Vector3)impactSource).normalized;
+            ApplyKnockback(knockbackDirection, knockbackForce);
+            currentHealth -= damage;
+            Debug.Log("I received " + damage + " damage " + "My health is " + currentHealth);       
         }
 
         if (currentHealth <= 0)
@@ -130,10 +122,20 @@ public class Movement : MonoBehaviour
         }
         //aca va un sistema que baje la barra de vida
     }
+    private void ApplyKnockback(Vector2 direction, float force)
+    {
+        rb2d.AddForce(direction * force, ForceMode2D.Impulse);
+        /*Debug.Log(direction);
+        Debug.Log(force);*/
+    }
+
+
 
     private void Die()
     {
         enabled = false;
         attack.enabled = false;
     }
+
+    
 }

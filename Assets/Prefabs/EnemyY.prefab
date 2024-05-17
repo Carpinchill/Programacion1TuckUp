@@ -43,7 +43,7 @@ GameObject:
   - component: {fileID: 8264347447823179288}
   - component: {fileID: -8646401339500566599}
   - component: {fileID: -6174196118401123905}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: EnemyY
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -132,6 +132,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 33
   player: {fileID: 0}
+  playerNear: 40
   EnYBullet: {fileID: 8087040462718993998, guid: 0a8c539369aa7ec4ea822ba1eecb77af, type: 3}
   EnYBulletSpawn: {fileID: 7539731084510659538}
 --- !u!58 &-6174196118401123905

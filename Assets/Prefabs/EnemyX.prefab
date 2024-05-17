@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7434027744358036834}
   - component: {fileID: 5890978179957923690}
   - component: {fileID: 4415610688831664848}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: EnemyX
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -99,14 +99,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab745dbedc2443b4f8a01b5d9082e4ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 0}
   health: 33
-  speed: 5
+  damage: 10
+  speed: 2
+  knockBackforce: 0
   waypoints:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  playerNear: 7
 --- !u!70 &5890978179957923690
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

@@ -6,29 +6,31 @@ public class EnemyX : MonoBehaviour
 {
     //---------------------------------- V A R I A B L E S ----------------------------------//
 
+    public Movement player;         //ref al player para obtener sus datos
+    private Attack playerAttack;
+
     public float health = 50f;      //salud del enemigo
-
     public float damage = 10f;      //daño que hace el enemigo
-
     public float speed = 5f;        //velocidad del enemigo
+    public float knockBackforce = 0f;
+
     public Transform[] waypoints;   //array para almacenar waypoints
     int currentWaypoint = 0;        //para ubicar en qué waypoint estamos
+    public float playerNear = 5f;   //cuán cerca tiene que estar el jugador para que lo detecte
 
-    public Movement player;         //ref al player para obtener sus datos
-    public float playerNear = 1f;   //cuán cerca tiene que estar el jugador para que lo detecte
-        
 
-    //called BEFORE FIRST FRAME UPDATE
-    void Start()
+    private void Start()
     {
-        
+        playerAttack = player.GetComponent<Attack>();
     }
 
-    //called ONCE PER FRAME
+    //---------------------------------- V. U P D A T E ----------------------------------//
+
+
     void Update()
     {
         //si está cerca del jugador, que se mueva hacia él
-        if(Vector3.Distance(transform.position, player.gameObject.transform.position) < 1f)
+        if(Vector3.Distance(transform.position, player.gameObject.transform.position) < playerNear)
         {
             //dirección del movimiento (hacia el jugador)
             Vector3 newPosition = Vector3.MoveTowards(transform.position, player.gameObject.transform.position, speed * Time.deltaTime);
@@ -43,22 +45,8 @@ public class EnemyX : MonoBehaviour
         }
     }
 
-    //---------------------------------- M E T H O D S ----------------------------------//
+    //---------------------------------- M E T H O D S ----------------------------------// 
 
-    //--- RECIBIR DAÑO ---//
-    public void GetDamage(float amount)
-    {
-        health -= amount;
-        print("El enemigo azul recibió " + amount + " de daño y su vida actual es de " + health);
-
-        if (health <= 0)
-        {
-            print("El enemigo azul se murió");
-            Destroy(gameObject);
-        }
-    }
-    
-    
     //--- PATRULLAR ---//
     void Patrol()
     {
@@ -78,14 +66,50 @@ public class EnemyX : MonoBehaviour
         transform.position = newPosition;
     }
 
+    //--- RECIBIR DAÑO ---//
+    public void ReceiveDamage(float damage, Vector2 knockbackDirection, float knockbackForce)
+    {
+        health -= damage;
+        Debug.Log("Enemy received " + damage + " damage.");
+        if (TryGetComponent<Rigidbody2D>(out var rb))
+        {
+            rb.AddForce(knockbackDirection * knockbackForce, ForceMode2D.Impulse);
+        }
+        if (health <= 0)
+        {
+            Die();
+        }
+    }
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.layer == LayerMask.NameToLayer("PlayerHitbox"))
+        {
+            Vector2 knockbackDirection = (transform.position - other.transform.position).normalized;
+            if (playerAttack != null)
+            {
+                float damage = playerAttack.damage;
+                float knockbackForce = playerAttack.knockbackForce;
+                ReceiveDamage(damage, knockbackDirection, knockbackForce);
+            }
+        }
+    }
+    private void Die()
+    {
+        Destroy(gameObject);
+        Debug.Log("Enemy died.");
+    }
 
     //--- HACER DAÑO AL TOCAR AL JUGADOR ---//
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.gameObject.layer == 6)
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Player"))
         {
-            collision.gameObject.GetComponent<Movement>().TakeDamage(damage);
-            print("El enemigo azul le hizo " + damage + " daño al jugador");
+            Vector2 impactSource = transform.position;
+            float knockbackForce = 1000f;
+            if (collision.gameObject.TryGetComponent<Movement>(out var playerMovement))
+            {
+                playerMovement.TakeDamage(damage, impactSource, knockbackForce);
+            }
         }
     }
 }

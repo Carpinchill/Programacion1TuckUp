@@ -6,8 +6,8 @@ public class ChargedWater : MonoBehaviour
 {
     public Movement movement;
     private GameObject player;
-    [SerializeField]
-    private int damage;
+
+    public int damage = 1;
     [SerializeField]
     private int venomDuration;
 
@@ -36,19 +36,23 @@ public class ChargedWater : MonoBehaviour
         Movement movement = player.GetComponent<Movement>();
 
         for (int i = poisonDuration; i > 0; i--)
-        {  
-            movement.TakeDamage(poisonDamage);
+        {
+            int var1 = 0;
+            Vector2 impactSource = transform.position;
+            movement.TakeDamage(poisonDamage, impactSource, var1);
             yield return new WaitForSeconds(1.5f);
         }    
 
         Debug.Log("The poison is over...");
     }
 
+   
 }
-
-
 
 public class Layers
 {
     public const int Player = 6;
+    public const int Enemies = 7;
+    public const int Poison = 8;
+    public const int HitboxPlayer = 9;
 }

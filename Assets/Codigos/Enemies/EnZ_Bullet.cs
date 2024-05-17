@@ -7,10 +7,9 @@ public class EnZ_Bullet : MonoBehaviour
     //---------------------------------- V A R I A B L E S ----------------------------------//
 
     public float speed = 5f;        //velocidad de la bala
-
     public float lifetime = 5f;     //vida de la bala
-
     public float damage = 15f;      //daño que hace la bala
+    public float knockBackforce = 0f;
 
     //public EnemyZ enemyZ;
 
@@ -32,7 +31,9 @@ public class EnZ_Bullet : MonoBehaviour
     {
         if (collision.gameObject.layer == 6)                                    //si colisiona con la capa del player
         {
-            collision.gameObject.GetComponent<Movement>().TakeDamage(damage);   //le hace daño al jugador
+            Vector2 impactSource = transform.position;
+            float knockbackForce = 10f;
+            collision.gameObject.GetComponent<Movement>().TakeDamage(damage, impactSource, knockbackForce);   //le hace daño al jugador
             print("El enemigo azul le hizo " + damage + " daño al jugador");
         }
         Destroy(gameObject);                                                    //por haber detectado colisión, se autodestruye

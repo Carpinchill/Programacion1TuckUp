@@ -5,21 +5,14 @@ using UnityEngine;
 public class EnX_Spawn : MonoBehaviour
 {
     //---------------------------------- V A R I A B L E S ----------------------------------//
-
-    public float health = 33f;      //salud spawn plant
-
-    public float frequence = 5f;    //cada cuánto spawnea un enemigo
-
     public EnemyX enemyX;           //prefab enemy
 
+    public float health = 33f;      //salud spawn plant
+    public float frequence = 5f;    //cada cuánto spawnea un enemigo             
 
-    //called BEFORE FIRST FRAME UPDATE
-    void Start()
-    {
+    //---------------------------------- V. U P D A T E ----------------------------------//
 
-    }
 
-    //called ONCE PER FRAME
     void Update()
     {
         //FALTA QUE SE SPAWNEEN SEGÚN public float frequence Y NO A CADA FRAME
