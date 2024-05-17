@@ -8,27 +8,17 @@ public class EnemyY : MonoBehaviour
 
     public float health = 33f;          //salud del enemigo
 
-    public Movement player;             //ref al player para obtener sus datos
-    public float playerNear = 1f;       //cuán cerca tiene que estar el jugador
+    public Movement player;             //ref al script del player    
+    public Attack playerAttack;         //ref al script del ataque del jugador
+    public float playerNear = 10f;      //cuán cerca tiene que estar el jugador
         
-    public EnY_Bullet EnYBullet;        //bullet prefab
-    public Transform EnYBulletSpawn;    //spawn point
+    public EnY_Bullet EnYBullet;        //bullet prefab    
+    public Transform EnYBulletSpawn;    //spawn point    
+    public float bulletFrequency = 3f;  //cada cuánto se dispara cada bala
+    private float lastShot = 0f;        //tiempo desde el último disparo
 
 
-    //---------------------------------- A W A K E ----------------------------------//
-    private void Awake()
-    {
-        
-    }
-
-
-    //called BEFORE FIRST FRAME UPDATE
-    void Start()
-    {
-        
-    }
-
-    //called ONCE PER FRAME
+    //-------------------------------- V. U P D A T E ----------------------------//
     void Update()
     {
         //si el jugador está cerca, dispara
@@ -38,25 +28,40 @@ public class EnemyY : MonoBehaviour
         }        
     }
 
+
     //---------------------------------- M E T H O D S ----------------------------------//
-
-    //--- RECIBIR DAÑO ---//
-    public void GetDamage(float amount)
+    
+    //--- DISPARAR ---//
+    public void Shoot()
     {
-        health -= amount;
-        print("El honguito recibió " + amount + " de daño y su vida actual es de " + health);
+        EnY_Bullet newBullet = Instantiate(EnYBullet, EnYBulletSpawn.position, Quaternion.identity);
+        Vector2 direction = (player.gameObject.transform.position - EnYBulletSpawn.position).normalized;
+        newBullet.Initialize(direction, bulletFrequency);
+    }
 
-        if (health <= 0)
+    //--- RECIBIR ATAQUE DEL JUGADOR ---//
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        //si se colisionó con la capa PlayerHitbox Y el ataque NO es nulo
+        if ((other.gameObject.layer == LayerMask.NameToLayer("PlayerHitbox")) && (playerAttack != null))
         {
-            print("El honguito se murió");
-            Destroy(gameObject);
+            float damage = playerAttack.damage;                     //obtenemos el damage del script del jugador
+            
+            health -= damage;                                       //restamos el damage a la salud del enemigo
+            Debug.Log("Enemy received " + damage + " damage.");     //print del damage
+                        
+            if (health <= 0)        //comprobamos vida, si se acabó
+            {
+                Die();              //muereee :(
+            }
         }
     }
 
 
-    //--- DISPARAR ---//
-    public void Shoot()
+    //--- MUEREE!!! ---//
+    private void Die()
     {
-        EnY_Bullet newBullet = Instantiate(EnYBullet, EnYBulletSpawn.position, transform.rotation);
+        Destroy(gameObject);
+        Debug.Log("This enemy's gone to heaven.");
     }
 }

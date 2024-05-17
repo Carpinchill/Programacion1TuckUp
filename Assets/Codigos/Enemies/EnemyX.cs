@@ -6,40 +6,42 @@ public class EnemyX : MonoBehaviour
 {
     //---------------------------------- V A R I A B L E S ----------------------------------//
 
-    public Movement player;         //ref al player para obtener sus datos
-    private Attack playerAttack;
+    public Movement player;                     //ref al script del jugador
+    public Attack playerAttack;                 //ref al script del ataque del jugador
 
-    public float health = 50f;      //salud del enemigo
-    public float damage = 10f;      //daño que hace el enemigo
-    public float speed = 5f;        //velocidad del enemigo
-    public float knockBackforce = 0f;
+    public float health = 43f;                  //salud del enemigo
+    public float damage = 10f;                  //daño que hace el enemigo
+    public float speed = 5f;                    //velocidad del enemigo
+        
+    public Transform[] waypoints;               //array para almacenar waypoints
+    int currentWaypoint = 0;                    //waypoint actual
+    public float playerNear = 5f;               //cuán cerca tiene que estar el jugador para ser detectado
+        
+    public float attackCooldown = 2f;           //tiempo hasta volver a atacar
+    public float knockbackForceEnemy = 50f;     //retroceso aplicado POR ENEMIGO -> AL JUGADOR
 
-    public Transform[] waypoints;   //array para almacenar waypoints
-    int currentWaypoint = 0;        //para ubicar en qué waypoint estamos
-    public float playerNear = 5f;   //cuán cerca tiene que estar el jugador para que lo detecte
+    private bool hasCollided = false;           //pregunta si colisionó con el jugador
+    private Vector3 collisionDirection;         //dirección en la que se aleja luego de colisionar
 
 
-    private void Start()
+    //-------------------------------- V. S T A R T -----------------------------------------//
+
+    void Start()
     {
-        playerAttack = player.GetComponent<Attack>();
+        playerAttack = player.GetComponent<Attack>();           //obtenemos el ataque del script del jugador                
     }
 
     //---------------------------------- V. U P D A T E ----------------------------------//
 
-
+    //--- RUTINA DEL ENEMIGO X ---//
     void Update()
     {
-        //si está cerca del jugador, que se mueva hacia él
-        if(Vector3.Distance(transform.position, player.gameObject.transform.position) < playerNear)
+        //si el jugador está cerca
+        if (Vector3.Distance(transform.position, player.gameObject.transform.position) < playerNear)
         {
-            //dirección del movimiento (hacia el jugador)
-            Vector3 newPosition = Vector3.MoveTowards(transform.position, player.gameObject.transform.position, speed * Time.deltaTime);
-
-            //cambio de posición
-            transform.position = newPosition;
+            Attack();       //que ataque
         }
-        //si no, que patrulle
-        else
+        else                //si no, que patrulle
         {
             Patrol();
         }
@@ -52,64 +54,75 @@ public class EnemyX : MonoBehaviour
     {
         if (Vector3.Distance(transform.position, waypoints[currentWaypoint].position) < 0.2f)   //si el enemigo está muy cerca de un waypoint
         {
-            currentWaypoint++;                                                                  //el waypoint actual pasa a ser el siguiente
-            if (currentWaypoint >= waypoints.Length)                                            //si el siguiente es mayor o igual al total de waypoints
+            currentWaypoint++;                               //el waypoint actual pasa a ser el siguiente
+            if (currentWaypoint >= waypoints.Length)         //si el siguiente es mayor o igual al total de waypoints
             {
-                currentWaypoint = 0;                                                            //vuelve al primero
+                currentWaypoint = 0;                         //vuelve al primero
             }
         }
 
-        //dirección del movimiento (hacia el siguiente waypoint)
+        //dirección del mov (hacia siguiente waypoint)
         Vector3 newPosition = Vector3.MoveTowards(transform.position, waypoints[currentWaypoint].position, speed * Time.deltaTime);
 
         //cambio de posición
         transform.position = newPosition;
     }
 
-    //--- RECIBIR DAÑO ---//
-    public void ReceiveDamage(float damage, Vector2 knockbackDirection, float knockbackForce)
+
+    //--- ATACAR ---//
+    void Attack()
     {
-        health -= damage;
-        Debug.Log("Enemy received " + damage + " damage.");
-        if (TryGetComponent<Rigidbody2D>(out var rb))
+        //dirección del mov (hacia el jugador)
+        Vector3 directionToPlayer = (player.gameObject.transform.position - transform.position).normalized;
+
+        //velocidad del mov
+        transform.position += directionToPlayer * speed * Time.deltaTime;
+
+        //si colisionó
+        if (hasCollided)
         {
-            rb.AddForce(knockbackDirection * knockbackForce, ForceMode2D.Impulse);
-        }
-        if (health <= 0)
-        {
-            Die();
+            Debug.Log("The Blue Enemy has collided with player");
+
+            Vector2 impactSource = transform.position;                  //guardamos la posición el enemigo en el momento del impacto
+            
+            player.TakeDamage(damage, impactSource, knockbackForceEnemy);    //llamamos el método TakeDamage DEL JUGADOR
+                        
+            transform.position -= collisionDirection * Time.deltaTime * speed;  //alejarse después de colisionar
         }
     }
+
+    //--- RECIBIR ATAQUE DEL JUGADOR ---//
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.layer == LayerMask.NameToLayer("PlayerHitbox"))
+        if (other.gameObject.layer == LayerMask.NameToLayer("PlayerHitbox"))    //si se colisionó con la capa PLAYER HITBOX
         {
-            Vector2 knockbackDirection = (transform.position - other.transform.position).normalized;
-            if (playerAttack != null)
+            Vector2 knockbackDirection = (transform.position - other.transform.position).normalized;    //dirección en que será empujado el enemigo
+            
+            if (playerAttack != null)       //si el ataque NO es nulo
             {
-                float damage = playerAttack.damage;
-                float knockbackForce = playerAttack.knockbackForce;
-                ReceiveDamage(damage, knockbackDirection, knockbackForce);
+                float damage = playerAttack.damage;                     //obtenemos el damage del script del jugador
+                float knockbackForce = playerAttack.knockbackForce;     //obtenemos el knockbackForce del script del jugador
+
+                health -= damage;                                       //restamos el damage a la salud del enemigo
+                Debug.Log("Enemy received " + damage + " damage.");     //print del damage
+
+                if (TryGetComponent<Rigidbody2D>(out var rb))           //obtenemos el RigidBody del enemigo
+                {
+                    rb.AddForce(knockbackDirection * knockbackForce, ForceMode2D.Impulse);    //le aplicamos el knockback
+                }
+                if (health <= 0)        //comprobamos vida, si se acabó
+                {
+                    Die();              //muereee :(
+                }
             }
         }
     }
+
+
+    //--- MUEREE!!! ---//
     private void Die()
     {
         Destroy(gameObject);
-        Debug.Log("Enemy died.");
-    }
-
-    //--- HACER DAÑO AL TOCAR AL JUGADOR ---//
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.layer == LayerMask.NameToLayer("Player"))
-        {
-            Vector2 impactSource = transform.position;
-            float knockbackForce = 1000f;
-            if (collision.gameObject.TryGetComponent<Movement>(out var playerMovement))
-            {
-                playerMovement.TakeDamage(damage, impactSource, knockbackForce);
-            }
-        }
+        Debug.Log("This enemy's gone to heaven.");
     }
 }
