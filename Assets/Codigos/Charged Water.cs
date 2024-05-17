@@ -55,4 +55,5 @@ public class Layers
     public const int Enemies = 7;
     public const int Poison = 8;
     public const int HitboxPlayer = 9;
+    public const int EnemiesBullet = 10;
 }

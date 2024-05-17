@@ -76,18 +76,15 @@ public class EnemyX : MonoBehaviour
         Vector3 directionToPlayer = (player.gameObject.transform.position - transform.position).normalized;
 
         //velocidad del mov
-        transform.position += directionToPlayer * speed * Time.deltaTime;
+        transform.position += speed * Time.deltaTime * directionToPlayer;
 
         //si colisionó
         if (hasCollided)
         {
             Debug.Log("The Blue Enemy has collided with player");
-
-            Vector2 impactSource = transform.position;                  //guardamos la posición el enemigo en el momento del impacto
-            
-            player.TakeDamage(damage, impactSource, knockbackForceEnemy);    //llamamos el método TakeDamage DEL JUGADOR
-                        
-            transform.position -= collisionDirection * Time.deltaTime * speed;  //alejarse después de colisionar
+            Vector2 impactSource = transform.position;                  //guardamos la posición el enemigo en el momento del impacto           
+            player.TakeDamage(damage, impactSource, knockbackForceEnemy);    //llamamos el método TakeDamage DEL JUGADOR                       
+            transform.position -= speed * Time.deltaTime * collisionDirection;  //alejarse después de colisionar
         }
     }
 

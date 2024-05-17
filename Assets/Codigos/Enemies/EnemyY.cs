@@ -24,7 +24,11 @@ public class EnemyY : MonoBehaviour
         //si el jugador está cerca, dispara
         if (Vector3.Distance(transform.position, player.gameObject.transform.position) < playerNear)
         {
-            Shoot();
+            if (Time.time >= lastShot + bulletFrequency)
+            {
+                Shoot();
+                lastShot = Time.time;   //actualiza el tiempo del último disparo
+            }
         }        
     }
 
@@ -36,7 +40,7 @@ public class EnemyY : MonoBehaviour
     {
         EnY_Bullet newBullet = Instantiate(EnYBullet, EnYBulletSpawn.position, Quaternion.identity);
         Vector2 direction = (player.gameObject.transform.position - EnYBulletSpawn.position).normalized;
-        newBullet.Initialize(direction, bulletFrequency);
+        newBullet.Initialize(direction, newBullet.bulletSpeed);
     }
 
     //--- RECIBIR ATAQUE DEL JUGADOR ---//
@@ -48,7 +52,7 @@ public class EnemyY : MonoBehaviour
             float damage = playerAttack.damage;                     //obtenemos el damage del script del jugador
             
             health -= damage;                                       //restamos el damage a la salud del enemigo
-            Debug.Log("Enemy received " + damage + " damage.");     //print del damage
+            Debug.Log("SeedSpitter received " + damage + " damage.");     //print del damage
                         
             if (health <= 0)        //comprobamos vida, si se acabó
             {
@@ -62,6 +66,6 @@ public class EnemyY : MonoBehaviour
     private void Die()
     {
         Destroy(gameObject);
-        Debug.Log("This enemy's gone to heaven.");
+        Debug.Log("This enemy's gone to hell."); //pal infierno causita
     }
 }

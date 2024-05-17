@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4977388460414918651}
   - component: {fileID: 1521427708751308794}
   - component: {fileID: 6525660970881619664}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: EnZ_bullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -101,7 +101,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 5
   lifetime: 2
-  enemyZ: {fileID: 0}
+  damage: 15
+  knockBackforce: 0
 --- !u!58 &1521427708751308794
 CircleCollider2D:
   m_ObjectHideFlags: 0

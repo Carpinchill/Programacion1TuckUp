@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8087040462718993998}
   - component: {fileID: 1521427708751308794}
   - component: {fileID: 6525660970881619664}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: EnY_bullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -100,6 +100,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lifetime: 10
+  bulletSpeed: 0
   damage: 5
   knockbackForceBullet: 10
 --- !u!58 &1521427708751308794

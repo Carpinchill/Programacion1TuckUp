@@ -34,7 +34,6 @@ public class EnZ_Bullet : MonoBehaviour
             Vector2 impactSource = transform.position;
             float knockbackForce = 10f;
             collision.gameObject.GetComponent<Movement>().TakeDamage(damage, impactSource, knockbackForce);   //le hace daño al jugador
-            print("El enemigo azul le hizo " + damage + " daño al jugador");
         }
         Destroy(gameObject);                                                    //por haber detectado colisión, se autodestruye
     }

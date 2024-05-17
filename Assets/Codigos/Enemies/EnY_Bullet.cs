@@ -46,7 +46,6 @@ public class EnY_Bullet : MonoBehaviour
 
             //llamamos al método TakeDamage DEL JUGADOR para pasarle el daño y el lugar de impacto
             collision.gameObject.GetComponent<Movement>().TakeDamage(damage, impactSource, knockbackForceBullet);
-            print("El enemigo azul le hizo " + damage + " daño al jugador");
         }
 
         Destroy(gameObject);                                                    //por haber colisionado, se autodestruye

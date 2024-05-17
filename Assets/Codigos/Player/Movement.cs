@@ -124,7 +124,7 @@ public class Movement : MonoBehaviour
     }
     private void ApplyKnockback(Vector2 direction, float force)
     {
-        rb2d.AddForce(direction * force, ForceMode2D.Impulse);
+        GetComponent<Rigidbody2D>().AddForce(direction * force, ForceMode2D.Impulse);
         /*Debug.Log(direction);
         Debug.Log(force);*/
     }
