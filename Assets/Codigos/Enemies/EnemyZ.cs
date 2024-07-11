@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyZ : MonoBehaviour
 {
-    //---------------------------------- V A R I A B L E S ----------------------------------//
+    //--------------------------------- V A R I A B L E S ---------------------------------//
 
     public float health = 100f;         //salud del enemigo
 
@@ -16,13 +16,13 @@ public class EnemyZ : MonoBehaviour
     public Movement player;             //ref al player para obtener sus datos
     public float playerNear = 1f;       //cuán cerca tiene que estar el jugador para que lo detecte
 
-    private EnZ_Shooter[] EnZShooter;   //array de bullet spawns
+    private EZ_Shooter[] EZShooter;   //array de bullet spawns
 
 
-    //---------------------------------- A W A K E ----------------------------------//
+    //--------------------------------- A W A K E ---------------------------------//
     private void Awake()
     {
-        EnZShooter = GetComponentsInChildren<EnZ_Shooter>();
+        EZShooter = GetComponentsInChildren<EZ_Shooter>();
     }
     
     
@@ -46,9 +46,9 @@ public class EnemyZ : MonoBehaviour
             transform.position = newPosition;
 
             //dispara
-            for (int i = 0; i < EnZShooter.Length; i++)
+            for (int i = 0; i < EZShooter.Length; i++)
             {
-                EnZShooter[i].Shoot();
+                EZShooter[i].Shoot();
             }
         }
         //si no, que patrulle
@@ -58,7 +58,7 @@ public class EnemyZ : MonoBehaviour
         }        
     }
 
-    //---------------------------------- M E T H O D S ----------------------------------//
+    //--------------------------------- M E T H O D S ---------------------------------//
 
     //--- RECIBIR DAÑO ---//
     public void GetDamage(float amount)

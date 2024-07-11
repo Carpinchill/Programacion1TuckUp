@@ -9,12 +9,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7372599354161387805}
+  - component: {fileID: 2849951106810800177}
   - component: {fileID: 8534352799257758108}
-  - component: {fileID: 8087040462718993998}
   - component: {fileID: 1521427708751308794}
   - component: {fileID: 6525660970881619664}
   m_Layer: 10
-  m_Name: EnY_bullet
+  m_Name: EY_bullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -35,6 +35,22 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2849951106810800177
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9175084187744488475}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2eebd384e23691c4c949a8a2a4dacb16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lifetime: 10
+  bulletSpeed: 0
+  damage: 5
+  knockbackForceBullet: 10
 --- !u!212 &8534352799257758108
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -87,22 +103,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &8087040462718993998
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9175084187744488475}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2eebd384e23691c4c949a8a2a4dacb16, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  lifetime: 10
-  bulletSpeed: 0
-  damage: 5
-  knockbackForceBullet: 10
 --- !u!58 &1521427708751308794
 CircleCollider2D:
   m_ObjectHideFlags: 0

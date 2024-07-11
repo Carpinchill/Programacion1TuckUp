@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class EnemyX : MonoBehaviour
 {
-    //---------------------------------- V A R I A B L E S ----------------------------------//
+    //--------------------------------- V A R I A B L E S ---------------------------------//
 
-    public Movement player;                     //ref al script del jugador
-    public Attack playerAttack;                 //ref al script del ataque del jugador
+    public Player player;                       //ref al script del jugador
+    public P_Attack playerAttack;               //ref al script del ataque del jugador
 
     public float health = 43f;                  //salud del enemigo
     public float damage = 10f;                  //daño que hace el enemigo
@@ -20,18 +20,18 @@ public class EnemyX : MonoBehaviour
     public float attackCooldown = 2f;           //tiempo hasta volver a atacar
     public float knockbackForceEnemy = 50f;     //retroceso aplicado POR ENEMIGO -> AL JUGADOR
 
-    private bool hasCollided = false;           //pregunta si colisionó con el jugador
+    //private bool hasCollided = false;           //pregunta si colisionó con el jugador
     private Vector3 collisionDirection;         //dirección en la que se aleja luego de colisionar
 
 
-    //-------------------------------- V. S T A R T -----------------------------------------//
+    //--------------------------------- V. S T A R T ---------------------------------//
 
     void Start()
     {
-        playerAttack = player.GetComponent<Attack>();           //obtenemos el ataque del script del jugador                
+        playerAttack = player.GetComponent<P_Attack>();           //obtenemos el ataque del script del jugador                
     }
 
-    //---------------------------------- V. U P D A T E ----------------------------------//
+    //--------------------------------- V. U P D A T E ---------------------------------//
 
     //--- RUTINA DEL ENEMIGO X ---//
     void Update()
@@ -47,7 +47,7 @@ public class EnemyX : MonoBehaviour
         }
     }
 
-    //---------------------------------- M E T H O D S ----------------------------------// 
+    //--------------------------------- M E T H O D S ---------------------------------//
 
     //--- PATRULLAR ---//
     void Patrol()
@@ -77,9 +77,12 @@ public class EnemyX : MonoBehaviour
 
         //velocidad del mov
         transform.position += speed * Time.deltaTime * directionToPlayer;
+    }
 
-        //si colisionó
-        if (hasCollided)
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        Movement player = collision.gameObject.GetComponentInParent<Movement>();
+        if (player != null)
         {
             Debug.Log("The Blue Enemy has collided with player");
             Vector2 impactSource = transform.position;                  //guardamos la posición el enemigo en el momento del impacto           
@@ -88,33 +91,21 @@ public class EnemyX : MonoBehaviour
         }
     }
 
-    //--- RECIBIR ATAQUE DEL JUGADOR ---//
-    private void OnTriggerEnter2D(Collider2D other)
+    //--- RECIBIR ATAQUE DEL JUGADOR ---//   
+    public void TakeDamage(float damage, float knockbackForce, Vector3 knockbackDirection)
     {
-        if (other.gameObject.layer == LayerMask.NameToLayer("PlayerHitbox"))    //si se colisionó con la capa PLAYER HITBOX
+        health -= damage;                                       //restamos el damage a la salud del enemigo
+        Debug.Log("Enemy received " + damage + " damage.");     //print del damage
+
+        if (TryGetComponent<Rigidbody2D>(out var rb))           //obtenemos el RigidBody del enemigo
         {
-            Vector2 knockbackDirection = (transform.position - other.transform.position).normalized;    //dirección en que será empujado el enemigo
-            
-            if (playerAttack != null)       //si el ataque NO es nulo
-            {
-                float damage = playerAttack.damage;                     //obtenemos el damage del script del jugador
-                float knockbackForce = playerAttack.knockbackForce;     //obtenemos el knockbackForce del script del jugador
-
-                health -= damage;                                       //restamos el damage a la salud del enemigo
-                Debug.Log("Enemy received " + damage + " damage.");     //print del damage
-
-                if (TryGetComponent<Rigidbody2D>(out var rb))           //obtenemos el RigidBody del enemigo
-                {
-                    rb.AddForce(knockbackDirection * knockbackForce, ForceMode2D.Impulse);    //le aplicamos el knockback
-                }
-                if (health <= 0)        //comprobamos vida, si se acabó
-                {
-                    Die();              //muereee :(
-                }
-            }
+            rb.AddForce(knockbackDirection * knockbackForce, ForceMode2D.Impulse);    //le aplicamos el knockback
+        }
+        if (health <= 0)        //comprobamos vida, si se acabó
+        {
+            Die();              //muereee :(
         }
     }
-
 
     //--- MUEREE!!! ---//
     private void Die()

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyY : MonoBehaviour
 {
-    //---------------------------------- V A R I A B L E S ----------------------------------//
+    //--------------------------------- V A R I A B L E S ---------------------------------//
 
     public float health = 33f;          //salud del enemigo
 
@@ -12,13 +12,13 @@ public class EnemyY : MonoBehaviour
     public Attack playerAttack;         //ref al script del ataque del jugador
     public float playerNear = 10f;      //cuán cerca tiene que estar el jugador
         
-    public EnY_Bullet EnYBullet;        //bullet prefab    
-    public Transform EnYBulletSpawn;    //spawn point    
+    public EY_Bullet EYBullet;        //bullet prefab    
+    public Transform EYBulletSpawn;    //spawn point    
     public float bulletFrequency = 3f;  //cada cuánto se dispara cada bala
     private float lastShot = 0f;        //tiempo desde el último disparo
 
 
-    //-------------------------------- V. U P D A T E ----------------------------//
+    //--------------------------------- V. U P D A T E ---------------------------------//
     void Update()
     {
         //si el jugador está cerca, dispara
@@ -33,13 +33,13 @@ public class EnemyY : MonoBehaviour
     }
 
 
-    //---------------------------------- M E T H O D S ----------------------------------//
-    
+    //--------------------------------- M E T H O D S ---------------------------------//
+
     //--- DISPARAR ---//
     public void Shoot()
     {
-        EnY_Bullet newBullet = Instantiate(EnYBullet, EnYBulletSpawn.position, Quaternion.identity);
-        Vector2 direction = (player.gameObject.transform.position - EnYBulletSpawn.position).normalized;
+        EY_Bullet newBullet = Instantiate(EYBullet, EYBulletSpawn.position, Quaternion.identity);
+        Vector2 direction = (player.gameObject.transform.position - EYBulletSpawn.position).normalized;
         newBullet.Initialize(direction, newBullet.bulletSpeed);
     }
 

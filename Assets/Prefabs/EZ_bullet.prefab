@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1521427708751308794}
   - component: {fileID: 6525660970881619664}
   m_Layer: 10
-  m_Name: EnZ_bullet
+  m_Name: EZ_bullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

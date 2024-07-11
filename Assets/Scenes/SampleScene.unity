@@ -352,7 +352,7 @@ GameObject:
   m_Component:
   - component: {fileID: 470142673}
   - component: {fileID: 470142675}
-  - component: {fileID: 470142674}
+  - component: {fileID: 470142676}
   m_Layer: 9
   m_Name: HitboxCombo0
   m_TagString: Untagged
@@ -375,42 +375,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2032179878}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!893571522 &470142674
-CustomCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 470142672}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_CustomShapes:
-    m_Shapes: []
-    m_Vertices: []
 --- !u!212 &470142675
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -463,6 +427,73 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!60 &470142676
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 470142672}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 2}
+    newSize: {x: 1, y: 2}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 0, y: 1}
+      - {x: -0.15234375, y: 0.97265625}
+      - {x: -0.29296875, y: 0.90234375}
+      - {x: -0.40234375, y: 0.79296875}
+      - {x: -0.47265625, y: 0.65234375}
+      - {x: -0.5, y: 0.5}
+      - {x: -0.5, y: -0.5}
+      - {x: -0.47265625, y: -0.65234375}
+      - {x: -0.40234375, y: -0.79296875}
+      - {x: -0.29296875, y: -0.90234375}
+      - {x: -0.15234375, y: -0.97265625}
+      - {x: 0, y: -1}
+      - {x: 0.15234375, y: -0.97265625}
+      - {x: 0.29296875, y: -0.90234375}
+      - {x: 0.40234375, y: -0.79296875}
+      - {x: 0.47265625, y: -0.65234375}
+      - {x: 0.5, y: -0.5}
+      - {x: 0.5, y: 0.5}
+      - {x: 0.47265625, y: 0.65234375}
+      - {x: 0.40234375, y: 0.79296875}
+      - {x: 0.29296875, y: 0.90234375}
+      - {x: 0.15234375, y: 0.97265625}
+  m_UseDelaunayMesh: 0
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -698,7 +729,7 @@ PrefabInstance:
       objectReference: {fileID: 1074903711}
     - target: {fileID: -8646401339500566599, guid: 4aafec9dfc80bfc479135f0de83244f2, type: 3}
       propertyPath: playerNear
-      value: 7
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: -8646401339500566599, guid: 4aafec9dfc80bfc479135f0de83244f2, type: 3}
       propertyPath: playerAttack
@@ -773,11 +804,11 @@ PrefabInstance:
     - target: {fileID: 7434027744358036834, guid: e467f41567285f84687cb046eb8abcd7, type: 3}
       propertyPath: player
       value: 
-      objectReference: {fileID: 1074903711}
+      objectReference: {fileID: 1074903718}
     - target: {fileID: 7434027744358036834, guid: e467f41567285f84687cb046eb8abcd7, type: 3}
       propertyPath: playerAttack
       value: 
-      objectReference: {fileID: 2032179879}
+      objectReference: {fileID: 2032179880}
     - target: {fileID: 7956867852862355178, guid: e467f41567285f84687cb046eb8abcd7, type: 3}
       propertyPath: m_Name
       value: EnemyX (1)
@@ -10094,6 +10125,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1074903715}
+  - component: {fileID: 1074903718}
   - component: {fileID: 1074903711}
   - component: {fileID: 1074903714}
   - component: {fileID: 1074903716}
@@ -10113,7 +10145,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1074903710}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b6f5e1bd655397b459f6497a73e9bbc7, type: 3}
   m_Name: 
@@ -10291,6 +10323,29 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1074903718
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1074903710}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad2a836df9e0b5947a1852f533f93777, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 5
+  maxHealth: 100
+  currentHealth: 0
+  DashEffect: {fileID: 1404583129}
+  attack: {fileID: 0}
+  isDashing: 0
+  dashDuration: 0.2
+  dashForce: 18
+  dashCooldown: 1.2
+  lastH: 0
+  lastV: 0
 --- !u!1 &1147351923
 GameObject:
   m_ObjectHideFlags: 0
@@ -10366,8 +10421,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01db5532843251348b5ffc498c2ab996, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EnZBullet: {fileID: 4977388460414918651, guid: aa335b88b367d9e46af0ad54eab34f02, type: 3}
-  EnZBulletSpawn: {fileID: 1302965031}
+  EZBullet: {fileID: 0}
+  EZBulletSpawn: {fileID: 0}
 --- !u!1 &1404583129
 GameObject:
   m_ObjectHideFlags: 0
@@ -10536,7 +10591,7 @@ PrefabInstance:
     - target: {fileID: 7434027744358036834, guid: e467f41567285f84687cb046eb8abcd7, type: 3}
       propertyPath: player
       value: 
-      objectReference: {fileID: 1074903711}
+      objectReference: {fileID: 1074903718}
     - target: {fileID: 7434027744358036834, guid: e467f41567285f84687cb046eb8abcd7, type: 3}
       propertyPath: playerNear
       value: 9
@@ -10544,7 +10599,7 @@ PrefabInstance:
     - target: {fileID: 7434027744358036834, guid: e467f41567285f84687cb046eb8abcd7, type: 3}
       propertyPath: playerAttack
       value: 
-      objectReference: {fileID: 2032179879}
+      objectReference: {fileID: 2032179880}
     - target: {fileID: 7956867852862355178, guid: e467f41567285f84687cb046eb8abcd7, type: 3}
       propertyPath: m_Name
       value: EnemyX (0)
@@ -10638,8 +10693,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01db5532843251348b5ffc498c2ab996, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EnZBullet: {fileID: 4977388460414918651, guid: aa335b88b367d9e46af0ad54eab34f02, type: 3}
-  EnZBulletSpawn: {fileID: 1610675120}
+  EZBullet: {fileID: 0}
+  EZBulletSpawn: {fileID: 0}
 --- !u!1 &1618125386
 GameObject:
   m_ObjectHideFlags: 0
@@ -36505,6 +36560,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2032179878}
+  - component: {fileID: 2032179880}
   - component: {fileID: 2032179879}
   m_Layer: 9
   m_Name: Hitboxes
@@ -36538,7 +36594,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2032179877}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7f5e2ee4d2711494c830173ba781a778, type: 3}
   m_Name: 
@@ -36551,6 +36607,29 @@ MonoBehaviour:
   movement: {fileID: 1074903711}
   damage: 12
   knockbackForce: 5
+  comboResetTime: 1.3
+  attackLifeSpan: 0.3
+  attackCooldown: 0.5
+--- !u!114 &2032179880
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2032179877}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 707b746eb01527b47becfaa8716f1d75, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 12
+  knockbackForce: 5
+  Hitboxes:
+  - {fileID: 470142672}
+  - {fileID: 885647083}
+  - {fileID: 1925758856}
+  HitboxesRotation: {fileID: 2032179877}
+  movement: {fileID: 1074903718}
   comboResetTime: 1.3
   attackLifeSpan: 0.3
   attackCooldown: 0.5

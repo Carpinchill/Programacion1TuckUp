@@ -79,13 +79,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 33
-  playerMovement: {fileID: 0}
-  playerTransform: {fileID: 0}
+  player: {fileID: 0}
   playerAttack: {fileID: 0}
   playerNear: 10
-  EnYBullet: {fileID: 8087040462718993998, guid: 0a8c539369aa7ec4ea822ba1eecb77af, type: 3}
-  EnYBulletSpawn: {fileID: 7539731084510659538}
-  bulletFrequence: 2
+  EYBullet: {fileID: 2849951106810800177, guid: 0a8c539369aa7ec4ea822ba1eecb77af, type: 3}
+  EYBulletSpawn: {fileID: 7539731084510659538}
+  bulletFrequency: 3
 --- !u!212 &8264347447823179288
 SpriteRenderer:
   m_ObjectHideFlags: 0

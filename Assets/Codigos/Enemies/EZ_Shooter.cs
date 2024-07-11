@@ -2,12 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnZ_Shooter : MonoBehaviour
+public class EZ_Shooter : MonoBehaviour
 {
     //---------------------------------- V A R I A B L E S ----------------------------------//
 
-    public EnZ_Bullet EnZBullet;      //bullet prefab
-    public Transform EnZBulletSpawn;  //spawn point
+    public EZ_Bullet EZBullet;      //bullet prefab
+    public Transform EZBulletSpawn;  //spawn point
 
     //called BEFORE FIRST FRAME UPDATE
     void Start()
@@ -26,6 +26,6 @@ public class EnZ_Shooter : MonoBehaviour
     //--- DISPARAR ---//
     public void Shoot()
     {
-        EnZ_Bullet newBullet = Instantiate(EnZBullet, EnZBulletSpawn.position, transform.rotation);
+        EZ_Bullet newBullet = Instantiate(EZBullet, EZBulletSpawn.position, transform.rotation);
     }
 }

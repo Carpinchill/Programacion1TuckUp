@@ -2,12 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnY_Bullet : MonoBehaviour
+public class EY_Bullet : MonoBehaviour
 {
-    //---------------------------------- V A R I A B L E S ----------------------------------//
+    //--------------------------------- V A R I A B L E S ---------------------------------//
 
     public float lifetime = 10f;                  //vida de la bala
-    public float bulletSpeed;                    //velocidad de la bala
+    public float bulletSpeed;                     //velocidad de la bala
     private Vector2 direction;                    //dirección de la bala
 
     public float damage = 5f;                     //daño que hace la bala
@@ -27,7 +27,7 @@ public class EnY_Bullet : MonoBehaviour
     }
 
 
-    //------------------------------------ M E T H O D S -----------------------------------//
+    //--------------------------------- M E T H O D S ---------------------------------//
 
     //--- SETEAMOS DIRECCIÓN Y VELOCIDAD ---//
     public void Initialize(Vector2 dir, float speed)
