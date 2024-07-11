@@ -1,18 +1,32 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
+using UnityEngine.SocialPlatforms.Impl;
 
 public class Movement : MonoBehaviour
 {
     //---------------------------------- V A R I A B L E S ----------------------------------------------------------------------------
     public Attack attack;
+    public Habilidades habilidades;
     private Rigidbody2D rb2d;
     public GameObject DashEffect;
     private Animator animator;
+    public Image health;
+    public Image stamina;
+    public TMP_Text shardsCounter;
 
     public float speed = 5f;
     public int maxHealth = 20;
     public float currentHealth;
+    public float maxStamina = 10;
+    public float currentStamina;
+    public float shards;
+    private float lastStaminaUseTime;
+    public float staminaRecoveryDelay = 2f;
+    public float staminaRecoveryRate = 1f;
+    public float dashStaminaCost = 2f;
 
     public bool isDashing = false;
     [SerializeField]
@@ -32,7 +46,9 @@ public class Movement : MonoBehaviour
         DashEffect.SetActive(false);
         rb2d = GetComponent<Rigidbody2D>();
         currentHealth = maxHealth;
+        currentStamina = maxStamina;
         animator = GetComponent<Animator>();
+
     }
 
     //---------------------------------- F. U P D A T E ----------------------------------------------------------------------------
@@ -41,6 +57,13 @@ public class Movement : MonoBehaviour
     private void FixedUpdate()
     {
         Move();
+        UpdateHealthBar();
+        UpdateStaminaBar();
+        shardsCounter.text = shards.ToString();
+        if (Time.time >= lastStaminaUseTime + staminaRecoveryDelay)
+        {
+            RecoverStamina();
+        }
     }
 
     //---------------------------------- L. U P D A T E ----------------------------------------------------------------------------
@@ -76,7 +99,7 @@ public class Movement : MonoBehaviour
     //chequea la ultima direccion y la pasa a la corutina para saber hacia donde dashear
     public void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && !isDashing && Time.time >= lastDashTime + dashCooldown) 
+        if (Input.GetKeyDown(KeyCode.Space) && !isDashing && Time.time >= lastDashTime + dashCooldown && currentStamina >= dashStaminaCost) 
         {
             float dashH = lastH != 0 ? lastH : Input.GetAxisRaw("Horizontal");
             float dashV = lastV != 0 ? lastV : Input.GetAxisRaw("Vertical");
@@ -96,7 +119,8 @@ public class Movement : MonoBehaviour
         rb2d.velocity = direction * dashForce;
         enabled = false;
         attack.enabled = false;
-       
+        ConsumeStamina(dashStaminaCost);
+
         yield return new WaitForSeconds(dashDuration);
 
         rb2d.velocity = Vector2.zero;
@@ -105,28 +129,46 @@ public class Movement : MonoBehaviour
         DashEffect.SetActive(false);
         attack.enabled = true;
     }
-
+    public void ConsumeStamina(float amount)
+    {
+        currentStamina -= amount;
+        lastStaminaUseTime = Time.time;
+        if (currentStamina < 0) currentStamina = 0;
+    }
+    private void RecoverStamina()
+    {
+        currentStamina += staminaRecoveryRate * Time.deltaTime;
+        if (currentStamina > maxStamina) currentStamina = maxStamina;
+    }
     public void TakeDamage(float damage, Vector2 impactSource, float knockbackForce)
     {
-        if (isDashing == false) 
+        if (isDashing == false && !habilidades.isBlocking) 
         {
             Vector2 knockbackDirection = (transform.position - (Vector3)impactSource).normalized;
             ApplyKnockback(knockbackDirection, knockbackForce);
-            currentHealth -= damage;
-            Debug.Log("I received " + damage + " damage " + "My health is " + currentHealth);       
+            currentHealth -= damage;   
         }
 
         if (currentHealth <= 0)
         {
             Die();
         }
-        //aca va un sistema que baje la barra de vida
+        
     }
+    public void UpdateHealthBar()
+    {
+        float fillAmount = currentHealth / maxHealth;
+        health.fillAmount = fillAmount;
+    }
+    public void UpdateStaminaBar()
+    {
+        float fillAmount = currentStamina / maxStamina;
+        stamina.fillAmount = fillAmount;
+    }
+
     private void ApplyKnockback(Vector2 direction, float force)
     {
         GetComponent<Rigidbody2D>().AddForce(direction * force, ForceMode2D.Impulse);
-        /*Debug.Log(direction);
-        Debug.Log(force);*/
     }
 
 
