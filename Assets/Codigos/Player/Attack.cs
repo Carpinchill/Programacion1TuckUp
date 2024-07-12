@@ -22,7 +22,8 @@ public class Attack : MonoBehaviour
     private float attackLifeSpan = 0.3f;
     [SerializeField]
     private float attackCooldown = 0.7f;
-    
+    public float attackStaminaCost = 1f;    
+
     private int currentAttack = 0;
     private float lastAttackTime;
 
@@ -48,7 +49,10 @@ public class Attack : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0) && Time.time >= lastAttackTime + attackCooldown && !movement.isDashing)
         {
-            PerformNextAttack();
+            if (movement.currentStamina >= attackStaminaCost)
+            {
+                PerformNextAttack();
+            }
         }
 
         float lastH = movement.lastH;
@@ -97,6 +101,8 @@ public class Attack : MonoBehaviour
         lastAttackTime = Time.time;
 
         currentAttack = (currentAttack + 1) % Hitboxes.Length;
+
+        movement.ConsumeStamina(attackStaminaCost);
     }
 
     IEnumerator NextAttack (GameObject hitbox, float duration)
