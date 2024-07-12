@@ -10,8 +10,8 @@ public class EnemyX : MonoBehaviour
     //--------------------------------- V A R I A B L E S ---------------------------------//
 
     public float health = 43f;                  //salud del enemigo
-    public float damage = 10f;                  //daño que hace el enemigo
-    public float speed = 5f;                    //velocidad del enemigo
+    public float damage = 6f;                  //daño que hace el enemigo
+    public float speed = 9f;                    //velocidad del enemigo
 
     public Movement player;                     //ref al script del jugador
     public Attack playerAttack;                 //ref al script del ataque del jugador
@@ -21,7 +21,7 @@ public class EnemyX : MonoBehaviour
     public float playerNear = 5f;               //cuán cerca tiene que estar el jugador para ser detectado
         
     public float attackCooldown = 2f;           //tiempo hasta volver a atacar
-    public float knockbackForceEnemy = 50f;     //retroceso aplicado POR ENEMIGO -> AL JUGADOR
+    public float knockbackForceEnemy = 2000f;     //retroceso aplicado POR ENEMIGO -> AL JUGADOR
 
     private bool isKnockback = false;           //pregunta si si está retrocediendo
 
@@ -88,7 +88,6 @@ public class EnemyX : MonoBehaviour
         Movement player = collision.gameObject.GetComponentInParent<Movement>();
         if (player != null)
         {
-            Debug.Log("The Blue Enemy has collided with player");
             Vector3 collisionDirection = (transform.position - collision.transform.position).normalized; //guardamos la dirección (opuesta al punto de colisión)
             StartCoroutine(Knockback(collisionDirection)); //retrocedemos con la dirección que guardamos recién
         }
@@ -99,12 +98,15 @@ public class EnemyX : MonoBehaviour
     IEnumerator Knockback(Vector3 direction)
     {
         isKnockback = true;
-        float knockbackTime = 1f; // duración del retroceso
+        float knockbackTime = 0.7f; // duración del retroceso
         float timer = 0f;
+
+
+        player.TakeDamage(damage, direction, knockbackForceEnemy);
 
         while (timer < knockbackTime)
         {
-            transform.position += direction * speed * Time.deltaTime;
+            transform.position += speed * Time.deltaTime * direction;
             timer += Time.deltaTime;
             yield return null;
         }
