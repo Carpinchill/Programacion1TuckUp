@@ -121,5 +121,18 @@ public class EnemyX : MonoBehaviour
             currentWaypoint = 0;    //el waypoint actual vuelve a ser el primero
             Patrol();               //que patrulle
         }
-    }    
+    }
+
+
+    //--- RECIBIR DAÑO ---//
+    public void ReceiveDamage(float damage)
+    {
+        health -= damage;           //restamos el daño a la salud del jugador
+
+        if (health <= 0)            //si la salud es menos que 0
+        {
+            Destroy(gameObject);    //muere
+            Debug.Log("This enemy's gone to hell");
+        }
+    }
 }

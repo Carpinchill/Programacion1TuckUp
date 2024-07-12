@@ -115,23 +115,28 @@ public class Attack : MonoBehaviour
     }
 
 
-    /*private void OnTriggerEnter2D(Collider2D collision)
+    //--- LLAMAR AL MÉTODO RECEIVE DAMAGE DEL ENEMIGO X ---//
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.layer == LayerMask.NameToLayer("Enemies")
+        EnemyX enemyX = other.gameObject.GetComponentInParent<EnemyX>();
+        if (enemyX != null)
         {
-            enemyX.TakeDamage(damage, knockbackForce, knockbackDirection);
+            enemyX.ReceiveDamage(damage);
+        }
 
+        EnemyY enemyY = other.gameObject.GetComponentInParent<EnemyY>();
+        if (enemyY != null)
+        {
+            enemyY.ReceiveDamage(damage);
+        }
+
+        EnemyZ enemyZ = other.gameObject.GetComponentInParent<EnemyZ>();
+        if (enemyZ != null)
+        {
+            enemyZ.ReceiveDamage(damage);
         }
     }
 
 
-    /*private void OnTriggerEnter2D(Collider2D collision)
-     {
-         EnemyX x = collision.gameObject.GetComponentInParent<EnemyX>();
-         if (x != null)
-         {
-             x.TakeDamage(damage, knockbackForce, (collision.transform.position - transform.position).normalized);
-         }
-     }*/
 }
 

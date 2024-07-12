@@ -59,21 +59,7 @@ public class EnemyZ : MonoBehaviour
     }
 
     //--------------------------------- M E T H O D S ---------------------------------//
-
-    //--- RECIBIR DAÑO ---//
-    public void GetDamage(float amount)
-    {
-        health -= amount;
-        print("El Troll recibió " + amount + " de daño y su vida actual es de " + health);
-
-        if (health <= 0)
-        {
-            print("El Troll se murió");
-            Destroy(gameObject);
-        }
-    }
-
-
+    
     //--- PATRULLAR ---//
     void Patrol()
     {
@@ -89,5 +75,18 @@ public class EnemyZ : MonoBehaviour
         Vector3 newPosition = Vector3.MoveTowards(transform.position, waypoints[currentWaypoint].position, speed * Time.deltaTime);
 
         transform.position = newPosition;
+    }
+
+
+    //--- RECIBIR DAÑO ---//
+    public void ReceiveDamage(float damage)
+    {
+        health -= damage;           //restamos el daño a la salud del jugador
+
+        if (health <= 0)            //si la salud es menos que 0
+        {
+            Destroy(gameObject);    //muere
+            Debug.Log("This enemy's gone to hell");
+        }
     }
 }

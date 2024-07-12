@@ -41,30 +41,16 @@ public class EnemyY : MonoBehaviour
     {
         Instantiate(EYBullet, EYBulletSpawn.position, transform.rotation);
     }
-    
-    //--- RECIBIR ATAQUE DEL JUGADOR ---//
-    private void OnTriggerEnter2D(Collider2D other)
+
+    //--- RECIBIR DAÑO ---//
+    public void ReceiveDamage(float damage)
     {
-        //si se colisionó con la capa PlayerHitbox Y el ataque NO es nulo
-        if ((other.gameObject.layer == LayerMask.NameToLayer("HitboxPlayer")) && (playerAttack != null))
+        health -= damage;           //restamos el daño a la salud del jugador
+
+        if (health <= 0)            //si la salud es menos que 0
         {
-            float damage = playerAttack.damage;                     //obtenemos el damage del script del jugador
-            
-            health -= damage;                                       //restamos el damage a la salud del enemigo
-            Debug.Log("SeedSpitter received " + damage + " damage.");     //print del damage
-                        
-            if (health <= 0)        //comprobamos vida, si se acabó
-            {
-                Die();              //muereee :(
-            }
+            Destroy(gameObject);    //muere
+            Debug.Log("This enemy's gone to hell");
         }
-    }
-
-
-    //--- MUEREE!!! ---//
-    private void Die()
-    {
-        Destroy(gameObject);
-        Debug.Log("This enemy's gone to hell."); //pal infierno causita
     }
 }
