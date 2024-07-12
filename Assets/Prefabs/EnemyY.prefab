@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7539731084510659538}
+  - component: {fileID: 1674664859047275471}
   m_Layer: 0
   m_Name: BulletSpawn
   m_TagString: Untagged
@@ -31,6 +32,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1514306176287145243}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1674664859047275471
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 926269463789930247}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3e8e4a7846a41043894d59fac5db7d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  EYBullet: {fileID: 0}
+  EYBulletSpawn: {fileID: 7539731084510659538}
 --- !u!1 &8867776753774189617
 GameObject:
   m_ObjectHideFlags: 0
@@ -82,8 +97,6 @@ MonoBehaviour:
   player: {fileID: 0}
   playerAttack: {fileID: 0}
   playerNear: 10
-  EYBullet: {fileID: 2849951106810800177, guid: 0a8c539369aa7ec4ea822ba1eecb77af, type: 3}
-  EYBulletSpawn: {fileID: 7539731084510659538}
   bulletFrequency: 3
 --- !u!212 &8264347447823179288
 SpriteRenderer:

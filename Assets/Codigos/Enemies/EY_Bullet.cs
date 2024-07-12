@@ -8,10 +8,10 @@ public class EY_Bullet : MonoBehaviour
 
     public float lifetime = 10f;                  //vida de la bala
     public float bulletSpeed;                     //velocidad de la bala
-    private Vector3 bulletDirection;              //dirección de la bala
+    private Vector3 bulletDirection;              //dirección de la bala ??
 
     public float damage = 5f;                     //daño que hace la bala
-    public float knockbackForceBullet = 10f;      //retroceso aplicado POR LA BALA -> AL JUGADOR    
+    public float knockbackForceBullet = 10f;      //retroceso aplicado POR LA BALA -> AL JUGADOR
 
 
     //------------------------------------ V. S T A R T ---------------------------------//
@@ -23,7 +23,7 @@ public class EY_Bullet : MonoBehaviour
     //----------------------------------- V. U P D A T E ---------------------------------//
     void Update()
     {
-        transform.position += (Vector3)(bulletDirection * bulletSpeed * Time.deltaTime);
+        transform.position += bulletDirection * bulletSpeed * Time.deltaTime;    //??
     }
 
 

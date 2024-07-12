@@ -9,13 +9,13 @@ public class EnemyX : MonoBehaviour
 {
     //--------------------------------- V A R I A B L E S ---------------------------------//
 
-    public Movement player;                     //ref al script del jugador
-    public Attack playerAttack;                 //ref al script del ataque del jugador
-
     public float health = 43f;                  //salud del enemigo
     public float damage = 10f;                  //daño que hace el enemigo
     public float speed = 5f;                    //velocidad del enemigo
-        
+
+    public Movement player;                     //ref al script del jugador
+    public Attack playerAttack;                 //ref al script del ataque del jugador
+       
     public Transform[] waypoints;               //array para almacenar waypoints
     int currentWaypoint = 0;                    //waypoint actual
     public float playerNear = 5f;               //cuán cerca tiene que estar el jugador para ser detectado
@@ -23,24 +23,23 @@ public class EnemyX : MonoBehaviour
     public float attackCooldown = 2f;           //tiempo hasta volver a atacar
     public float knockbackForceEnemy = 50f;     //retroceso aplicado POR ENEMIGO -> AL JUGADOR
 
-    //private bool hasCollided = false;         //pregunta si colisionó con el jugador
-    private Vector3 collisionDirection;         //dirección en la que se aleja luego de colisionar
+    private bool isKnockback = false;           //pregunta si si está retrocediendo
 
 
     //--------------------------------- V. S T A R T ---------------------------------//
 
     void Start()
     {
-        playerAttack = player.GetComponent<Attack>();           //obtenemos el ataque del script del jugador                
+        playerAttack = player.GetComponent<Attack>();           //obtenemos el ataque del jugador                
     }
 
     //--------------------------------- V. U P D A T E ---------------------------------//
 
     //--- RUTINA DEL ENEMIGO X ---//
     void Update()
-    {
-        //si el jugador está cerca
-        if (Vector3.Distance(transform.position, player.gameObject.transform.position) < playerNear)
+    {        
+        if (isKnockback) return;    //si está en retroceso, que no haga nada más
+        else if (Vector3.Distance(transform.position, player.gameObject.transform.position) < playerNear)    //si el jugador está cerca
         {
             Attack();       //que ataque
         }
@@ -75,45 +74,52 @@ public class EnemyX : MonoBehaviour
     //--- ATACAR ---//
     void Attack()
     {
-        //dirección del mov (hacia el jugador)
+        //guardamos la posición del jugador
         Vector3 directionToPlayer = (player.gameObject.transform.position - transform.position).normalized;
 
-        //velocidad del mov
+        //mov HACIA el jugador
         transform.position += speed * Time.deltaTime * directionToPlayer;
     }
 
+
+    //--- COLISIONAMOS CON JUGADOR ---//
     private void OnCollisionEnter2D(Collision2D collision)
     {
         Movement player = collision.gameObject.GetComponentInParent<Movement>();
         if (player != null)
         {
             Debug.Log("The Blue Enemy has collided with player");
-            Vector2 impactSource = transform.position;                          //guardamos la posición el enemigo en el momento del impacto           
-            player.TakeDamage(damage, impactSource, knockbackForceEnemy);       //llamamos el método TakeDamage DEL JUGADOR                       
-            transform.position -= speed * Time.deltaTime * collisionDirection;  //alejarse después de colisionar
+            Vector3 collisionDirection = (transform.position - collision.transform.position).normalized; //guardamos la dirección (opuesta al punto de colisión)
+            StartCoroutine(Knockback(collisionDirection)); //retrocedemos con la dirección que guardamos recién
         }
     }
 
-    /*//--- RECIBIR ATAQUE DEL JUGADOR ---//   
-    public void TakeDamage(float damage, float knockbackForce, Vector3 knockbackDirection)
-    {
-        health -= damage;                                       //restamos el damage a la salud del enemigo
-        Debug.Log("Enemy received " + damage + " damage.");     //print del damage
 
-        if (TryGetComponent<Rigidbody2D>(out var rb))           //obtenemos el RigidBody del enemigo
-        {
-            rb.AddForce(knockbackDirection * knockbackForce, ForceMode2D.Impulse);    //le aplicamos el knockback
-        }
-        if (health <= 0)        //comprobamos vida, si se acabó
-        {
-            Die();              //muereee :(
-        }
-    }
-
-    //--- MUEREE!!! ---//
-    private void Die()
+    //--- RETROCESO ---//
+    IEnumerator Knockback(Vector3 direction)
     {
-        Destroy(gameObject);
-        Debug.Log("This enemy's gone to heaven.");
-    }*/
+        isKnockback = true;
+        float knockbackTime = 1f; // duración del retroceso
+        float timer = 0f;
+
+        while (timer < knockbackTime)
+        {
+            transform.position += direction * speed * Time.deltaTime;
+            timer += Time.deltaTime;
+            yield return null;
+        }
+
+        isKnockback = false;
+
+        //decidimos qué hacer después del retroceso
+        if (Vector3.Distance(transform.position, player.gameObject.transform.position) < playerNear)    //si el jugador está cerca
+        {
+            Attack(); //que ataque
+        }
+        else      //si NO está cerca
+        {
+            currentWaypoint = 0;    //el waypoint actual vuelve a ser el primero
+            Patrol();               //que patrulle
+        }
+    }    
 }

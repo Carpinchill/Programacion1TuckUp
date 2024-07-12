@@ -8,15 +8,16 @@ public class EnemyY : MonoBehaviour
 
     public float health = 33f;          //salud del enemigo
 
-    public Movement player;             //ref al script del player    
+    public Movement player;             //ref al player (posición para takedamage
     public Attack playerAttack;         //ref al script del ataque del jugador
     public float playerNear = 10f;      //cuán cerca tiene que estar el jugador
-        
-    public EY_Bullet EYBullet;          //bullet prefab    
-    public Transform EYBulletSpawn;     //spawn point    
+
+    public EY_Bullet EYBullet;          //ref al prefab de la bala
+    public Transform EYBulletSpawn;     //ref al transform del bullet spawn point
+
     public float bulletFrequency = 3f;  //cada cuánto se dispara cada bala
     private float lastShot = 0f;        //tiempo desde el último disparo
-
+    
 
     //--------------------------------- V. U P D A T E ---------------------------------//
     void Update()
@@ -26,7 +27,7 @@ public class EnemyY : MonoBehaviour
         {
             if (Time.time >= lastShot + bulletFrequency)
             {
-                Shoot();
+                Shoot();      //llamamos a la función Shoot del Shooter
                 lastShot = Time.time;   //actualiza el tiempo del último disparo
             }
         }        
@@ -36,13 +37,11 @@ public class EnemyY : MonoBehaviour
     //--------------------------------- M E T H O D S ---------------------------------//
 
     //--- DISPARAR ---//
-    public void Shoot()
+    void Shoot()
     {
-        EY_Bullet newBullet = Instantiate(EYBullet, EYBulletSpawn.position, Quaternion.identity);
-        Vector2 direction = (player.gameObject.transform.position - EYBulletSpawn.position).normalized;
-        newBullet.Initialize(direction, newBullet.bulletSpeed);
+        Instantiate(EYBullet, EYBulletSpawn.position, transform.rotation);
     }
-
+    
     //--- RECIBIR ATAQUE DEL JUGADOR ---//
     private void OnTriggerEnter2D(Collider2D other)
     {

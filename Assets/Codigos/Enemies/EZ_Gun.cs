@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EZ_Shooter : MonoBehaviour
+public class EZ_Gun : MonoBehaviour
 {
     //---------------------------------- V A R I A B L E S ----------------------------------//
 

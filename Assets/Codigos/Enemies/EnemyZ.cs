@@ -16,13 +16,13 @@ public class EnemyZ : MonoBehaviour
     public Movement player;             //ref al player para obtener sus datos
     public float playerNear = 1f;       //cuán cerca tiene que estar el jugador para que lo detecte
 
-    private EZ_Shooter[] EZShooter;   //array de bullet spawns
+    private EZ_Gun[] EZGun;   //array de bullet spawns
 
 
     //--------------------------------- A W A K E ---------------------------------//
     private void Awake()
     {
-        EZShooter = GetComponentsInChildren<EZ_Shooter>();
+        EZGun = GetComponentsInChildren<EZ_Gun>();
     }
     
     
@@ -46,9 +46,9 @@ public class EnemyZ : MonoBehaviour
             transform.position = newPosition;
 
             //dispara
-            for (int i = 0; i < EZShooter.Length; i++)
+            for (int i = 0; i < EZGun.Length; i++)
             {
-                EZShooter[i].Shoot();
+                EZGun[i].Shoot();
             }
         }
         //si no, que patrulle
