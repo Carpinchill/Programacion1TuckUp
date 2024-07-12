@@ -10507,6 +10507,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2032179878}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &941644747 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7539731084510659538, guid: 4aafec9dfc80bfc479135f0de83244f2, type: 3}
+  m_PrefabInstance: {fileID: 1488099972}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1043883923
 GameObject:
   m_ObjectHideFlags: 0
@@ -11252,9 +11257,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1074903711}
     - target: {fileID: -8646401339500566599, guid: 4aafec9dfc80bfc479135f0de83244f2, type: 3}
+      propertyPath: EYBullet
+      value: 
+      objectReference: {fileID: 2849951106810800177, guid: 0a8c539369aa7ec4ea822ba1eecb77af, type: 3}
+    - target: {fileID: -8646401339500566599, guid: 4aafec9dfc80bfc479135f0de83244f2, type: 3}
       propertyPath: playerAttack
       value: 
       objectReference: {fileID: 2032179879}
+    - target: {fileID: -8646401339500566599, guid: 4aafec9dfc80bfc479135f0de83244f2, type: 3}
+      propertyPath: EYBulletSpawn
+      value: 
+      objectReference: {fileID: 941644747}
     - target: {fileID: -8646401339500566599, guid: 4aafec9dfc80bfc479135f0de83244f2, type: 3}
       propertyPath: playerMovement
       value: 
@@ -37092,6 +37105,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1780985749}
   m_CullTransparentMesh: 1
+--- !u!4 &1829783754 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7539731084510659538, guid: 4aafec9dfc80bfc479135f0de83244f2, type: 3}
+  m_PrefabInstance: {fileID: 6584242422699896709}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1925758856
 GameObject:
   m_ObjectHideFlags: 0
@@ -37645,9 +37663,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1074903711}
     - target: {fileID: -8646401339500566599, guid: 4aafec9dfc80bfc479135f0de83244f2, type: 3}
+      propertyPath: EYBullet
+      value: 
+      objectReference: {fileID: 2849951106810800177, guid: 0a8c539369aa7ec4ea822ba1eecb77af, type: 3}
+    - target: {fileID: -8646401339500566599, guid: 4aafec9dfc80bfc479135f0de83244f2, type: 3}
       propertyPath: playerAttack
       value: 
       objectReference: {fileID: 2032179879}
+    - target: {fileID: -8646401339500566599, guid: 4aafec9dfc80bfc479135f0de83244f2, type: 3}
+      propertyPath: EYBulletSpawn
+      value: 
+      objectReference: {fileID: 1829783754}
     - target: {fileID: -8646401339500566599, guid: 4aafec9dfc80bfc479135f0de83244f2, type: 3}
       propertyPath: playerMovement
       value: 
