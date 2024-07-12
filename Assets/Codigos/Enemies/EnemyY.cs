@@ -12,8 +12,8 @@ public class EnemyY : MonoBehaviour
     public Attack playerAttack;         //ref al script del ataque del jugador
     public float playerNear = 10f;      //cuán cerca tiene que estar el jugador
         
-    public EY_Bullet EYBullet;        //bullet prefab    
-    public Transform EYBulletSpawn;    //spawn point    
+    public EY_Bullet EYBullet;          //bullet prefab    
+    public Transform EYBulletSpawn;     //spawn point    
     public float bulletFrequency = 3f;  //cada cuánto se dispara cada bala
     private float lastShot = 0f;        //tiempo desde el último disparo
 
@@ -47,7 +47,7 @@ public class EnemyY : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other)
     {
         //si se colisionó con la capa PlayerHitbox Y el ataque NO es nulo
-        if ((other.gameObject.layer == LayerMask.NameToLayer("PlayerHitbox")) && (playerAttack != null))
+        if ((other.gameObject.layer == LayerMask.NameToLayer("HitboxPlayer")) && (playerAttack != null))
         {
             float damage = playerAttack.damage;                     //obtenemos el damage del script del jugador
             

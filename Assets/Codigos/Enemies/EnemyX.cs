@@ -9,8 +9,8 @@ public class EnemyX : MonoBehaviour
 {
     //--------------------------------- V A R I A B L E S ---------------------------------//
 
-    public Player player;                       //ref al script del jugador
-    public P_Attack playerAttack;               //ref al script del ataque del jugador
+    public Movement player;                     //ref al script del jugador
+    public Attack playerAttack;                 //ref al script del ataque del jugador
 
     public float health = 43f;                  //salud del enemigo
     public float damage = 10f;                  //daño que hace el enemigo
@@ -23,7 +23,7 @@ public class EnemyX : MonoBehaviour
     public float attackCooldown = 2f;           //tiempo hasta volver a atacar
     public float knockbackForceEnemy = 50f;     //retroceso aplicado POR ENEMIGO -> AL JUGADOR
 
-    //private bool hasCollided = false;           //pregunta si colisionó con el jugador
+    //private bool hasCollided = false;         //pregunta si colisionó con el jugador
     private Vector3 collisionDirection;         //dirección en la que se aleja luego de colisionar
 
 
@@ -31,7 +31,7 @@ public class EnemyX : MonoBehaviour
 
     void Start()
     {
-        playerAttack = player.GetComponent<P_Attack>();           //obtenemos el ataque del script del jugador                
+        playerAttack = player.GetComponent<Attack>();           //obtenemos el ataque del script del jugador                
     }
 
     //--------------------------------- V. U P D A T E ---------------------------------//
@@ -88,13 +88,13 @@ public class EnemyX : MonoBehaviour
         if (player != null)
         {
             Debug.Log("The Blue Enemy has collided with player");
-            Vector2 impactSource = transform.position;                  //guardamos la posición el enemigo en el momento del impacto           
-            player.TakeDamage(damage, impactSource, knockbackForceEnemy);    //llamamos el método TakeDamage DEL JUGADOR                       
+            Vector2 impactSource = transform.position;                          //guardamos la posición el enemigo en el momento del impacto           
+            player.TakeDamage(damage, impactSource, knockbackForceEnemy);       //llamamos el método TakeDamage DEL JUGADOR                       
             transform.position -= speed * Time.deltaTime * collisionDirection;  //alejarse después de colisionar
         }
     }
 
-    //--- RECIBIR ATAQUE DEL JUGADOR ---//   
+    /*//--- RECIBIR ATAQUE DEL JUGADOR ---//   
     public void TakeDamage(float damage, float knockbackForce, Vector3 knockbackDirection)
     {
         health -= damage;                                       //restamos el damage a la salud del enemigo
@@ -115,5 +115,5 @@ public class EnemyX : MonoBehaviour
     {
         Destroy(gameObject);
         Debug.Log("This enemy's gone to heaven.");
-    }
+    }*/
 }

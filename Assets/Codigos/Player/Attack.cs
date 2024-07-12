@@ -114,13 +114,24 @@ public class Attack : MonoBehaviour
         movement.dashCooldown = 0;
     }
 
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        EnemyX x = collision.gameObject.GetComponentInParent<EnemyX>();
-        if (x != null)
+        if (other.gameObject.layer == LayerMask.NameToLayer("Enemies")
         {
-            x.TakeDamage(damage, knockbackForce, (collision.transform.position - transform.position).normalized);
+            enemyX.TakeDamage(damage, knockbackForce, knockbackDirection);
+
         }
     }
+
+
+    /*private void OnTriggerEnter2D(Collider2D collision)
+     {
+         EnemyX x = collision.gameObject.GetComponentInParent<EnemyX>();
+         if (x != null)
+         {
+             x.TakeDamage(damage, knockbackForce, (collision.transform.position - transform.position).normalized);
+         }
+     }*/
 }
 
