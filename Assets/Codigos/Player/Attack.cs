@@ -115,7 +115,7 @@ public class Attack : MonoBehaviour
     }
 
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    /*private void OnTriggerEnter2D(Collider2D collision)
     {
         if (other.gameObject.layer == LayerMask.NameToLayer("Enemies")
         {
