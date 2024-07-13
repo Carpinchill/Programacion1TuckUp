@@ -12,8 +12,6 @@ public class Movement : MonoBehaviour
     public Habilidades habilidades;
     private Rigidbody2D rb2d;
     public GameObject DashEffect;
-    public GameObject ShieldEffect;
-    public GameObject BoostEffect;
     private Animator animator;
     public Image health;
     public Image stamina;
@@ -46,8 +44,6 @@ public class Movement : MonoBehaviour
     private void Awake()
     {
         DashEffect.SetActive(false);
-        ShieldEffect.SetActive(false);
-        BoostEffect.SetActive(false);
         rb2d = GetComponent<Rigidbody2D>();
         currentHealth = maxHealth;
         currentStamina = maxStamina;

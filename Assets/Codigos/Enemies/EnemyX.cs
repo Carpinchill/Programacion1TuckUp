@@ -14,8 +14,8 @@ public class EnemyX : MonoBehaviour
     public float speed = 9f;                    //velocidad del enemigo
 
     public Movement player;                     //ref al script del jugador
-    public Attack playerAttack;                 //ref al script del ataque del jugador   
-
+    public Attack playerAttack;                 //ref al script del ataque del jugador
+       
     public Transform[] waypoints;               //array para almacenar waypoints
     int currentWaypoint = 0;                    //waypoint actual
     public float playerNear = 5f;               //cuán cerca tiene que estar el jugador para ser detectado
@@ -25,30 +25,15 @@ public class EnemyX : MonoBehaviour
 
     private bool isKnockback = false;           //pregunta si si está retrocediendo
 
-    public float lastH, lastV;
-    private Animator animatorEX;
-    private Vector3 lastPosition;
 
     //--------------------------------- V. S T A R T ---------------------------------//
 
     void Start()
     {
-        playerAttack = player.GetComponent<Attack>();           //obtenemos el ataque del jugador
-        animatorEX = GetComponent<Animator>();
-        lastPosition = transform.position;
+        playerAttack = player.GetComponent<Attack>();           //obtenemos el ataque del jugador                
     }
 
-<<<<<<< Updated upstream
 
-=======
-    //--------------------------------- L. U P D A T E ---------------------------------//
-
-    private void LateUpdate()
-    {
-        animatorEX.SetFloat("LastH", lastH);
-        animatorEX.SetFloat("LastV", lastV);
-    }
->>>>>>> Stashed changes
     //--------------------------------- V. U P D A T E ---------------------------------//
 
     //--- RUTINA DEL ENEMIGO X ---//
@@ -63,7 +48,6 @@ public class EnemyX : MonoBehaviour
         {
             Patrol();
         }
-        UpdateAnimatorParameters();
     }
 
     //--------------------------------- M E T H O D S ---------------------------------//
@@ -74,7 +58,6 @@ public class EnemyX : MonoBehaviour
         if (Vector3.Distance(transform.position, waypoints[currentWaypoint].position) < 0.2f)   //si el enemigo está muy cerca de un waypoint
         {
             currentWaypoint++;                               //el waypoint actual pasa a ser el siguiente
-
             if (currentWaypoint >= waypoints.Length)         //si el siguiente es mayor o igual al total de waypoints
             {
                 currentWaypoint = 0;                         //vuelve al primero
@@ -92,30 +75,13 @@ public class EnemyX : MonoBehaviour
     //--- ATACAR ---//
     void Attack()
     {
-        //pasamos los parametros al animator
-        UpdateAnimatorParameters();
-
         //guardamos la posición del jugador
         Vector3 directionToPlayer = (player.gameObject.transform.position - transform.position).normalized;
 
         //mov HACIA el jugador
         transform.position += speed * Time.deltaTime * directionToPlayer;
     }
-    void UpdateAnimatorParameters()
-    {
-        Vector3 movement = transform.position - lastPosition;
 
-        if (movement != Vector3.zero)
-        {
-            //normalizamos el movimiento para obtener solo la dirección
-            Vector3 normalizedMovement = movement.normalized;
-            animatorEX.SetFloat("LastH", normalizedMovement.x);
-            animatorEX.SetFloat("LastV", normalizedMovement.y);
-        }
-
-        //actualiza la última posición
-        lastPosition = transform.position;
-    }
 
     //--- COLISIONAMOS CON JUGADOR ---//
     private void OnCollisionEnter2D(Collision2D collision)

@@ -6,8 +6,6 @@ public class Habilidades : MonoBehaviour
 {
     public Movement movement;
     public Attack attack;
-    public GameObject ShieldEffect;
-    public GameObject BoostEffect;
 
     public Image attackBoostCooldownImage;
     public Image blockCooldownImage;
@@ -51,12 +49,10 @@ public class Habilidades : MonoBehaviour
             {
                 if (elapsed < attackBoostDuration)
                 {
-                    BoostEffect.SetActive(true);
                     yield return null;
                 }
                 else
                 {
-                    BoostEffect.SetActive(false);
                     attackBoostCooldownImage.fillAmount = 1 - ((elapsed - attackBoostDuration) / attackBoostCooldown);
                     yield return null;
                 }
@@ -72,7 +68,7 @@ public class Habilidades : MonoBehaviour
     IEnumerator BlockNextHit()
     {
         blockCooldownImage.fillAmount = 1;
-        ShieldEffect.SetActive(true);
+
         float totalCooldown = blockDuration + blockCooldown;
         float elapsed = 0f;       
         while (elapsed < totalCooldown)
@@ -84,7 +80,6 @@ public class Habilidades : MonoBehaviour
             }
             else
             {
-                ShieldEffect.SetActive(false);
                 isBlocking = false;
                 blockCooldownImage.fillAmount = 1 - ((elapsed - blockDuration) / blockCooldown);
                 yield return null;
