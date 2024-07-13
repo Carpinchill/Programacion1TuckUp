@@ -10,8 +10,14 @@ EditorBuildSettings:
     guid: 9f7431c5e2b89004480e1239faef4fda
   - enabled: 1
     path: Assets/Scenes/Level Test.unity
-    guid: ca2f40efa6445aa4aa6aa6a11bc549fa
+    guid: 10e4491414bd7544eaa555dd91eff524
   - enabled: 1
     path: Assets/Scenes/Level 1.unity
     guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/Scenes/Victoria.unity
+    guid: 041c1e7e2df7aa744a346c3fcff09adb
+  - enabled: 1
+    path: Assets/Scenes/Muerte.unity
+    guid: 1b474b0e21bbe4841b0a05534c8465a3
   m_configObjects: {}

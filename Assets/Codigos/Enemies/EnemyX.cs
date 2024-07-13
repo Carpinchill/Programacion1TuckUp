@@ -21,7 +21,7 @@ public class EnemyX : MonoBehaviour
     public float playerNear = 5f;               //cuán cerca tiene que estar el jugador para ser detectado
         
     public float attackCooldown = 2f;           //tiempo hasta volver a atacar
-    public float knockbackForceEnemy = 2000f;     //retroceso aplicado POR ENEMIGO -> AL JUGADOR
+    public float knockbackForceEnemy = 120f;     //retroceso aplicado POR ENEMIGO -> AL JUGADOR
 
     private bool isKnockback = false;           //pregunta si si está retrocediendo
 
@@ -38,9 +38,7 @@ public class EnemyX : MonoBehaviour
         lastPosition = transform.position;
     }
 
-<<<<<<< Updated upstream
 
-=======
     //--------------------------------- L. U P D A T E ---------------------------------//
 
     private void LateUpdate()
@@ -48,7 +46,6 @@ public class EnemyX : MonoBehaviour
         animatorEX.SetFloat("LastH", lastH);
         animatorEX.SetFloat("LastV", lastV);
     }
->>>>>>> Stashed changes
     //--------------------------------- V. U P D A T E ---------------------------------//
 
     //--- RUTINA DEL ENEMIGO X ---//

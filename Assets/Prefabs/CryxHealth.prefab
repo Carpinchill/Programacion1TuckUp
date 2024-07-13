@@ -11,7 +11,8 @@ GameObject:
   - component: {fileID: 4595714484887605489}
   - component: {fileID: 294950067148185206}
   - component: {fileID: -6791309468340349103}
-  m_Layer: 0
+  - component: {fileID: 928784038045180904}
+  m_Layer: 11
   m_Name: CryxHealth
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -114,9 +115,24 @@ CircleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.27517605
+--- !u!114 &928784038045180904
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5759937471775180734}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ff261518ea1dd542bf2a8024d99831d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pickupType: 0
+  healthRecover: 4
+  movement: {fileID: 0}

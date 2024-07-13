@@ -39,9 +39,12 @@ public class EnemyY : MonoBehaviour
     //--- DISPARAR ---//
     void Shoot()
     {
-        Vector3 bulletToPlayer = (player.transform.position - EYBulletSpawn.position).normalized;       //creamos la dirección hacia el jugador
-        EY_Bullet bulletNew = Instantiate(EYBullet, EYBulletSpawn.position, EYBulletSpawn.rotation);       //guardamos una instancia de la bala
-        bulletNew.Shooting(bulletToPlayer);                                      //llamamos al método Shooting
+        if (EYBulletSpawn != null)
+        {
+            Vector3 bulletToPlayer = (player.transform.position - EYBulletSpawn.position).normalized;
+            EY_Bullet bulletNew = Instantiate(EYBullet, EYBulletSpawn.position, EYBulletSpawn.rotation);
+            bulletNew.Shooting(bulletToPlayer);
+        }                                    
     }
 
     //--- RECIBIR DAÑO ---//
@@ -52,7 +55,6 @@ public class EnemyY : MonoBehaviour
         if (health <= 0)            //si la salud es menos que 0
         {
             Destroy(gameObject);    //muere
-            Debug.Log("This enemy's gone to hell");
         }
     }
 }

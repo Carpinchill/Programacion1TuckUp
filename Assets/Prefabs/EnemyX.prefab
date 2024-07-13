@@ -239,7 +239,7 @@ MonoBehaviour:
   - {fileID: 6022689824157381701}
   playerNear: 9
   attackCooldown: 2
-  knockbackForceEnemy: 10
+  knockbackForceEnemy: 120
   lastH: 0
   lastV: 0
 --- !u!212 &6695056463780514427

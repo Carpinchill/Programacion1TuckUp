@@ -115,7 +115,7 @@ public class Attack : MonoBehaviour
     }
 
 
-    //--- LLAMAR AL MÉTODO RECEIVE DAMAGE DEL ENEMIGO X ---//
+    //--- LLAMAR AL MÉTODO RECEIVE DAMAGE DEL ENEMIGO ---//
     private void OnTriggerEnter2D(Collider2D other)
     {
         EnemyX enemyX = other.gameObject.GetComponentInParent<EnemyX>();
