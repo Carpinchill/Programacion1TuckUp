@@ -5,27 +5,18 @@ using UnityEngine;
 public class EZ_Gun : MonoBehaviour
 {
     //---------------------------------- V A R I A B L E S ----------------------------------//
-
-    public EZ_Bullet EZBullet;      //bullet prefab
+    
+    public EY_Bullet EZBullet;       //bullet prefab
     public Transform EZBulletSpawn;  //spawn point
 
-    //called BEFORE FIRST FRAME UPDATE
-    void Start()
-    {
-
-    }
-
-    //called ONCE PER FRAME
-    void Update()
-    {
-
-    }
-
+    
     //---------------------------------- M E T H O D S ----------------------------------//
 
     //--- DISPARAR ---//
     public void Shoot()
     {
-        EZ_Bullet newBullet = Instantiate(EZBullet, EZBulletSpawn.position, transform.rotation);
+        EY_Bullet newBullet = Instantiate(EZBullet, EZBulletSpawn.position, transform.rotation);
+        Vector3 bulletDirection = (transform.parent.position - transform.position).normalized;                //dirección (hacia el jugador)
+        newBullet.Shooting(bulletDirection);                                                                  //le pasamos esa dirección a la bala
     }
 }

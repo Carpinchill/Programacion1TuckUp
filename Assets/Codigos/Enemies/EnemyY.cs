@@ -27,7 +27,7 @@ public class EnemyY : MonoBehaviour
         {
             if (Time.time >= lastShot + bulletFrequency)
             {
-                Shoot();      //llamamos a la función Shoot del Shooter
+                Shoot();      //llamamos a la función Shoot
                 lastShot = Time.time;   //actualiza el tiempo del último disparo
             }
         }        
@@ -39,7 +39,9 @@ public class EnemyY : MonoBehaviour
     //--- DISPARAR ---//
     void Shoot()
     {
-        Instantiate(EYBullet, EYBulletSpawn.position, transform.rotation);
+        Vector3 bulletToPlayer = (player.transform.position - EYBulletSpawn.position).normalized;       //creamos la dirección hacia el jugador
+        EY_Bullet bulletNew = Instantiate(EYBullet, EYBulletSpawn.position, EYBulletSpawn.rotation);       //guardamos una instancia de la bala
+        bulletNew.Shooting(bulletToPlayer);                                      //llamamos al método Shooting
     }
 
     //--- RECIBIR DAÑO ---//

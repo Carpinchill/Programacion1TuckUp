@@ -7,74 +7,137 @@ public class EnemyZ : MonoBehaviour
     //--------------------------------- V A R I A B L E S ---------------------------------//
 
     public float health = 100f;         //salud del enemigo
-
-    public float speed = 15f;           //velocidad del enemigo
+    public float speed = 15f;           //velocidad del enemigo    
     
     public Transform[] waypoints;       //array para almacenar waypoints
     int currentWaypoint = 0;            //para ubicar en qué waypoint estamos
 
     public Movement player;             //ref al player para obtener sus datos
     public float playerNear = 1f;       //cuán cerca tiene que estar el jugador para que lo detecte
+    public Attack playerAttack;         //ref al script del ataque del jugador
 
-    private EZ_Gun[] EZGun;   //array de bullet spawns
+    private EZ_Gun[] EZGuns;            //array de bullet spawns
+    public int maxShots = 3;            //cantidad máxima de disparos por ataque
+    //private int shotsFired = 0;         //cantidad de disparos realizados en el ataque actual
+    public float shotCooldown = 1f;     //cooldown entre cada disparo
+
+    public float pushDamage = 15f;      //daño al empujar
+    public float pushForceEnemy = 20f;  //retroceso aplicado POR ENEMIGO -> AL JUGADOR
+
+    private bool isKnockback = false;   //pregunta si está retrocediendo (ENEMIGO <- JUGADOR)
+    private bool isAttacking = false;   //pregunta si está atacando
 
 
     //--------------------------------- A W A K E ---------------------------------//
     private void Awake()
     {
-        EZGun = GetComponentsInChildren<EZ_Gun>();
+        EZGuns = GetComponentsInChildren<EZ_Gun>();
     }
-    
-    
-    //called BEFORE FIRST FRAME UPDATE
+
+
+    //--------------------------------- V. S T A R T ---------------------------------//
+
     void Start()
     {
-        
+        playerAttack = player.GetComponent<Attack>();           //obtenemos el ataque del jugador
     }
 
-    
-    //called ONCE PER FRAME
+
+    //--------------------------------- V. U P D A T E ---------------------------------//
+
+    //--- RUTINA DEL ENEMIGO Z ---//
     void Update()
     {
-        //si está cerca del jugador, que se mueva hacia él
-        if (Vector3.Distance(transform.position, player.gameObject.transform.position) < playerNear)
+        if (isKnockback || isAttacking) return;             //si está en retroceso o atacando, que no haga nada más
+        else if (Vector3.Distance(transform.position, player.gameObject.transform.position) < playerNear)       //si el jugador está cerca
         {
-            //dirección del movimiento (hacia el jugador)
-            Vector3 newPosition = Vector3.MoveTowards(transform.position, player.gameObject.transform.position, speed * Time.deltaTime);
-
-            //cambio de posición
-            transform.position = newPosition;
-
-            //dispara
-            for (int i = 0; i < EZGun.Length; i++)
-            {
-                EZGun[i].Shoot();
-            }
+            StartCoroutine(AttackPlayer());                 //que ataque al jugador
         }
-        //si no, que patrulle
-        else
+        else                                                //si no, que patrulle
         {
             Patrol();
-        }        
+        }
     }
 
     //--------------------------------- M E T H O D S ---------------------------------//
-    
+
     //--- PATRULLAR ---//
     void Patrol()
     {
         if (Vector3.Distance(transform.position, waypoints[currentWaypoint].position) < 0.2f)   //si el enemigo está muy cerca de un waypoint
         {
-            currentWaypoint++;                                                                  //pasa al siguiente
-            if (currentWaypoint >= waypoints.Length)                                            //si el siguiente es mayor o igual al total de waypoints
+            currentWaypoint++;                               //el waypoint actual pasa a ser el siguiente
+            if (currentWaypoint >= waypoints.Length)         //si el siguiente es mayor o igual al total de waypoints
             {
-                currentWaypoint = 0;                                                            //vuelve al primero
+                currentWaypoint = 0;                         //vuelve al primero
             }
         }
 
+        //dirección del mov (hacia siguiente waypoint)
         Vector3 newPosition = Vector3.MoveTowards(transform.position, waypoints[currentWaypoint].position, speed * Time.deltaTime);
 
+        //cambio de posición
         transform.position = newPosition;
+    }
+
+
+    //--- ATACAR ---//
+    IEnumerator AttackPlayer()
+    {
+        isAttacking = true;
+
+        //dispara X veces desde los 2 spawn points simultáneamente
+        for (int i = 0; i < maxShots; i++)
+        {
+            foreach (EZ_Gun gun in EZGuns)
+            {
+                gun.Shoot();                                    //dispara desde cada spawn point
+            }
+            yield return new WaitForSeconds(shotCooldown);      //espera antes del próximo disparo
+        }
+
+        Push();
+    }
+
+
+    void Push()
+    {
+        //guardamos la posición del jugador
+        Vector3 directionToPlayer = (player.gameObject.transform.position - transform.position).normalized;
+
+        //mov HACIA el jugador
+        transform.position += speed * Time.deltaTime * directionToPlayer;        
+    }
+
+    //--- COLISIONAR CON EL JUGADOR ---//
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        Movement player = collision.gameObject.GetComponentInParent<Movement>();
+        if (player != null)
+        {
+            StartCoroutine(Knockback((transform.position - collision.transform.position).normalized));
+            player.TakeDamage(pushDamage, (transform.position - collision.transform.position).normalized, pushForceEnemy);
+        }        
+
+        AttackPlayer();
+    }
+
+
+    //--- RETROCESO ---//
+    IEnumerator Knockback(Vector3 direction)
+    {
+        isKnockback = true;
+        float knockbackTime = 0.7f; // duración del retroceso
+        float timer = 0f;
+
+        while (timer < knockbackTime)
+        {
+            transform.position += speed * Time.deltaTime * direction;
+            timer += Time.deltaTime;
+            yield return null;
+        }
+
+        isKnockback = false;
     }
 
 

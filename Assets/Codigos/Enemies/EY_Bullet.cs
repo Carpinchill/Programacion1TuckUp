@@ -7,7 +7,7 @@ public class EY_Bullet : MonoBehaviour
     //--------------------------------- V A R I A B L E S ---------------------------------//
 
     public float lifetime = 10f;                  //vida de la bala
-    public float bulletSpeed;                     //velocidad de la bala
+    public float bulletSpeed = 10f;               //velocidad de la bala
     private Vector3 bulletDirection;              //dirección de la bala ??
 
     public float damage = 5f;                     //daño que hace la bala
@@ -23,17 +23,16 @@ public class EY_Bullet : MonoBehaviour
     //----------------------------------- V. U P D A T E ---------------------------------//
     void Update()
     {
-        transform.position += bulletDirection * bulletSpeed * Time.deltaTime;    //??
+        transform.position += bulletDirection * bulletSpeed * Time.deltaTime;    //movimiento de la bala
     }
 
 
     //--------------------------------- M E T H O D S ---------------------------------//
 
-    //--- SETEAMOS DIRECCIÓN Y VELOCIDAD ---//
-    public void Initialize(Vector3 dir, float speed)
+    //--- SETEAMOS DIRECCIÓN DE LA BALA SEGÚN EL VECTOR 3 QUE OBTENEMOS DEL ENEMY Y ---//
+    public void Shooting(Vector3 dir)
     {
         bulletDirection = dir;
-        bulletSpeed = speed;
     }
 
 

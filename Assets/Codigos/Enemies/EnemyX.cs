@@ -33,6 +33,7 @@ public class EnemyX : MonoBehaviour
         playerAttack = player.GetComponent<Attack>();           //obtenemos el ataque del jugador                
     }
 
+
     //--------------------------------- V. U P D A T E ---------------------------------//
 
     //--- RUTINA DEL ENEMIGO X ---//
