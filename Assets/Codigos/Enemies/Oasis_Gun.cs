@@ -9,7 +9,9 @@ public class Oasis_Gun : MonoBehaviour
     public SS_Bullet SSBullet;       //bullet prefab
     public Transform SSBulletSpawn;  //spawn point
 
-    
+    private AudioSource audioSource;
+    public AudioClip shootSound;
+
     //---------------------------------- M E T H O D S ----------------------------------//
 
     //--- DISPARAR ---//
@@ -18,5 +20,7 @@ public class Oasis_Gun : MonoBehaviour
         SS_Bullet newBullet = Instantiate(SSBullet, SSBulletSpawn.position, transform.rotation);
         Vector3 bulletDirection = (transform.parent.position - transform.position).normalized;                //dirección (hacia el jugador)
         newBullet.Shooting(bulletDirection);                                                                  //le pasamos esa dirección a la bala
+
+        audioSource.PlayOneShot(shootSound);
     }
 }

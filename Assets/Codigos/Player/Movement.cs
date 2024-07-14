@@ -45,6 +45,9 @@ public class Movement : MonoBehaviour
 
     public float lastH, lastV;
 
+    private AudioSource audioSource;
+    public AudioClip playerHurtSound, dashSound;
+
     //---------------------------------- A W A K E ----------------------------------------------------------------------------
 
     //cuando inicia pone el primer frame, setea la salud al maximo, desactiva el efecto del dash y las hitbox y agarra el rigidbody
@@ -125,7 +128,7 @@ public class Movement : MonoBehaviour
         lastDashTime = Time.time;
         isDashing = true;
         DashEffect.SetActive(true);
-        //efecto de sonido de aire whoosh
+        audioSource.PlayOneShot(dashSound);
         rb2d.velocity = direction * dashForce;
         enabled = false;
         attack.enabled = false;
@@ -155,8 +158,9 @@ public class Movement : MonoBehaviour
         if (isDashing == false && !habilidades.isBlocking) 
         {
             Vector2 knockbackDirection = (transform.position - (Vector3)impactSource).normalized;
+            audioSource.PlayOneShot(playerHurtSound);
             ApplyKnockback(knockbackDirection, knockbackForce);
-            currentHealth -= damage;   
+            currentHealth -= damage;
         }
 
         if (currentHealth <= 0)

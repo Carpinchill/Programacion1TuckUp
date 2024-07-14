@@ -18,7 +18,9 @@ public class SouledShroom : MonoBehaviour
 
     public float bulletFrequency = 3f;  //cada cuánto se dispara cada bala
     private float lastShot = 0f;        //tiempo desde el último disparo
-    
+
+    private AudioSource audioSource;
+    public AudioClip enemyHurtSound, enemyDeathSound, shootSound;
 
     //--------------------------------- V. U P D A T E ---------------------------------//
     void Update()
@@ -45,6 +47,8 @@ public class SouledShroom : MonoBehaviour
             Vector3 bulletToPlayer = (player.transform.position - EYBulletSpawn.position).normalized;
             SS_Bullet bulletNew = Instantiate(EYBullet, EYBulletSpawn.position, EYBulletSpawn.rotation);
             bulletNew.Shooting(bulletToPlayer);
+
+            audioSource.PlayOneShot(shootSound);
         }                                    
     }
 
@@ -53,12 +57,18 @@ public class SouledShroom : MonoBehaviour
     {
         health -= damage;           //restamos el daño a la salud del enemigo
 
+        audioSource.PlayOneShot(enemyHurtSound);
+
         if (health <= 0)            //si la salud es menos que 0
         {
             if (Random.value <= 0.5f)
             {
                 Instantiate(shardPrefab, transform.position, Quaternion.identity);
-            }   
+            }
+
+            audioSource.PlayOneShot(enemyDeathSound);
+
+
             Destroy(gameObject);    //muere
         }
     }

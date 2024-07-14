@@ -10,7 +10,7 @@ public class GlassKnight : MonoBehaviour
     //--------------------------------- V A R I A B L E S ---------------------------------//
 
     public float health = 43f;                  //salud del enemigo
-    public float damage = 6f;                  //daño que hace el enemigo
+    public float damage = 6f;                   //daño que hace el enemigo
     public float speed = 9f;                    //velocidad del enemigo
 
     public Movement player;                     //ref al script del jugador
@@ -22,13 +22,17 @@ public class GlassKnight : MonoBehaviour
     public float playerNear = 5f;               //cuán cerca tiene que estar el jugador para ser detectado
         
     public float attackCooldown = 2f;           //tiempo hasta volver a atacar
-    public float knockbackForceEnemy = 120f;     //retroceso aplicado POR ENEMIGO -> AL JUGADOR
+    public float knockbackForceEnemy = 120f;    //retroceso aplicado POR ENEMIGO -> AL JUGADOR
 
     private bool isKnockback = false;           //pregunta si si está retrocediendo
 
     public float lastH, lastV;
     private Animator animatorGK;
     private Vector3 lastPosition;
+
+    private AudioSource audioSource;
+
+    public AudioClip enemyHurtSound, enemyDeathSound;
 
     //--------------------------------- V. S T A R T ---------------------------------//
 
@@ -164,12 +168,17 @@ public class GlassKnight : MonoBehaviour
     {
         health -= damage;           //restamos el daño a la salud del enemigo
 
+        audioSource.PlayOneShot(enemyHurtSound);
+
         if (health <= 0)            //si la salud es menos que 0
         {
             if (Random.value <= 0.5f)  //50% de chances de que te de un Fragmento de Dios
             {
                 Instantiate(shardPrefab, transform.position, Quaternion.identity);
             }
+
+            audioSource.PlayOneShot(enemyDeathSound);
+
             Destroy(gameObject);    //muere           
         }
     }

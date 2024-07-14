@@ -31,6 +31,9 @@ public class OASIS : MonoBehaviour
     private Animator animatorOasis;
     private Vector3 lastPosition;
 
+    private AudioSource audioSource;
+    public AudioClip enemyHurtSound, enemyDeathSound;
+
 
     //--------------------------------- A W A K E ---------------------------------//
     private void Awake()
@@ -173,8 +176,11 @@ public class OASIS : MonoBehaviour
     {
         health -= damage;           //restamos el daño a la salud del jugador
 
+        audioSource.PlayOneShot(enemyHurtSound);
+
         if (health <= 0)            //si la salud es menos que 0
         {
+            audioSource.PlayOneShot(enemyDeathSound);
             Destroy(gameObject);    //muere
             Debug.Log("This enemy's gone to hell");
         }

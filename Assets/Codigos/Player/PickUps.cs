@@ -18,6 +18,15 @@ public class PickUps : MonoBehaviour
 
     public Movement movement;
 
+    private AudioSource audioSource;
+    public AudioClip CryxHSound, ShardsSound;
+
+    //---------------------------------- V A R I A B L E S ----------------------------------------------------------------------------
+    private void Awake()
+    {
+        audioSource = GetComponent<AudioSource>();
+    }
+
     //---------------------------------- M E T H O D S ----------------------------------------------------------------------------
     private void OnTriggerEnter2D(Collider2D collision) //logica de recoleccion segun que tipo de pick up es
     {
@@ -41,14 +50,16 @@ public class PickUps : MonoBehaviour
     void CollectHealth()
     {
         if (movement != null && movement.currentHealth > movement.maxHealth) //si la vida actual es menor a la vida maxima
-        {
+        {            
             movement.currentHealth += healthRecover; //recupera la vida correspondiente
 
             if (movement.currentHealth > movement.maxHealth) //si supera la vida maxima
             {
                 movement.currentHealth = movement.maxHealth; //quita el restante 
             }
-            //sonido de curacion
+
+            audioSource.PlayOneShot(CryxHSound); //sonido de curacion
+
             Destroy(gameObject);
         }
         else
@@ -74,7 +85,7 @@ public class PickUps : MonoBehaviour
         Attack attack = FindObjectOfType<Attack>();
         if (movement != null)
         {
-            //sonido de monedita
+            audioSource.PlayOneShot(ShardsSound); //sonido de monedita
             movement.shards++; //suma fragmentos y sube el ataque
             attack.damage = +5;
         }
