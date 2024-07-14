@@ -8,7 +8,7 @@ public class DeathMenu : MonoBehaviour
 
     public void Retry()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        SceneManager.LoadScene(Movement.currentSceneName);
     }
 
     public void GiveUp()

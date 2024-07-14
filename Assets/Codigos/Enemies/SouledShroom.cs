@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyY : MonoBehaviour
+public class SouledShroom : MonoBehaviour
 {
     //--------------------------------- V A R I A B L E S ---------------------------------//
 
@@ -12,8 +12,9 @@ public class EnemyY : MonoBehaviour
     public Attack playerAttack;         //ref al script del ataque del jugador
     public float playerNear = 10f;      //cuán cerca tiene que estar el jugador
 
-    public EY_Bullet EYBullet;          //ref al prefab de la bala
+    public SS_Bullet EYBullet;          //ref al prefab de la bala
     public Transform EYBulletSpawn;     //ref al transform del bullet spawn point
+    public GameObject shardPrefab;      //ref al prefab de los shards    
 
     public float bulletFrequency = 3f;  //cada cuánto se dispara cada bala
     private float lastShot = 0f;        //tiempo desde el último disparo
@@ -42,7 +43,7 @@ public class EnemyY : MonoBehaviour
         if (EYBulletSpawn != null)
         {
             Vector3 bulletToPlayer = (player.transform.position - EYBulletSpawn.position).normalized;
-            EY_Bullet bulletNew = Instantiate(EYBullet, EYBulletSpawn.position, EYBulletSpawn.rotation);
+            SS_Bullet bulletNew = Instantiate(EYBullet, EYBulletSpawn.position, EYBulletSpawn.rotation);
             bulletNew.Shooting(bulletToPlayer);
         }                                    
     }
@@ -50,10 +51,14 @@ public class EnemyY : MonoBehaviour
     //--- RECIBIR DAÑO ---//
     public void ReceiveDamage(float damage)
     {
-        health -= damage;           //restamos el daño a la salud del jugador
+        health -= damage;           //restamos el daño a la salud del enemigo
 
         if (health <= 0)            //si la salud es menos que 0
         {
+            if (Random.value <= 0.5f)
+            {
+                Instantiate(shardPrefab, transform.position, Quaternion.identity);
+            }   
             Destroy(gameObject);    //muere
         }
     }

@@ -17,7 +17,7 @@ TagManager:
   - HitboxPlayer
   - BulletEnemies
   - PickUps
-  - 
+  - Assets
   - 
   - 
   - 
@@ -58,6 +58,9 @@ TagManager:
     locked: 0
   - name: Invulnerable
     uniqueID: 3655333335
+    locked: 0
+  - name: pickups
+    uniqueID: 441093851
     locked: 0
   - name: ForeGround
     uniqueID: 3882012893

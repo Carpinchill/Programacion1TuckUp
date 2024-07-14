@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyZ : MonoBehaviour
+public class OASIS : MonoBehaviour
 {
     //--------------------------------- V A R I A B L E S ---------------------------------//
 
@@ -16,7 +16,7 @@ public class EnemyZ : MonoBehaviour
     public float playerNear = 1f;       //cuán cerca tiene que estar el jugador para que lo detecte
     public Attack playerAttack;         //ref al script del ataque del jugador
 
-    private EZ_Gun[] EZGuns;            //array de bullet spawns
+    private Oasis_Gun[] EZGuns;            //array de bullet spawns
     public int maxShots = 3;            //cantidad máxima de disparos por ataque
     //private int shotsFired = 0;         //cantidad de disparos realizados en el ataque actual
     public float shotCooldown = 1f;     //cooldown entre cada disparo
@@ -27,11 +27,15 @@ public class EnemyZ : MonoBehaviour
     private bool isKnockback = false;   //pregunta si está retrocediendo (ENEMIGO <- JUGADOR)
     private bool isAttacking = false;   //pregunta si está atacando
 
+    public float lastH, lastV;
+    private Animator animatorOasis;
+    private Vector3 lastPosition;
+
 
     //--------------------------------- A W A K E ---------------------------------//
     private void Awake()
     {
-        EZGuns = GetComponentsInChildren<EZ_Gun>();
+        EZGuns = GetComponentsInChildren<Oasis_Gun>();
     }
 
 
@@ -40,12 +44,20 @@ public class EnemyZ : MonoBehaviour
     void Start()
     {
         playerAttack = player.GetComponent<Attack>();           //obtenemos el ataque del jugador
+        animatorOasis = GetComponent<Animator>();
+        lastPosition = transform.position;
     }
+    //--------------------------------- L. U P D A T E ---------------------------------//
 
+    private void LateUpdate()
+    {
+        animatorOasis.SetFloat("LastH", lastH);
+        animatorOasis.SetFloat("LastV", lastV);
+    }
 
     //--------------------------------- V. U P D A T E ---------------------------------//
 
-    //--- RUTINA DEL ENEMIGO Z ---//
+    //--- RUTINA DE OASIS ---//
     void Update()
     {
         if (isKnockback || isAttacking) return;             //si está en retroceso o atacando, que no haga nada más
@@ -57,6 +69,7 @@ public class EnemyZ : MonoBehaviour
         {
             Patrol();
         }
+        UpdateAnimatorOasisParameters();
     }
 
     //--------------------------------- M E T H O D S ---------------------------------//
@@ -85,11 +98,11 @@ public class EnemyZ : MonoBehaviour
     IEnumerator AttackPlayer()
     {
         isAttacking = true;
-
+        UpdateAnimatorOasisParameters();
         //dispara X veces desde los 2 spawn points simultáneamente
         for (int i = 0; i < maxShots; i++)
         {
-            foreach (EZ_Gun gun in EZGuns)
+            foreach (Oasis_Gun gun in EZGuns)
             {
                 gun.Shoot();                                    //dispara desde cada spawn point
             }
@@ -98,7 +111,21 @@ public class EnemyZ : MonoBehaviour
 
         Push();
     }
+    void UpdateAnimatorOasisParameters()
+    {
+        Vector3 movement = transform.position - lastPosition;
 
+        if (movement != Vector3.zero)
+        {
+            //normalizamos el movimiento para obtener solo la dirección
+            Vector3 normalizedMovement = movement.normalized;
+            animatorOasis.SetFloat("LastH", normalizedMovement.x);
+            animatorOasis.SetFloat("LastV", normalizedMovement.y);
+        }
+
+        //actualiza la última posición
+        lastPosition = transform.position;
+    }
 
     void Push()
     {

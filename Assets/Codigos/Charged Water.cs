@@ -2,8 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ChargedWater : MonoBehaviour
+public class Poison : MonoBehaviour
 {
+
+    //---------------------------------- V A R I A B L E S ----------------------------------------------------------------------------
+
     public Movement movement;
     private GameObject player;
 
@@ -11,11 +14,11 @@ public class ChargedWater : MonoBehaviour
     [SerializeField]
     private int venomDuration;
 
+    //---------------------------------- M E T H O D S ----------------------------------------------------------------------------
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.layer == Layers.Player && !movement.isDashing)
         {
-            Debug.Log("Im still poisoned");
             player = collision.gameObject;
             StartCoroutine(Poisoned(venomDuration, damage, player));
             collision.gameObject.GetComponent<Movement>().speed -= 2.1f;
@@ -43,12 +46,12 @@ public class ChargedWater : MonoBehaviour
             yield return new WaitForSeconds(1.5f);
         }    
 
-        Debug.Log("The poison is over...");
-    }
 
+    }
    
 }
 
+//---------------------------------- L A Y E R S ----------------------------------------------------------------------------
 public class Layers
 {
     public const int Player = 6;

@@ -1411,9 +1411,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: "Instrucciones:\n\nUtiliza WASD para moverte\nClick Izquierdo para atacar\nSPACE
-    para usar el DASH\nQ para activar Escudo Gota de Vidrio (Protege el da\xF1o unos
-    segundos)\nE para activar Drama Del Mosquito (consume vida a cambio de un boost
-    de da\xF1o)\nRecoge la mascara para avanzar al siguiente lvl"
+    para usar el DASH\nQ para activar Bastion Del Rey (Protege el da\xF1o unos segundos)\nE
+    para activar Pacto Dramatico (consume vida a cambio de un boost de da\xF1o)\nRecoge
+    la mascara para avanzar al siguiente lvl"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}

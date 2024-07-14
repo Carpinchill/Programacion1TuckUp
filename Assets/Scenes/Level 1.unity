@@ -123,11 +123,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!4 &36366878 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 7539731084510659538, guid: 4aafec9dfc80bfc479135f0de83244f2, type: 3}
-  m_PrefabInstance: {fileID: 589256335}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &87793300
 GameObject:
   m_ObjectHideFlags: 0
@@ -382,12 +377,12 @@ GameObject:
   m_Component:
   - component: {fileID: 307474087}
   - component: {fileID: 307474086}
-  - component: {fileID: 307474088}
   - component: {fileID: 307474090}
+  - component: {fileID: 307474092}
   - component: {fileID: 307474089}
   - component: {fileID: 307474091}
   m_Layer: 7
-  m_Name: EnemyZ
+  m_Name: OASIS
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -462,32 +457,6 @@ Transform:
   - {fileID: 1610675120}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &307474088
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 307474085}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 68a6aa0e012b2c94c89a4c7326fcfac0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: 100
-  speed: 5
-  waypoints:
-  - {fileID: 1043883924}
-  - {fileID: 570240151}
-  - {fileID: 725450869}
-  - {fileID: 1147351924}
-  player: {fileID: 1074903711}
-  playerNear: 1
-  playerAttack: {fileID: 0}
-  maxShots: 3
-  shotCooldown: 1
-  pushDamage: 15
-  pushForceEnemy: 20
 --- !u!50 &307474089
 Rigidbody2D:
   serializedVersion: 4
@@ -564,6 +533,30 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EZBullet: {fileID: -4282813431677787104, guid: aa335b88b367d9e46af0ad54eab34f02, type: 3}
   EZBulletSpawn: {fileID: 1302965031}
+--- !u!114 &307474092
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 307474085}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 314e34911fc0dee4b89bb86086d7e8b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 100
+  speed: 15
+  waypoints: []
+  player: {fileID: 1074903711}
+  playerNear: 1
+  playerAttack: {fileID: 2032179879}
+  maxShots: 3
+  shotCooldown: 1
+  pushDamage: 15
+  pushForceEnemy: 20
+  lastH: 0
+  lastV: 0
 --- !u!1 &365620946
 GameObject:
   m_ObjectHideFlags: 0
@@ -789,7 +782,8 @@ GameObject:
   m_Component:
   - component: {fileID: 470142673}
   - component: {fileID: 470142675}
-  - component: {fileID: 470142674}
+  - component: {fileID: 470142676}
+  - component: {fileID: 470142677}
   m_Layer: 9
   m_Name: HitboxCombo0
   m_TagString: Untagged
@@ -806,48 +800,12 @@ Transform:
   m_GameObject: {fileID: 470142672}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.000000010491, y: 0.8732, z: 0}
-  m_LocalScale: {x: 3.472485, y: 0.8007403, z: 0.8014218}
+  m_LocalPosition: {x: 0.000000031473, y: 0.8732, z: 0}
+  m_LocalScale: {x: 4.9458604, y: 1.1404943, z: 1.1414651}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2032179878}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!893571522 &470142674
-CustomCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 470142672}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 128
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 1911
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_CustomShapes:
-    m_Shapes: []
-    m_Vertices: []
 --- !u!212 &470142675
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -900,6 +858,64 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!61 &470142676
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 470142672}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 2}
+    newSize: {x: 1, y: 2}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 2}
+  m_EdgeRadius: 0
+--- !u!114 &470142677
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 470142672}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9cb247dd4ee3c894ba1f8d30bb1252d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackScript: {fileID: 2032179879}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -1007,7 +1023,7 @@ GameObject:
   m_Component:
   - component: {fileID: 570240151}
   m_Layer: 0
-  m_Name: EnZ_WayP(1)
+  m_Name: Oasis_WayP 2
   m_TagString: Untagged
   m_Icon: {fileID: 1206586993520771344, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -1039,6 +1055,7 @@ GameObject:
   - component: {fileID: 584223481}
   - component: {fileID: 584223480}
   - component: {fileID: 584223482}
+  - component: {fileID: 584223483}
   m_Layer: 0
   m_Name: MaskBuff
   m_TagString: Untagged
@@ -1128,6 +1145,51 @@ MonoBehaviour:
   pickupType: 1
   healthRecover: 4
   movement: {fileID: 1074903711}
+--- !u!61 &584223483
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 584223479}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.035632372, y: -0.15490699}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 5.12, y: 5.12}
+    newSize: {x: 5.12, y: 5.12}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 5.7001595, y: 5.429814}
+  m_EdgeRadius: 0
 --- !u!1001 &589256335
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1136,34 +1198,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: -8646401339500566599, guid: 4aafec9dfc80bfc479135f0de83244f2, type: 3}
-      propertyPath: player
-      value: 
-      objectReference: {fileID: 1074903711}
-    - target: {fileID: -8646401339500566599, guid: 4aafec9dfc80bfc479135f0de83244f2, type: 3}
-      propertyPath: EYBullet
-      value: 
-      objectReference: {fileID: 2849951106810800177, guid: 0a8c539369aa7ec4ea822ba1eecb77af, type: 3}
-    - target: {fileID: -8646401339500566599, guid: 4aafec9dfc80bfc479135f0de83244f2, type: 3}
-      propertyPath: playerNear
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: -8646401339500566599, guid: 4aafec9dfc80bfc479135f0de83244f2, type: 3}
-      propertyPath: playerAttack
-      value: 
-      objectReference: {fileID: 2032179879}
-    - target: {fileID: -8646401339500566599, guid: 4aafec9dfc80bfc479135f0de83244f2, type: 3}
-      propertyPath: EYBulletSpawn
-      value: 
-      objectReference: {fileID: 36366878}
-    - target: {fileID: -8646401339500566599, guid: 4aafec9dfc80bfc479135f0de83244f2, type: 3}
-      propertyPath: playerMovement
-      value: 
-      objectReference: {fileID: 1074903711}
-    - target: {fileID: -8646401339500566599, guid: 4aafec9dfc80bfc479135f0de83244f2, type: 3}
-      propertyPath: playerTransform
-      value: 
-      objectReference: {fileID: 1074903715}
     - target: {fileID: 926269463789930247, guid: 4aafec9dfc80bfc479135f0de83244f2, type: 3}
       propertyPath: m_Layer
       value: 7
@@ -1210,11 +1244,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8867776753774189617, guid: 4aafec9dfc80bfc479135f0de83244f2, type: 3}
       propertyPath: m_Name
-      value: EnemyY (0)
+      value: SouledShroom
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 6751869178966502758, guid: 4aafec9dfc80bfc479135f0de83244f2, type: 3}
-    - {fileID: 1674664859047275471, guid: 4aafec9dfc80bfc479135f0de83244f2, type: 3}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -1232,12 +1264,16 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1074903711}
     - target: {fileID: 7434027744358036834, guid: e467f41567285f84687cb046eb8abcd7, type: 3}
+      propertyPath: shardPrefab
+      value: 
+      objectReference: {fileID: 4939539442710071618, guid: b9e2fbb006045494fa4691c5a070e6f2, type: 3}
+    - target: {fileID: 7434027744358036834, guid: e467f41567285f84687cb046eb8abcd7, type: 3}
       propertyPath: playerAttack
       value: 
       objectReference: {fileID: 2032179879}
     - target: {fileID: 7956867852862355178, guid: e467f41567285f84687cb046eb8abcd7, type: 3}
       propertyPath: m_Name
-      value: EnemyX (1)
+      value: GlassKnight 2
       objectReference: {fileID: 0}
     - target: {fileID: 8999319556719285940, guid: e467f41567285f84687cb046eb8abcd7, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1376,6 +1412,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2849951106810800177, guid: 0a8c539369aa7ec4ea822ba1eecb77af, type: 3}
     - target: {fileID: -8646401339500566599, guid: 4aafec9dfc80bfc479135f0de83244f2, type: 3}
+      propertyPath: shardPrefab
+      value: 
+      objectReference: {fileID: 4939539442710071618, guid: b9e2fbb006045494fa4691c5a070e6f2, type: 3}
+    - target: {fileID: -8646401339500566599, guid: 4aafec9dfc80bfc479135f0de83244f2, type: 3}
       propertyPath: playerAttack
       value: 
       objectReference: {fileID: 2032179879}
@@ -1437,14 +1477,43 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8867776753774189617, guid: 4aafec9dfc80bfc479135f0de83244f2, type: 3}
       propertyPath: m_Name
-      value: EnemyY (1)
+      value: SouledShroom 2
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 1674664859047275471, guid: 4aafec9dfc80bfc479135f0de83244f2, type: 3}
+    - {fileID: -8646401339500566599, guid: 4aafec9dfc80bfc479135f0de83244f2, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8867776753774189617, guid: 4aafec9dfc80bfc479135f0de83244f2, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 680606737}
   m_SourcePrefab: {fileID: 100100000, guid: 4aafec9dfc80bfc479135f0de83244f2, type: 3}
+--- !u!1 &680606736 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8867776753774189617, guid: 4aafec9dfc80bfc479135f0de83244f2, type: 3}
+  m_PrefabInstance: {fileID: 680606735}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &680606737
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 680606736}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5791d67eebe0e9e4aaa2bad602ee8367, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 33
+  player: {fileID: 0}
+  playerAttack: {fileID: 0}
+  playerNear: 10
+  EYBullet: {fileID: 0}
+  EYBulletSpawn: {fileID: 0}
+  shardPrefab: {fileID: 0}
+  bulletFrequency: 3
 --- !u!1 &707972918
 GameObject:
   m_ObjectHideFlags: 0
@@ -1530,7 +1599,7 @@ GameObject:
   m_Component:
   - component: {fileID: 725450869}
   m_Layer: 0
-  m_Name: EnZ_WayP(2)
+  m_Name: Oasis_WayP 3
   m_TagString: Untagged
   m_Icon: {fileID: 1206586993520771344, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -10633,6 +10702,7 @@ GameObject:
   - component: {fileID: 885647086}
   - component: {fileID: 885647085}
   - component: {fileID: 885647084}
+  - component: {fileID: 885647087}
   m_Layer: 9
   m_Name: HitboxCombo1
   m_TagString: Untagged
@@ -10736,12 +10806,25 @@ Transform:
   m_GameObject: {fileID: 885647083}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.1493, z: 0}
-  m_LocalScale: {x: 1.4945521, y: 1.3443311, z: 1.4945521}
+  m_LocalPosition: {x: -0.000000010491, y: 1.1493, z: 0}
+  m_LocalScale: {x: 1.5511153, y: 1.6176337, z: 1.7983946}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2032179878}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &885647087
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 885647083}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9cb247dd4ee3c894ba1f8d30bb1252d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackScript: {fileID: 2032179879}
 --- !u!4 &941644747 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7539731084510659538, guid: 4aafec9dfc80bfc479135f0de83244f2, type: 3}
@@ -10818,7 +10901,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1043883924}
   m_Layer: 0
-  m_Name: EnZ_WayP(0)
+  m_Name: Oasis_WayP
   m_TagString: Untagged
   m_Icon: {fileID: 1206586993520771344, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -11245,7 +11328,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1147351924}
   m_Layer: 0
-  m_Name: EnZ_WayP(3)
+  m_Name: Oasis_WayP 4
   m_TagString: Untagged
   m_Icon: {fileID: 1206586993520771344, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -11518,13 +11601,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1302965030}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 542e3f42b6e1cdf4d8efdad7b384d956, type: 3}
+  m_Script: {fileID: 11500000, guid: 889eb9d7db98ef04f96d5eb6c4b99501, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lifetime: 10
-  bulletSpeed: 0
-  damage: 5
-  knockbackForceBullet: 10
+  SSBullet: {fileID: 2849951106810800177, guid: 0a8c539369aa7ec4ea822ba1eecb77af, type: 3}
+  SSBulletSpawn: {fileID: 1302965031}
 --- !u!1 &1404583129
 GameObject:
   m_ObjectHideFlags: 0
@@ -11626,6 +11707,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2849951106810800177, guid: 0a8c539369aa7ec4ea822ba1eecb77af, type: 3}
     - target: {fileID: -8646401339500566599, guid: 4aafec9dfc80bfc479135f0de83244f2, type: 3}
+      propertyPath: shardPrefab
+      value: 
+      objectReference: {fileID: 4939539442710071618, guid: b9e2fbb006045494fa4691c5a070e6f2, type: 3}
+    - target: {fileID: -8646401339500566599, guid: 4aafec9dfc80bfc479135f0de83244f2, type: 3}
       propertyPath: playerAttack
       value: 
       objectReference: {fileID: 2032179879}
@@ -11687,14 +11772,43 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8867776753774189617, guid: 4aafec9dfc80bfc479135f0de83244f2, type: 3}
       propertyPath: m_Name
-      value: EnemyY (2)
+      value: SouledShroom 3
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 1674664859047275471, guid: 4aafec9dfc80bfc479135f0de83244f2, type: 3}
+    - {fileID: -8646401339500566599, guid: 4aafec9dfc80bfc479135f0de83244f2, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8867776753774189617, guid: 4aafec9dfc80bfc479135f0de83244f2, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1488099974}
   m_SourcePrefab: {fileID: 100100000, guid: 4aafec9dfc80bfc479135f0de83244f2, type: 3}
+--- !u!1 &1488099973 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8867776753774189617, guid: 4aafec9dfc80bfc479135f0de83244f2, type: 3}
+  m_PrefabInstance: {fileID: 1488099972}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1488099974
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1488099973}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5791d67eebe0e9e4aaa2bad602ee8367, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 33
+  player: {fileID: 0}
+  playerAttack: {fileID: 0}
+  playerNear: 10
+  EYBullet: {fileID: 0}
+  EYBulletSpawn: {fileID: 0}
+  shardPrefab: {fileID: 0}
+  bulletFrequency: 3
 --- !u!1001 &1545074684
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11720,12 +11834,16 @@ PrefabInstance:
       value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 7434027744358036834, guid: e467f41567285f84687cb046eb8abcd7, type: 3}
+      propertyPath: shardPrefab
+      value: 
+      objectReference: {fileID: 4939539442710071618, guid: b9e2fbb006045494fa4691c5a070e6f2, type: 3}
+    - target: {fileID: 7434027744358036834, guid: e467f41567285f84687cb046eb8abcd7, type: 3}
       propertyPath: playerAttack
       value: 
       objectReference: {fileID: 2032179879}
     - target: {fileID: 7956867852862355178, guid: e467f41567285f84687cb046eb8abcd7, type: 3}
       propertyPath: m_Name
-      value: EnemyX (0)
+      value: GlassKnight
       objectReference: {fileID: 0}
     - target: {fileID: 8999319556719285940, guid: e467f41567285f84687cb046eb8abcd7, type: 3}
       propertyPath: m_LocalPosition.x
@@ -11813,13 +11931,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1610675119}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 542e3f42b6e1cdf4d8efdad7b384d956, type: 3}
+  m_Script: {fileID: 11500000, guid: 889eb9d7db98ef04f96d5eb6c4b99501, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lifetime: 10
-  bulletSpeed: 0
-  damage: 5
-  knockbackForceBullet: 10
+  SSBullet: {fileID: 2849951106810800177, guid: 0a8c539369aa7ec4ea822ba1eecb77af, type: 3}
+  SSBulletSpawn: {fileID: 1610675120}
 --- !u!1 &1618125386
 GameObject:
   m_ObjectHideFlags: 0
@@ -37571,6 +37687,7 @@ GameObject:
   - component: {fileID: 1925758857}
   - component: {fileID: 1925758859}
   - component: {fileID: 1925758858}
+  - component: {fileID: 1925758860}
   m_Layer: 9
   m_Name: HitboxCombo2
   m_TagString: Untagged
@@ -37680,6 +37797,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1925758860
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1925758856}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9cb247dd4ee3c894ba1f8d30bb1252d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackScript: {fileID: 2032179879}
 --- !u!1 &1935892566
 GameObject:
   m_ObjectHideFlags: 0
@@ -38121,6 +38251,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2849951106810800177, guid: 0a8c539369aa7ec4ea822ba1eecb77af, type: 3}
     - target: {fileID: -8646401339500566599, guid: 4aafec9dfc80bfc479135f0de83244f2, type: 3}
+      propertyPath: shardPrefab
+      value: 
+      objectReference: {fileID: 4939539442710071618, guid: b9e2fbb006045494fa4691c5a070e6f2, type: 3}
+    - target: {fileID: -8646401339500566599, guid: 4aafec9dfc80bfc479135f0de83244f2, type: 3}
       propertyPath: playerAttack
       value: 
       objectReference: {fileID: 2032179879}
@@ -38182,14 +38316,43 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8867776753774189617, guid: 4aafec9dfc80bfc479135f0de83244f2, type: 3}
       propertyPath: m_Name
-      value: EnemyY (3)
+      value: SouledShroom 4
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 1674664859047275471, guid: 4aafec9dfc80bfc479135f0de83244f2, type: 3}
+    - {fileID: -8646401339500566599, guid: 4aafec9dfc80bfc479135f0de83244f2, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8867776753774189617, guid: 4aafec9dfc80bfc479135f0de83244f2, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6584242422699896711}
   m_SourcePrefab: {fileID: 100100000, guid: 4aafec9dfc80bfc479135f0de83244f2, type: 3}
+--- !u!1 &6584242422699896710 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8867776753774189617, guid: 4aafec9dfc80bfc479135f0de83244f2, type: 3}
+  m_PrefabInstance: {fileID: 6584242422699896709}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &6584242422699896711
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6584242422699896710}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5791d67eebe0e9e4aaa2bad602ee8367, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 33
+  player: {fileID: 0}
+  playerAttack: {fileID: 0}
+  playerNear: 10
+  EYBullet: {fileID: 0}
+  EYBulletSpawn: {fileID: 0}
+  shardPrefab: {fileID: 0}
+  bulletFrequency: 3
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

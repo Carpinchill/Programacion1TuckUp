@@ -4,6 +4,9 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using UnityEngine.SocialPlatforms.Impl;
+using UnityEditor.SearchService;
+using UnityEngine.SceneManagement;
+using Unity.Collections.LowLevel.Unsafe;
 
 public class Movement : MonoBehaviour
 {
@@ -18,6 +21,8 @@ public class Movement : MonoBehaviour
     public Image health;
     public Image stamina;
     public TMP_Text shardsCounter;
+
+    public static string currentSceneName;
 
     public float speed = 5f;
     public int maxHealth = 20;
@@ -120,6 +125,7 @@ public class Movement : MonoBehaviour
         lastDashTime = Time.time;
         isDashing = true;
         DashEffect.SetActive(true);
+        //efecto de sonido de aire whoosh
         rb2d.velocity = direction * dashForce;
         enabled = false;
         attack.enabled = false;
@@ -179,9 +185,10 @@ public class Movement : MonoBehaviour
 
     private void Die()
     {
+        currentSceneName = SceneManager.GetActiveScene().name;
         enabled = false;
         attack.enabled = false;
+        SceneManager.LoadScene("Muerte");
     }
-
     
 }

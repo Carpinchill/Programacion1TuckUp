@@ -5,16 +5,21 @@ using UnityEngine.SceneManagement;
 public enum PickupType
 {
     Health,
-    EndLevel
+    EndLevel,
+    Shards
 }
 public class PickUps : MonoBehaviour
 {
+
+    //---------------------------------- V A R I A B L E S ----------------------------------------------------------------------------
+
     public PickupType pickupType; 
     public int healthRecover = 4; 
 
-    public Movement movement; 
+    public Movement movement;
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    //---------------------------------- M E T H O D S ----------------------------------------------------------------------------
+    private void OnTriggerEnter2D(Collider2D collision) //logica de recoleccion segun que tipo de pick up es
     {
         if (collision.CompareTag("Player"))
         {
@@ -26,20 +31,24 @@ public class PickUps : MonoBehaviour
             {
                 EndLevel();
             }
+            else if (pickupType == PickupType.Shards)
+            {
+                CollectShards();
+            }
         }
     }
 
     void CollectHealth()
     {
-        if (movement != null && movement.currentHealth >= movement.maxHealth)
+        if (movement != null && movement.currentHealth > movement.maxHealth) //si la vida actual es menor a la vida maxima
         {
-            movement.currentHealth += healthRecover;
+            movement.currentHealth += healthRecover; //recupera la vida correspondiente
 
-            if (movement.currentHealth > movement.maxHealth)
+            if (movement.currentHealth > movement.maxHealth) //si supera la vida maxima
             {
-                movement.currentHealth = movement.maxHealth;
+                movement.currentHealth = movement.maxHealth; //quita el restante 
             }
-
+            //sonido de curacion
             Destroy(gameObject);
         }
         else
@@ -50,13 +59,25 @@ public class PickUps : MonoBehaviour
 
     void EndLevel()
     {
-        int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+        int currentSceneIndex = SceneManager.GetActiveScene().buildIndex; //setea la escena activa y le suma 1 
         int nextSceneIndex = currentSceneIndex + 1;
 
         if (nextSceneIndex < SceneManager.sceneCountInBuildSettings)
         {
-            SceneManager.LoadScene(nextSceneIndex);
+            SceneManager.LoadScene(nextSceneIndex); //carga la siguiente escena
         }
     }
 
+    void CollectShards()
+    {
+        Movement movement = FindObjectOfType<Movement>(); //busca los scripts de ataque y movimiento
+        Attack attack = FindObjectOfType<Attack>();
+        if (movement != null)
+        {
+            //sonido de monedita
+            movement.shards++; //suma fragmentos y sube el ataque
+            attack.damage = +5;
+        }
+        Destroy(gameObject);
+    }
 }

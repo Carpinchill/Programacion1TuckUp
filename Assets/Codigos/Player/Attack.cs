@@ -19,7 +19,7 @@ public class Attack : MonoBehaviour
     [SerializeField]
     private float comboResetTime = 1.3f;
     [SerializeField]
-    private float attackLifeSpan = 0.3f;
+    private float attackLifeSpan = 0.2f;
     [SerializeField]
     private float attackCooldown = 0.7f;
     public float attackStaminaCost = 1f;    
@@ -66,7 +66,7 @@ public class Attack : MonoBehaviour
         }
         else if (lastH == 1)
         {
-            angle = 270f; //aerecha
+            angle = 270f; //derecha
         }
         else if (lastV == -1)
         {
@@ -98,6 +98,8 @@ public class Attack : MonoBehaviour
 
         Hitboxes[currentAttack].SetActive(true);
 
+        //efecto de sonido de espada con un RandomPitch
+
         lastAttackTime = Time.time;
 
         currentAttack = (currentAttack + 1) % Hitboxes.Length;
@@ -113,30 +115,6 @@ public class Attack : MonoBehaviour
         movement.speed = 5f;
         movement.dashCooldown = 0;
     }
-
-
-    //--- LLAMAR AL MÉTODO RECEIVE DAMAGE DEL ENEMIGO ---//
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        EnemyX enemyX = other.gameObject.GetComponentInParent<EnemyX>();
-        if (enemyX != null)
-        {
-            enemyX.ReceiveDamage(damage);
-        }
-
-        EnemyY enemyY = other.gameObject.GetComponentInParent<EnemyY>();
-        if (enemyY != null)
-        {
-            enemyY.ReceiveDamage(damage);
-        }
-
-        EnemyZ enemyZ = other.gameObject.GetComponentInParent<EnemyZ>();
-        if (enemyZ != null)
-        {
-            enemyZ.ReceiveDamage(damage);
-        }
-    }
-
 
 }
 

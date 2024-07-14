@@ -5,7 +5,7 @@ using UnityEngine.UI;
 using TMPro;
 
 
-public class EnemyX : MonoBehaviour
+public class GlassKnight : MonoBehaviour
 {
     //--------------------------------- V A R I A B L E S ---------------------------------//
 
@@ -15,6 +15,7 @@ public class EnemyX : MonoBehaviour
 
     public Movement player;                     //ref al script del jugador
     public Attack playerAttack;                 //ref al script del ataque del jugador   
+    public GameObject shardPrefab;              //ref al prefab de los shards
 
     public Transform[] waypoints;               //array para almacenar waypoints
     int currentWaypoint = 0;                    //waypoint actual
@@ -26,7 +27,7 @@ public class EnemyX : MonoBehaviour
     private bool isKnockback = false;           //pregunta si si está retrocediendo
 
     public float lastH, lastV;
-    private Animator animatorEX;
+    private Animator animatorGK;
     private Vector3 lastPosition;
 
     //--------------------------------- V. S T A R T ---------------------------------//
@@ -34,7 +35,7 @@ public class EnemyX : MonoBehaviour
     void Start()
     {
         playerAttack = player.GetComponent<Attack>();           //obtenemos el ataque del jugador
-        animatorEX = GetComponent<Animator>();
+        animatorGK = GetComponent<Animator>();
         lastPosition = transform.position;
     }
 
@@ -43,8 +44,8 @@ public class EnemyX : MonoBehaviour
 
     private void LateUpdate()
     {
-        animatorEX.SetFloat("LastH", lastH);
-        animatorEX.SetFloat("LastV", lastV);
+        animatorGK.SetFloat("LastH", lastH);
+        animatorGK.SetFloat("LastV", lastV);
     }
     //--------------------------------- V. U P D A T E ---------------------------------//
 
@@ -60,7 +61,7 @@ public class EnemyX : MonoBehaviour
         {
             Patrol();
         }
-        UpdateAnimatorParameters();
+        UpdateAnimatorGKParameters();
     }
 
     //--------------------------------- M E T H O D S ---------------------------------//
@@ -90,7 +91,7 @@ public class EnemyX : MonoBehaviour
     void Attack()
     {
         //pasamos los parametros al animator
-        UpdateAnimatorParameters();
+        UpdateAnimatorGKParameters();
 
         //guardamos la posición del jugador
         Vector3 directionToPlayer = (player.gameObject.transform.position - transform.position).normalized;
@@ -98,7 +99,7 @@ public class EnemyX : MonoBehaviour
         //mov HACIA el jugador
         transform.position += speed * Time.deltaTime * directionToPlayer;
     }
-    void UpdateAnimatorParameters()
+    void UpdateAnimatorGKParameters()
     {
         Vector3 movement = transform.position - lastPosition;
 
@@ -106,8 +107,8 @@ public class EnemyX : MonoBehaviour
         {
             //normalizamos el movimiento para obtener solo la dirección
             Vector3 normalizedMovement = movement.normalized;
-            animatorEX.SetFloat("LastH", normalizedMovement.x);
-            animatorEX.SetFloat("LastV", normalizedMovement.y);
+            animatorGK.SetFloat("LastH", normalizedMovement.x);
+            animatorGK.SetFloat("LastV", normalizedMovement.y);
         }
 
         //actualiza la última posición
@@ -161,12 +162,15 @@ public class EnemyX : MonoBehaviour
     //--- RECIBIR DAÑO ---//
     public void ReceiveDamage(float damage)
     {
-        health -= damage;           //restamos el daño a la salud del jugador
+        health -= damage;           //restamos el daño a la salud del enemigo
 
         if (health <= 0)            //si la salud es menos que 0
         {
-            Destroy(gameObject);    //muere
-            Debug.Log("This enemy's gone to hell");
+            if (Random.value <= 0.5f)  //50% de chances de que te de un Fragmento de Dios
+            {
+                Instantiate(shardPrefab, transform.position, Quaternion.identity);
+            }
+            Destroy(gameObject);    //muere           
         }
     }
 }

@@ -192,7 +192,7 @@ GameObject:
   - component: {fileID: 4415610688831664848}
   - component: {fileID: 3344211377112862417}
   m_Layer: 7
-  m_Name: EnemyX
+  m_Name: GlassKnight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -228,11 +228,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab745dbedc2443b4f8a01b5d9082e4ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 33
+  health: 40
   damage: 5
   speed: 2
   player: {fileID: 0}
   playerAttack: {fileID: 0}
+  shardPrefab: {fileID: 4939539442710071618, guid: b9e2fbb006045494fa4691c5a070e6f2, type: 3}
   waypoints:
   - {fileID: 5389622183731278026}
   - {fileID: 1045194891841138253}

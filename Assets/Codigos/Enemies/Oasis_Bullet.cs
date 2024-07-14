@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EZ_Bullet : MonoBehaviour
+public class Oasis_Bullet : MonoBehaviour
 {
     //--------------------------------- V A R I A B L E S ---------------------------------//
 
