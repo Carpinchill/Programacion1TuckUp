@@ -6,7 +6,8 @@ public class OASIS : MonoBehaviour
 {
     //--------------------------------- V A R I A B L E S ---------------------------------//
 
-    public float health = 100f;         //salud del enemigo
+    public float currentHealth = 100f;         //salud del enemigo
+    public float maxHealth;
     public float speed = 15f;           //velocidad del enemigo    
     
     public Transform[] waypoints;       //array para almacenar waypoints
@@ -33,12 +34,16 @@ public class OASIS : MonoBehaviour
 
     private AudioSource audioSource;
     public AudioClip enemyHurtSound, enemyDeathSound;
+    public float minPitch = 0.80f;
+    public float maxPitch = 1.25f;
 
 
     //--------------------------------- A W A K E ---------------------------------//
     private void Awake()
     {
         EZGuns = GetComponentsInChildren<Oasis_Gun>();
+        audioSource = GetComponent<AudioSource>();
+        audioSource.volume = 0.5f;
     }
 
 
@@ -49,6 +54,7 @@ public class OASIS : MonoBehaviour
         playerAttack = player.GetComponent<Attack>();           //obtenemos el ataque del jugador
         animatorOasis = GetComponent<Animator>();
         lastPosition = transform.position;
+        currentHealth = maxHealth;
     }
     //--------------------------------- L. U P D A T E ---------------------------------//
 
@@ -174,11 +180,12 @@ public class OASIS : MonoBehaviour
     //--- RECIBIR DAÑO ---//
     public void ReceiveDamage(float damage)
     {
-        health -= damage;           //restamos el daño a la salud del jugador
+        currentHealth -= damage;           //restamos el daño a la salud del jugador
 
+        audioSource.pitch = Random.Range(minPitch, maxPitch);
         audioSource.PlayOneShot(enemyHurtSound);
 
-        if (health <= 0)            //si la salud es menos que 0
+        if (currentHealth <= 0)            //si la salud es menos que 0
         {
             audioSource.PlayOneShot(enemyDeathSound);
             Destroy(gameObject);    //muere

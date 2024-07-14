@@ -4,7 +4,6 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using UnityEngine.SocialPlatforms.Impl;
-using UnityEditor.SearchService;
 using UnityEngine.SceneManagement;
 using Unity.Collections.LowLevel.Unsafe;
 
@@ -47,6 +46,8 @@ public class Movement : MonoBehaviour
 
     private AudioSource audioSource;
     public AudioClip playerHurtSound, dashSound;
+    public float minPitch = 0.80f;
+    public float maxPitch = 1.25f;
 
     //---------------------------------- A W A K E ----------------------------------------------------------------------------
 
@@ -57,6 +58,8 @@ public class Movement : MonoBehaviour
         ShieldEffect.SetActive(false);
         BoostEffect.SetActive(false);
         rb2d = GetComponent<Rigidbody2D>();
+        audioSource = GetComponent<AudioSource>();
+        audioSource.volume = 0.5f;
         currentHealth = maxHealth;
         currentStamina = maxStamina;
         animator = GetComponent<Animator>();
@@ -116,6 +119,8 @@ public class Movement : MonoBehaviour
             float dashH = lastH != 0 ? lastH : Input.GetAxisRaw("Horizontal");
             float dashV = lastV != 0 ? lastV : Input.GetAxisRaw("Vertical");
             Vector2 dashDirection = new Vector2(dashH, dashV).normalized;
+            audioSource.pitch = Random.Range(minPitch, maxPitch);
+            audioSource.PlayOneShot(dashSound);
             StartCoroutine(Dash(dashDirection));
         }
     }
@@ -127,8 +132,7 @@ public class Movement : MonoBehaviour
     {
         lastDashTime = Time.time;
         isDashing = true;
-        DashEffect.SetActive(true);
-        audioSource.PlayOneShot(dashSound);
+        DashEffect.SetActive(true);       
         rb2d.velocity = direction * dashForce;
         enabled = false;
         attack.enabled = false;
@@ -158,6 +162,7 @@ public class Movement : MonoBehaviour
         if (isDashing == false && !habilidades.isBlocking) 
         {
             Vector2 knockbackDirection = (transform.position - (Vector3)impactSource).normalized;
+            audioSource.pitch = Random.Range(minPitch, maxPitch);
             audioSource.PlayOneShot(playerHurtSound);
             ApplyKnockback(knockbackDirection, knockbackForce);
             currentHealth -= damage;

@@ -9,7 +9,8 @@ public class GlassKnight : MonoBehaviour
 {
     //--------------------------------- V A R I A B L E S ---------------------------------//
 
-    public float health = 43f;                  //salud del enemigo
+    public float currentHealth;                  //salud del enemigo
+    public float maxHealth = 40;
     public float damage = 6f;                   //daño que hace el enemigo
     public float speed = 9f;                    //velocidad del enemigo
 
@@ -33,6 +34,16 @@ public class GlassKnight : MonoBehaviour
     private AudioSource audioSource;
 
     public AudioClip enemyHurtSound, enemyDeathSound;
+    public float minPitch = 0.80f;
+    public float maxPitch = 1.25f;
+
+
+    //--------------------------------- V. A W A K E ---------------------------------//
+    private void Awake()
+    {
+        audioSource = GetComponent<AudioSource>();
+        audioSource.volume = 0.5f;
+    }
 
     //--------------------------------- V. S T A R T ---------------------------------//
 
@@ -41,6 +52,7 @@ public class GlassKnight : MonoBehaviour
         playerAttack = player.GetComponent<Attack>();           //obtenemos el ataque del jugador
         animatorGK = GetComponent<Animator>();
         lastPosition = transform.position;
+        currentHealth = maxHealth;
     }
 
 
@@ -166,11 +178,12 @@ public class GlassKnight : MonoBehaviour
     //--- RECIBIR DAÑO ---//
     public void ReceiveDamage(float damage)
     {
-        health -= damage;           //restamos el daño a la salud del enemigo
+        currentHealth -= damage;           //restamos el daño a la salud del enemigo
 
+        audioSource.pitch = Random.Range(minPitch, maxPitch);
         audioSource.PlayOneShot(enemyHurtSound);
 
-        if (health <= 0)            //si la salud es menos que 0
+        if (currentHealth <= 0)            //si la salud es menos que 0
         {
             if (Random.value <= 0.5f)  //50% de chances de que te de un Fragmento de Dios
             {

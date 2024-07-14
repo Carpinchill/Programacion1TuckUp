@@ -43,7 +43,7 @@ GameObject:
   - component: {fileID: 7654721858755735665}
   - component: {fileID: 8264347447823179288}
   - component: {fileID: -6174196118401123905}
-  - component: {fileID: 5899436321599581180}
+  - component: {fileID: -2550376517948084209}
   m_Layer: 7
   m_Name: SouledShroom
   m_TagString: Untagged
@@ -79,7 +79,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5791d67eebe0e9e4aaa2bad602ee8367, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 20
+  currentHealth: 0
+  maxHealth: 33
   player: {fileID: 0}
   playerAttack: {fileID: 0}
   playerNear: 10
@@ -177,7 +178,7 @@ CircleCollider2D:
   m_Offset: {x: -0.06877327, y: -0.44210744}
   serializedVersion: 2
   m_Radius: 0.5873661
---- !u!82 &5899436321599581180
+--- !u!82 &-2550376517948084209
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -188,7 +189,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 0
+  m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
   Loop: 0

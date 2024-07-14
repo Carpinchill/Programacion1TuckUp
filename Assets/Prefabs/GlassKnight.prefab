@@ -191,7 +191,7 @@ GameObject:
   - component: {fileID: 5890978179957923690}
   - component: {fileID: 4415610688831664848}
   - component: {fileID: 3344211377112862417}
-  - component: {fileID: 3460909798956414099}
+  - component: {fileID: 5769388979233023954}
   m_Layer: 7
   m_Name: GlassKnight
   m_TagString: Untagged
@@ -229,7 +229,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab745dbedc2443b4f8a01b5d9082e4ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 40
+  currentHealth: 0
+  maxHealth: 40
   damage: 5
   speed: 2
   player: {fileID: 0}
@@ -381,7 +382,7 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!82 &3460909798956414099
+--- !u!82 &5769388979233023954
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -392,7 +393,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 0
+  m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
   Loop: 0

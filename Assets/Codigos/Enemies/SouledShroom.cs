@@ -6,7 +6,8 @@ public class SouledShroom : MonoBehaviour
 {
     //--------------------------------- V A R I A B L E S ---------------------------------//
 
-    public float health = 33f;          //salud del enemigo
+    public float currentHealth;          //salud del enemigo
+    public float maxHealth = 33f;
 
     public Movement player;             //ref al player (posición para takedamage
     public Attack playerAttack;         //ref al script del ataque del jugador
@@ -21,6 +22,23 @@ public class SouledShroom : MonoBehaviour
 
     private AudioSource audioSource;
     public AudioClip enemyHurtSound, enemyDeathSound, shootSound;
+    public float minPitch = 0.80f;
+    public float maxPitch = 1.25f;
+
+    //--------------------------------- V. A W A K E ---------------------------------//
+
+    private void Awake()
+    {
+        audioSource = GetComponent<AudioSource>();
+        audioSource.volume = 0.5f;
+    }
+
+    //--------------------------------- V. S T A R T ---------------------------------//
+
+    private void Start()
+    {
+        currentHealth = maxHealth;
+    }
 
     //--------------------------------- V. U P D A T E ---------------------------------//
     void Update()
@@ -48,6 +66,7 @@ public class SouledShroom : MonoBehaviour
             SS_Bullet bulletNew = Instantiate(EYBullet, EYBulletSpawn.position, EYBulletSpawn.rotation);
             bulletNew.Shooting(bulletToPlayer);
 
+            audioSource.pitch = Random.Range(minPitch, maxPitch);
             audioSource.PlayOneShot(shootSound);
         }                                    
     }
@@ -55,17 +74,18 @@ public class SouledShroom : MonoBehaviour
     //--- RECIBIR DAÑO ---//
     public void ReceiveDamage(float damage)
     {
-        health -= damage;           //restamos el daño a la salud del enemigo
+        currentHealth -= damage;           //restamos el daño a la salud del enemigo
 
         audioSource.PlayOneShot(enemyHurtSound);
 
-        if (health <= 0)            //si la salud es menos que 0
+        if (currentHealth <= 0)            //si la salud es menos que 0
         {
             if (Random.value <= 0.5f)
             {
                 Instantiate(shardPrefab, transform.position, Quaternion.identity);
             }
 
+            audioSource.pitch = Random.Range(minPitch, maxPitch);
             audioSource.PlayOneShot(enemyDeathSound);
 
 

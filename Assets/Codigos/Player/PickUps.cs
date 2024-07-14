@@ -20,11 +20,14 @@ public class PickUps : MonoBehaviour
 
     private AudioSource audioSource;
     public AudioClip CryxHSound, ShardsSound;
+    public float minPitch = 0.80f;
+    public float maxPitch = 1.25f;
 
     //---------------------------------- V A R I A B L E S ----------------------------------------------------------------------------
     private void Awake()
     {
         audioSource = GetComponent<AudioSource>();
+        audioSource.volume = 0.5f;
     }
 
     //---------------------------------- M E T H O D S ----------------------------------------------------------------------------
@@ -58,6 +61,7 @@ public class PickUps : MonoBehaviour
                 movement.currentHealth = movement.maxHealth; //quita el restante 
             }
 
+            audioSource.pitch = Random.Range(minPitch, maxPitch);
             audioSource.PlayOneShot(CryxHSound); //sonido de curacion
 
             Destroy(gameObject);
@@ -85,6 +89,7 @@ public class PickUps : MonoBehaviour
         Attack attack = FindObjectOfType<Attack>();
         if (movement != null)
         {
+            audioSource.pitch = Random.Range(minPitch, maxPitch);
             audioSource.PlayOneShot(ShardsSound); //sonido de monedita
             movement.shards++; //suma fragmentos y sube el ataque
             attack.damage = +5;
