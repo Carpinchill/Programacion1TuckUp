@@ -9,22 +9,24 @@ public class HitBoxManager : MonoBehaviour
     //--- LLAMAR AL MÉTODO RECEIVE DAMAGE DEL ENEMIGO ---//
     private void OnTriggerEnter2D(Collider2D other)
     {
+        Vector2 knockbackDirection = (other.transform.position - transform.position).normalized;
+
         GlassKnight enemyX = other.gameObject.GetComponentInParent<GlassKnight>();
         if (enemyX != null)
         {
-            enemyX.ReceiveDamage(attackScript.damage);
+            enemyX.ReceiveDamage(attackScript.damage, knockbackDirection, attackScript.knockbackForce);
         }
 
         SouledShroom enemyY = other.gameObject.GetComponentInParent<SouledShroom>();
         if (enemyY != null)
         {
-            enemyY.ReceiveDamage(attackScript.damage);
+            enemyY.ReceiveDamage(attackScript.damage, knockbackDirection, attackScript.knockbackForce);
         }
 
         OASIS enemyZ = other.gameObject.GetComponentInParent<OASIS>();
         if (enemyZ != null)
         {
-            enemyZ.ReceiveDamage(attackScript.damage);
+            enemyZ.ReceiveDamage(attackScript.damage, knockbackDirection, attackScript.knockbackForce);
         }
     }
 }

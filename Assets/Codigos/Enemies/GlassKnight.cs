@@ -176,23 +176,29 @@ public class GlassKnight : MonoBehaviour
 
 
     //--- RECIBIR DAÑO ---//
-    public void ReceiveDamage(float damage)
+    public void ReceiveDamage(float damage, Vector2 knockbackDirection, float knockbackForce)
     {
-        currentHealth -= damage;           //restamos el daño a la salud del enemigo
+        currentHealth -= damage;  // Restamos el daño a la salud del enemigo
 
         audioSource.pitch = Random.Range(minPitch, maxPitch);
         audioSource.PlayOneShot(enemyHurtSound);
 
-        if (currentHealth <= 0)            //si la salud es menos que 0
+        // Aplicar el impulso hacia atrás
+        if (TryGetComponent<Rigidbody2D>(out var rb))
         {
-            if (Random.value <= 0.5f)  //50% de chances de que te de un Fragmento de Dios
+            rb.AddForce(knockbackDirection * knockbackForce, ForceMode2D.Impulse);
+        }
+
+        if (currentHealth <= 0)  // Si la salud es menos que 0
+        {
+            if (Random.value <= 0.5f)  // 50% de chances de que te de un Fragmento de Dios
             {
                 Instantiate(shardPrefab, transform.position, Quaternion.identity);
             }
 
             audioSource.PlayOneShot(enemyDeathSound);
 
-            Destroy(gameObject);    //muere           
+            Destroy(gameObject);  // Muere
         }
     }
 }

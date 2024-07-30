@@ -425,13 +425,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 314e34911fc0dee4b89bb86086d7e8b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentHealth: 100
-  maxHealth: 0
+  currentHealth: 0
+  maxHealth: 80
   speed: 15
   waypoints: []
   player: {fileID: 0}
   playerNear: 1
   playerAttack: {fileID: 0}
+  breakableWall: {fileID: 0}
   maxShots: 3
   shotCooldown: 1
   pushDamage: 15
@@ -440,6 +441,8 @@ MonoBehaviour:
   lastV: 0
   enemyHurtSound: {fileID: 8300000, guid: 99e20f752a1ef0b4082be011a0be30f7, type: 3}
   enemyDeathSound: {fileID: 8300000, guid: 17059eba3a8fc544fbded7f4522857a9, type: 3}
+  minPitch: 0.8
+  maxPitch: 1.25
 --- !u!50 &6468986204085822105
 Rigidbody2D:
   serializedVersion: 4

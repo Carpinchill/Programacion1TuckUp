@@ -969,13 +969,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 584223479}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.2223658, y: -0.14700039, z: 0.19496842, w: 0.94389176}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 3.2600002, y: 25.42, z: 0.22268444}
   m_LocalScale: {x: 0.32824996, y: 0.32824996, z: 0.32825005}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 28.496, y: -12.539, z: 20.146}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &584223482
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1024,7 +1024,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: -0.035632372, y: -0.15490699}
@@ -38261,9 +38261,21 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1074903711}
     - target: {fileID: 6357117548695000962, guid: 11a5cbdb3798b304c9c1a86ec59f53fe, type: 3}
+      propertyPath: maxHealth
+      value: 80
+      objectReference: {fileID: 0}
+    - target: {fileID: 6357117548695000962, guid: 11a5cbdb3798b304c9c1a86ec59f53fe, type: 3}
       propertyPath: playerAttack
       value: 
       objectReference: {fileID: 2032179879}
+    - target: {fileID: 6357117548695000962, guid: 11a5cbdb3798b304c9c1a86ec59f53fe, type: 3}
+      propertyPath: breakableWall
+      value: 
+      objectReference: {fileID: 1618125386}
+    - target: {fileID: 6357117548695000962, guid: 11a5cbdb3798b304c9c1a86ec59f53fe, type: 3}
+      propertyPath: currentHealth
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6357117548695000962, guid: 11a5cbdb3798b304c9c1a86ec59f53fe, type: 3}
       propertyPath: waypoints.Array.size
       value: 4

@@ -6,8 +6,8 @@ public class OASIS : MonoBehaviour
 {
     //--------------------------------- V A R I A B L E S ---------------------------------//
 
-    public float currentHealth = 100f;         //salud del enemigo
-    public float maxHealth;
+    public float currentHealth;         //salud del enemigo
+    public float maxHealth = 80;
     public float speed = 15f;           //velocidad del enemigo    
     
     public Transform[] waypoints;       //array para almacenar waypoints
@@ -16,6 +16,7 @@ public class OASIS : MonoBehaviour
     public Movement player;             //ref al player para obtener sus datos
     public float playerNear = 1f;       //cuán cerca tiene que estar el jugador para que lo detecte
     public Attack playerAttack;         //ref al script del ataque del jugador
+    public GameObject breakableWall;
 
     private Oasis_Gun[] EZGuns;            //array de bullet spawns
     public int maxShots = 3;            //cantidad máxima de disparos por ataque
@@ -178,18 +179,26 @@ public class OASIS : MonoBehaviour
 
 
     //--- RECIBIR DAÑO ---//
-    public void ReceiveDamage(float damage)
+    public void ReceiveDamage(float damage, Vector2 knockbackDirection, float knockbackForce)
     {
-        currentHealth -= damage;           //restamos el daño a la salud del jugador
+        currentHealth -= damage;  //restamos el daño a la salud del enemigo
 
         audioSource.pitch = Random.Range(minPitch, maxPitch);
         audioSource.PlayOneShot(enemyHurtSound);
 
-        if (currentHealth <= 0)            //si la salud es menos que 0
+        //aplicar el impulso hacia atrás
+        if (TryGetComponent<Rigidbody2D>(out var rb))
         {
+            rb.AddForce(knockbackDirection * knockbackForce, ForceMode2D.Impulse);
+        }
+
+        if (currentHealth <= 0)  //si la salud es menos que 0
+        {
+            breakableWall.SetActive(false);
             audioSource.PlayOneShot(enemyDeathSound);
-            Destroy(gameObject);    //muere
-            Debug.Log("This enemy's gone to hell");
+            //sonido de pared rota
+            Destroy(gameObject);  //muere
+           
         }
     }
 }

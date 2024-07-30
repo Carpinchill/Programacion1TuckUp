@@ -14,7 +14,7 @@ public class Attack : MonoBehaviour
     public Movement movement;
 
     public float damage = 12f;
-    public float knockbackForce = 5f;
+    public float knockbackForce = 2f;
 
     [SerializeField]
     private float comboResetTime = 1.3f;

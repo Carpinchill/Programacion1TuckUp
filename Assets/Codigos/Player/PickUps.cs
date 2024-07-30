@@ -52,7 +52,7 @@ public class PickUps : MonoBehaviour
 
     void CollectHealth()
     {
-        if (movement != null && movement.currentHealth > movement.maxHealth) //si la vida actual es menor a la vida maxima
+        if (movement != null && movement.currentHealth < movement.maxHealth) //si la vida actual es menor a la vida maxima
         {            
             movement.currentHealth += healthRecover; //recupera la vida correspondiente
 
