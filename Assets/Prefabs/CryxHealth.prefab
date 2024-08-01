@@ -135,10 +135,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pickupType: 0
-  healthRecover: 4
+  healthRecover: 20
   movement: {fileID: 0}
-  CryxHSound: {fileID: 8300000, guid: 2b052fa1891cebc4183b301ad5fc11bb, type: 3}
-  ShardsSound: {fileID: 8300000, guid: 811f63e73564a5d4e9bd450c521cfab0, type: 3}
+  CryxHSound: {fileID: 8300000, guid: f17d96b6407904043875b19dd7150666, type: 3}
+  ShardsSound: {fileID: 8300000, guid: 0a606172a2b94e74eb77863f454c206e, type: 3}
 --- !u!82 &-2938235499355280421
 AudioSource:
   m_ObjectHideFlags: 0
@@ -149,9 +149,9 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 2b052fa1891cebc4183b301ad5fc11bb, type: 3}
-  m_PlayOnAwake: 0
-  m_Volume: 0.5
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
   m_Pitch: 1
   Loop: 0
   Mute: 0

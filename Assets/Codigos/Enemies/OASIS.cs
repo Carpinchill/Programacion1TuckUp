@@ -7,8 +7,8 @@ public class OASIS : MonoBehaviour
     //--------------------------------- V A R I A B L E S ---------------------------------//
 
     public float currentHealth;         //salud del enemigo
-    public float maxHealth = 80;
-    public float speed = 15f;           //velocidad del enemigo    
+    public float maxHealth = 60;
+    public float speed = 3f;           //velocidad del enemigo    
     
     public Transform[] waypoints;       //array para almacenar waypoints
     int currentWaypoint = 0;            //para ubicar en qué waypoint estamos
@@ -23,8 +23,8 @@ public class OASIS : MonoBehaviour
     //private int shotsFired = 0;         //cantidad de disparos realizados en el ataque actual
     public float shotCooldown = 1f;     //cooldown entre cada disparo
 
-    public float pushDamage = 15f;      //daño al empujar
-    public float pushForceEnemy = 20f;  //retroceso aplicado POR ENEMIGO -> AL JUGADOR
+    public float pushDamage = 10f;      //daño al empujar
+    public float pushForceEnemy = 10f;  //retroceso aplicado POR ENEMIGO -> AL JUGADOR
 
     private bool isKnockback = false;   //pregunta si está retrocediendo (ENEMIGO <- JUGADOR)
     private bool isAttacking = false;   //pregunta si está atacando
@@ -83,7 +83,7 @@ public class OASIS : MonoBehaviour
     }
 
     //--------------------------------- M E T H O D S ---------------------------------//
-
+    
     //--- PATRULLAR ---//
     void Patrol()
     {
@@ -103,7 +103,7 @@ public class OASIS : MonoBehaviour
         transform.position = newPosition;
     }
 
-
+    
     //--- ATACAR ---//
     IEnumerator AttackPlayer()
     {
@@ -154,9 +154,11 @@ public class OASIS : MonoBehaviour
         {
             StartCoroutine(Knockback((transform.position - collision.transform.position).normalized));
             player.TakeDamage(pushDamage, (transform.position - collision.transform.position).normalized, pushForceEnemy);
-        }        
+        }
 
-        AttackPlayer();
+        isAttacking = false;        //termina el ciclo de ataque
+
+        Patrol();                   //resume la rutina de patrulla, la cual incluye que si el jugador está cerca, se comience el ciclo de ataque
     }
 
 

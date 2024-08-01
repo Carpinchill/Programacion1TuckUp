@@ -80,7 +80,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentHealth: 0
-  maxHealth: 33
+  maxHealth: 11
   player: {fileID: 0}
   playerAttack: {fileID: 0}
   playerNear: 10
@@ -88,9 +88,11 @@ MonoBehaviour:
   EYBulletSpawn: {fileID: 7539731084510659538}
   shardPrefab: {fileID: 4939539442710071618, guid: b9e2fbb006045494fa4691c5a070e6f2, type: 3}
   bulletFrequency: 3
-  enemyHurtSound: {fileID: 8300000, guid: 99e20f752a1ef0b4082be011a0be30f7, type: 3}
-  enemyDeathSound: {fileID: 8300000, guid: 17059eba3a8fc544fbded7f4522857a9, type: 3}
-  shootSound: {fileID: 8300000, guid: 1e25932baac234f4d8e96790fa26c717, type: 3}
+  enemyHurtSound: {fileID: 8300000, guid: 9282d185e4725164fa70321bb50da1e4, type: 3}
+  enemyDeathSound: {fileID: 8300000, guid: 9839b98707e00c24daa58c224ab6740c, type: 3}
+  shootSound: {fileID: 8300000, guid: 8be2fc8ba9eef8b43904101cd82f8c9d, type: 3}
+  minPitch: 0.8
+  maxPitch: 1.25
 --- !u!212 &8264347447823179288
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -190,7 +192,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.75
   m_Pitch: 1
   Loop: 0
   Mute: 0

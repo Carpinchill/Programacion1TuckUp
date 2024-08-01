@@ -59,7 +59,7 @@ public class Movement : MonoBehaviour
         BoostEffect.SetActive(false);
         rb2d = GetComponent<Rigidbody2D>();
         audioSource = GetComponent<AudioSource>();
-        audioSource.volume = 0.5f;
+        audioSource.volume = 0.75f;
         currentHealth = maxHealth;
         currentStamina = maxStamina;
         animator = GetComponent<Animator>();
@@ -119,7 +119,7 @@ public class Movement : MonoBehaviour
             float dashH = lastH != 0 ? lastH : Input.GetAxisRaw("Horizontal");
             float dashV = lastV != 0 ? lastV : Input.GetAxisRaw("Vertical");
             Vector2 dashDirection = new Vector2(dashH, dashV).normalized;
-            audioSource.pitch = Random.Range(minPitch, maxPitch);
+            
             audioSource.PlayOneShot(dashSound);
             StartCoroutine(Dash(dashDirection));
         }

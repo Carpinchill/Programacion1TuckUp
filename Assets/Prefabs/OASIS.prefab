@@ -297,9 +297,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2443322045088469576}
+  - component: {fileID: 6357117548695000962}
   - component: {fileID: 7871662445849336725}
   - component: {fileID: 1881471720299862050}
-  - component: {fileID: 6357117548695000962}
   - component: {fileID: 6468986204085822105}
   - component: {fileID: -5905263546864065350}
   m_Layer: 7
@@ -326,6 +326,40 @@ Transform:
   - {fileID: 9164723837501214015}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6357117548695000962
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9213063393559680354}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 314e34911fc0dee4b89bb86086d7e8b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentHealth: 0
+  maxHealth: 60
+  speed: 3
+  waypoints:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  player: {fileID: 0}
+  playerNear: 9
+  playerAttack: {fileID: 0}
+  breakableWall: {fileID: 0}
+  maxShots: 3
+  shotCooldown: 1
+  pushDamage: 10
+  pushForceEnemy: 10
+  lastH: 0
+  lastV: 0
+  enemyHurtSound: {fileID: 8300000, guid: 9282d185e4725164fa70321bb50da1e4, type: 3}
+  enemyDeathSound: {fileID: 8300000, guid: 9839b98707e00c24daa58c224ab6740c, type: 3}
+  minPitch: 0.8
+  maxPitch: 1.25
 --- !u!212 &7871662445849336725
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -413,36 +447,6 @@ CircleCollider2D:
   m_Offset: {x: 0, y: -0.48797226}
   serializedVersion: 2
   m_Radius: 0.51202774
---- !u!114 &6357117548695000962
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9213063393559680354}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 314e34911fc0dee4b89bb86086d7e8b8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  currentHealth: 0
-  maxHealth: 80
-  speed: 15
-  waypoints: []
-  player: {fileID: 0}
-  playerNear: 1
-  playerAttack: {fileID: 0}
-  breakableWall: {fileID: 0}
-  maxShots: 3
-  shotCooldown: 1
-  pushDamage: 15
-  pushForceEnemy: 20
-  lastH: 0
-  lastV: 0
-  enemyHurtSound: {fileID: 8300000, guid: 99e20f752a1ef0b4082be011a0be30f7, type: 3}
-  enemyDeathSound: {fileID: 8300000, guid: 17059eba3a8fc544fbded7f4522857a9, type: 3}
-  minPitch: 0.8
-  maxPitch: 1.25
 --- !u!50 &6468986204085822105
 Rigidbody2D:
   serializedVersion: 4
@@ -469,7 +473,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!82 &-5905263546864065350
 AudioSource:
   m_ObjectHideFlags: 0

@@ -16,18 +16,16 @@ public class PickUps : MonoBehaviour
     public PickupType pickupType; 
     public int healthRecover = 4; 
 
-    public Movement movement;
+    public Movement movement;    
 
     private AudioSource audioSource;
     public AudioClip CryxHSound, ShardsSound;
-    public float minPitch = 0.80f;
-    public float maxPitch = 1.25f;
 
-    //---------------------------------- V A R I A B L E S ----------------------------------------------------------------------------
+    //---------------------------------- A W A K E ----------------------------------------------------------------------------
     private void Awake()
     {
         audioSource = GetComponent<AudioSource>();
-        audioSource.volume = 0.5f;
+        audioSource.volume = 1f;
     }
 
     //---------------------------------- M E T H O D S ----------------------------------------------------------------------------
@@ -55,14 +53,13 @@ public class PickUps : MonoBehaviour
         if (movement != null && movement.currentHealth < movement.maxHealth) //si la vida actual es menor a la vida maxima
         {            
             movement.currentHealth += healthRecover; //recupera la vida correspondiente
-
-            if (movement.currentHealth > movement.maxHealth) //si supera la vida maxima
+            Debug.Log("Health collected. Current Health: " + movement.currentHealth);
+            audioSource.PlayOneShot(CryxHSound);
+            
+            if (movement.currentHealth > movement.maxHealth)
             {
-                movement.currentHealth = movement.maxHealth; //quita el restante 
+                movement.currentHealth = movement.maxHealth;
             }
-
-            audioSource.pitch = Random.Range(minPitch, maxPitch);
-            audioSource.PlayOneShot(CryxHSound); //sonido de curacion
 
             Destroy(gameObject);
         }
@@ -87,12 +84,17 @@ public class PickUps : MonoBehaviour
     {
         Movement movement = FindObjectOfType<Movement>(); //busca los scripts de ataque y movimiento
         Attack attack = FindObjectOfType<Attack>();
+
         if (movement != null)
         {
-            audioSource.pitch = Random.Range(minPitch, maxPitch);
-            audioSource.PlayOneShot(ShardsSound); //sonido de monedita
+            Debug.Log("Shards collected. Shards: " + movement.shards);
+            audioSource.PlayOneShot(ShardsSound);
             movement.shards++; //suma fragmentos y sube el ataque
             attack.damage = +5;
+        }
+        else
+        {
+            Debug.LogError("Movement or Attack component not found.");
         }
         Destroy(gameObject);
     }
