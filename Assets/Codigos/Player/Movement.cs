@@ -16,6 +16,7 @@ public class Movement : MonoBehaviour
     public GameObject DashEffect;
     public GameObject ShieldEffect;
     public GameObject BoostEffect;
+    public GameObject BlockEffect;
     private Animator animator;
     public Image health;
     public Image stamina;
@@ -31,10 +32,12 @@ public class Movement : MonoBehaviour
     public float shards;
     private float lastStaminaUseTime;
     public float staminaRecoveryDelay = 2f;
-    public float staminaRecoveryRate = 1f;
+    public float staminaRecoveryRate = 4f;
     public float dashStaminaCost = 2f;
+    public float damageReduction;
 
     public bool isDashing = false;
+    public bool isBlocking = false;
     [SerializeField]
     private float dashDuration;
     [SerializeField]
@@ -57,6 +60,7 @@ public class Movement : MonoBehaviour
         DashEffect.SetActive(false);
         ShieldEffect.SetActive(false);
         BoostEffect.SetActive(false);
+        BlockEffect.SetActive(false);
         rb2d = GetComponent<Rigidbody2D>();
         audioSource = GetComponent<AudioSource>();
         audioSource.volume = 0.75f;
@@ -123,6 +127,7 @@ public class Movement : MonoBehaviour
             audioSource.PlayOneShot(dashSound);
             StartCoroutine(Dash(dashDirection));
         }
+        HandleBlockInput();
     }
 
     
@@ -159,20 +164,49 @@ public class Movement : MonoBehaviour
     }
     public void TakeDamage(float damage, Vector2 impactSource, float knockbackForce)
     {
-        if (isDashing == false && !habilidades.isBlocking) 
+        bool applyDamage = true;
+
+        if (isBlocking)
+        {
+            float actualDamage = damage * damageReduction;
+            currentHealth -= actualDamage;
+            ConsumeStamina(3f);
+        }
+        else if (isDashing == false && !habilidades.isImmune)
         {
             Vector2 knockbackDirection = (transform.position - (Vector3)impactSource).normalized;
             audioSource.pitch = Random.Range(minPitch, maxPitch);
             audioSource.PlayOneShot(playerHurtSound);
             ApplyKnockback(knockbackDirection, knockbackForce);
-            currentHealth -= damage;
+
+            float actualDamage = damage;
+
+            //si el buff está activo y el daño sería fatal
+            if (habilidades.IsRevivalActive() && currentHealth - actualDamage <= 0)
+            {
+                //calcular la restauración de salud y stamina
+                float healthRestore = maxHealth * habilidades.GetHealthRestorePercentage();
+                float staminaRestore = maxStamina * habilidades.GetStaminaRestorePercentage();
+
+                //restaurar salud y stamina, y evitar la muerte
+                currentHealth = Mathf.Min(currentHealth + healthRestore, maxHealth);
+                currentStamina = Mathf.Min(currentStamina + staminaRestore, maxStamina);
+
+                //cancelar el daño
+                applyDamage = false;
+            }
+            else
+            {
+                currentHealth -= actualDamage;
+            }
         }
 
-        if (currentHealth <= 0)
+        //si no hay buff activo y la salud llega a 0, el personaje muere
+        if (applyDamage && currentHealth <= 0)
         {
             Die();
         }
-        
+
     }
     public void UpdateHealthBar()
     {
@@ -190,6 +224,47 @@ public class Movement : MonoBehaviour
         GetComponent<Rigidbody2D>().AddForce(direction * force, ForceMode2D.Impulse);
     }
 
+    void HandleBlockInput()
+    {
+        if (Input.GetKey(KeyCode.LeftShift)) 
+        {
+            StartBlocking();
+        }
+        else
+        {
+            StopBlocking();
+        }
+    }
+
+    void StartBlocking()
+    {
+        if (!isBlocking)
+        {
+            BlockEffect.SetActive(true);
+            isBlocking = true;
+            speed *= 0.6f;
+            damageReduction = 0.7f;
+
+            float horizontal = Input.GetAxisRaw("Horizontal");
+            float vertical = Input.GetAxisRaw("Vertical");
+            if (horizontal != 0 || vertical != 0)
+            {
+                lastH = horizontal;
+                lastV = vertical;
+            }
+        }
+    }
+
+    void StopBlocking()
+    {
+        if (isBlocking)
+        {
+            BlockEffect.SetActive(false);
+            isBlocking = false;
+            speed = 5f;
+            damageReduction = 0f;
+        }
+    }
 
 
     private void Die()
