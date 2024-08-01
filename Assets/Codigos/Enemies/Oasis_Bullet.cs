@@ -7,11 +7,11 @@ public class Oasis_Bullet : MonoBehaviour
     //--------------------------------- V A R I A B L E S ---------------------------------//
 
     public float lifetime = 10f;                  //vida de la bala
-    public float bulletSpeed;                     //velocidad de la bala
-    private Vector2 direction;                    //dirección de la bala
+    public float bulletSpeed = 15f;               //velocidad de la bala
+    private Vector3 bulletDirection;              //dirección de la bala
 
-    public float damage = 5f;                     //daño que hace la bala
-    public float knockbackForceBullet = 10f;      //retroceso aplicado POR LA BALA -> AL JUGADOR
+    public float damage = 10f;                     //daño que hace la bala
+    public float knockbackForceBullet = 30f;      //retroceso aplicado POR LA BALA -> AL JUGADOR
 
 
     //------------------------------------ V. S T A R T ---------------------------------//
@@ -23,29 +23,30 @@ public class Oasis_Bullet : MonoBehaviour
     //----------------------------------- V. U P D A T E ---------------------------------//
     void Update()
     {
-        transform.position += transform.up * bulletSpeed * Time.deltaTime;    //movimiento de la bala
+        transform.position += bulletSpeed * Time.deltaTime * bulletDirection;    //movimiento de la bala
     }
 
 
     //--------------------------------- M E T H O D S ---------------------------------//
 
-    //--- SETEAMOS DIRECCIÓN Y VELOCIDAD ---//
-    public void Initialize(Vector2 dir, float speed)
+    //--- SETEAMOS DIRECCIÓN DE LA BALA SEGÚN EL VECTOR 3 QUE OBTENEMOS DEL SS ---//
+    public void Shooting(Vector3 dir)
     {
-        direction = dir;
-        bulletSpeed = speed;
+        bulletDirection = dir;
     }
 
 
     //--- HACER DAÑO AL TOCAR AL JUGADOR ---//
     private void OnCollisionEnter2D(Collision2D collision)                      //detecta colisión
     {
-        if (collision.gameObject.layer == 6)                                    //si colisiona con la capa del player
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Player"))      //si colisiona con la capa del player
         {
-            Vector2 impactSource = transform.position;
-            float knockbackForce = 10f;
-            collision.gameObject.GetComponent<Movement>().TakeDamage(damage, impactSource, knockbackForce);   //le hace daño al jugador
+            Vector2 impactSource = transform.position;                          //obtenemos la posición del impacto
+
+            //llamamos al método TakeDamage DEL JUGADOR para pasarle el daño y el lugar de impacto
+            collision.gameObject.GetComponent<Movement>().TakeDamage(damage, impactSource, knockbackForceBullet);
         }
-        Destroy(gameObject);                                                    //por haber detectado colisión, se autodestruye
+
+        Destroy(gameObject);                                                    //por haber colisionado, se autodestruye
     }
 }

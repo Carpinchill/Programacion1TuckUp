@@ -7,11 +7,11 @@ public class SS_Bullet : MonoBehaviour
     //--------------------------------- V A R I A B L E S ---------------------------------//
 
     public float lifetime = 10f;                  //vida de la bala
-    public float bulletSpeed = 10f;               //velocidad de la bala
+    public float bulletSpeed = 11f;               //velocidad de la bala
     private Vector3 bulletDirection;              //dirección de la bala ??
 
     public float damage = 5f;                     //daño que hace la bala
-    public float knockbackForceBullet = 120f;      //retroceso aplicado POR LA BALA -> AL JUGADOR
+    public float knockbackForceBullet = 20f;      //retroceso aplicado POR LA BALA -> AL JUGADOR
 
 
     //------------------------------------ V. S T A R T ---------------------------------//
@@ -29,7 +29,7 @@ public class SS_Bullet : MonoBehaviour
 
     //--------------------------------- M E T H O D S ---------------------------------//
 
-    //--- SETEAMOS DIRECCIÓN DE LA BALA SEGÚN EL VECTOR 3 QUE OBTENEMOS DEL ENEMY Y ---//
+    //--- SETEAMOS DIRECCIÓN DE LA BALA SEGÚN EL VECTOR 3 QUE OBTENEMOS DEL SS ---//
     public void Shooting(Vector3 dir)
     {
         bulletDirection = dir;

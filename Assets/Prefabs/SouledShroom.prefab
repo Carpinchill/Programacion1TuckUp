@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7539731084510659538}
   m_Layer: 7
-  m_Name: BulletSpawn
+  m_Name: SSBulletSpawn
   m_TagString: Untagged
   m_Icon: {fileID: 6519382022992737161, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -83,9 +83,9 @@ MonoBehaviour:
   maxHealth: 11
   player: {fileID: 0}
   playerAttack: {fileID: 0}
-  playerNear: 10
-  EYBullet: {fileID: 2849951106810800177, guid: 0a8c539369aa7ec4ea822ba1eecb77af, type: 3}
-  EYBulletSpawn: {fileID: 7539731084510659538}
+  playerNear: 7
+  SSBullet: {fileID: 2849951106810800177, guid: 0a8c539369aa7ec4ea822ba1eecb77af, type: 3}
+  SSBulletSpawn: {fileID: 7539731084510659538}
   shardPrefab: {fileID: 4939539442710071618, guid: b9e2fbb006045494fa4691c5a070e6f2, type: 3}
   bulletFrequency: 3
   enemyHurtSound: {fileID: 8300000, guid: 9282d185e4725164fa70321bb50da1e4, type: 3}

@@ -34,11 +34,15 @@ public class OASIS : MonoBehaviour
     private Vector3 lastPosition;
 
     private AudioSource audioSource;
-    public AudioClip enemyHurtSound, enemyDeathSound;
+    public AudioClip enemyHurtSound, enemyDeathSound, shootSound;
     public float minPitch = 0.80f;
     public float maxPitch = 1.25f;
+       
 
+    public Oasis_Bullet OABullet;       //bullet prefab
+    public Transform OABulletSpawn;     //spawn point
 
+ 
     //--------------------------------- A W A K E ---------------------------------//
     private void Awake()
     {
@@ -114,7 +118,7 @@ public class OASIS : MonoBehaviour
         {
             foreach (Oasis_Gun gun in EZGuns)
             {
-                gun.Shoot();                                    //dispara desde cada spawn point
+                Shoot();                                    //dispara desde cada spawn point
             }
             yield return new WaitForSeconds(shotCooldown);      //espera antes del próximo disparo
         }
@@ -135,6 +139,20 @@ public class OASIS : MonoBehaviour
 
         //actualiza la última posición
         lastPosition = transform.position;
+    }
+
+    //--- DISPARAR ---//
+    void Shoot()
+    {
+        if (OABulletSpawn != null)
+        {
+            Vector3 bulletToPlayer = (player.transform.position - OABulletSpawn.position).normalized;
+            Oasis_Bullet bulletNew = Instantiate(OABullet, OABulletSpawn.position, OABulletSpawn.rotation);
+            bulletNew.Shooting(bulletToPlayer);
+
+            audioSource.pitch = Random.Range(minPitch, maxPitch);
+            audioSource.PlayOneShot(shootSound);
+        }
     }
 
     void Push()

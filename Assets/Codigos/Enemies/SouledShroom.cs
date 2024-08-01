@@ -11,10 +11,10 @@ public class SouledShroom : MonoBehaviour
 
     public Movement player;             //ref al player (posición para takedamage
     public Attack playerAttack;         //ref al script del ataque del jugador
-    public float playerNear = 10f;      //cuán cerca tiene que estar el jugador
+    public float playerNear = 7f;      //cuán cerca tiene que estar el jugador
 
-    public SS_Bullet EYBullet;          //ref al prefab de la bala
-    public Transform EYBulletSpawn;     //ref al transform del bullet spawn point
+    public SS_Bullet SSBullet;          //ref al prefab de la bala
+    public Transform SSBulletSpawn;     //ref al transform del bullet spawn point
     public GameObject shardPrefab;      //ref al prefab de los shards    
 
     public float bulletFrequency = 3f;  //cada cuánto se dispara cada bala
@@ -60,10 +60,10 @@ public class SouledShroom : MonoBehaviour
     //--- DISPARAR ---//
     void Shoot()
     {
-        if (EYBulletSpawn != null)
+        if (SSBulletSpawn != null)
         {
-            Vector3 bulletToPlayer = (player.transform.position - EYBulletSpawn.position).normalized;
-            SS_Bullet bulletNew = Instantiate(EYBullet, EYBulletSpawn.position, EYBulletSpawn.rotation);
+            Vector3 bulletToPlayer = (player.transform.position - SSBulletSpawn.position).normalized;
+            SS_Bullet bulletNew = Instantiate(SSBullet, SSBulletSpawn.position, SSBulletSpawn.rotation);
             bulletNew.Shooting(bulletToPlayer);
 
             audioSource.pitch = Random.Range(minPitch, maxPitch);

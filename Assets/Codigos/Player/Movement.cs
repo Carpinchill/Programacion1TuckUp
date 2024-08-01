@@ -63,7 +63,7 @@ public class Movement : MonoBehaviour
         BlockEffect.SetActive(false);
         rb2d = GetComponent<Rigidbody2D>();
         audioSource = GetComponent<AudioSource>();
-        audioSource.volume = 0.75f;
+        audioSource.volume = 0.5f;
         currentHealth = maxHealth;
         currentStamina = maxStamina;
         animator = GetComponent<Animator>();
