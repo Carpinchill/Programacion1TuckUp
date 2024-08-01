@@ -1,0 +1,883 @@
+fileFormatVersion: 2
+guid: e8f98df832501ba4aa20408afd28aad3
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: TileMapsomenos_2
+      rect:
+        serializedVersion: 2
+        x: 422
+        y: 995
+        width: 69
+        height: 65
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5c426e68c26a5fc46bead3c2cda36d9f
+      internalID: -788308305
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TileMapsomenos_3
+      rect:
+        serializedVersion: 2
+        x: 569
+        y: 915
+        width: 309
+        height: 135
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cbc1b1b782d660e47aa1fdd8275544bf
+      internalID: -71293019
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TileMapsomenos_4
+      rect:
+        serializedVersion: 2
+        x: 1275
+        y: 918
+        width: 195
+        height: 134
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dbd9e69aef5acea4eb176d2f4000e798
+      internalID: 820793925
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TileMapsomenos_6
+      rect:
+        serializedVersion: 2
+        x: 1675
+        y: 858
+        width: 187
+        height: 192
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cb4bb5d06bfafe144abdce1638a0da61
+      internalID: 722288093
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TileMapsomenos_10
+      rect:
+        serializedVersion: 2
+        x: 1601
+        y: 915
+        width: 43
+        height: 114
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 071e6d97ba69ecd42b9488b8eb32aa5b
+      internalID: 432203447
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TileMapsomenos_13
+      rect:
+        serializedVersion: 2
+        x: 391
+        y: 778
+        width: 133
+        height: 146
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8197dbd54148aa440ab8efc88156477c
+      internalID: -1103885324
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TileMapsomenos_19
+      rect:
+        serializedVersion: 2
+        x: 567
+        y: 677
+        width: 336
+        height: 189
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1d8fcd7b465a2664c98a357cdb175ba8
+      internalID: 1686630872
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TileMapsomenos_20
+      rect:
+        serializedVersion: 2
+        x: 1333
+        y: 730
+        width: 94
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8870c1965b3aab44fbce9af8972ee653
+      internalID: -1727491145
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TileMapsomenos_23
+      rect:
+        serializedVersion: 2
+        x: 19
+        y: 772
+        width: 295
+        height: 285
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 130e2a00e15f87349bf423c70bcd26a4
+      internalID: 1352345366
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TileMapsomenos_24
+      rect:
+        serializedVersion: 2
+        x: 1464
+        y: 608
+        width: 167
+        height: 184
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 882ab8948fe399c4785f5fe0182012a5
+      internalID: 843084650
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TileMapsomenos_25
+      rect:
+        serializedVersion: 2
+        x: 20
+        y: 664
+        width: 176
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b20c3bd4093d37747a44073cca6bf62b
+      internalID: 82814888
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TileMapsomenos_26
+      rect:
+        serializedVersion: 2
+        x: 413
+        y: 648
+        width: 92
+        height: 81
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a6e07b3b618a8fb4b875ff8e05d8516b
+      internalID: -1501904013
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TileMapsomenos_27
+      rect:
+        serializedVersion: 2
+        x: 1105
+        y: 591
+        width: 169
+        height: 107
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 24ff936aadcf35344b2bfa94de6984dc
+      internalID: 1811281737
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TileMapsomenos_28
+      rect:
+        serializedVersion: 2
+        x: 1322
+        y: 589
+        width: 133
+        height: 113
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 618af9287bbec7048a05194f74cb9943
+      internalID: 1884614750
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TileMapsomenos_29
+      rect:
+        serializedVersion: 2
+        x: 1105
+        y: 435
+        width: 163
+        height: 106
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 66fb4c46e576f12499619159fe35a3fc
+      internalID: 247122810
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TileMapsomenos_30
+      rect:
+        serializedVersion: 2
+        x: 1310
+        y: 428
+        width: 153
+        height: 126
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 31f81abbad701734da41ff1cb61c89bc
+      internalID: 606067199
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TileMapsomenos_31
+      rect:
+        serializedVersion: 2
+        x: 1496
+        y: 443
+        width: 146
+        height: 163
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c112e60c15482074ba3bd446f4a81eac
+      internalID: -624150331
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TileMapsomenos_32
+      rect:
+        serializedVersion: 2
+        x: 1685
+        y: 454
+        width: 169
+        height: 180
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c2e6f6db4e1c2c842af3c61e07797187
+      internalID: 1210180322
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TileMapsomenos_33
+      rect:
+        serializedVersion: 2
+        x: 43
+        y: 14
+        width: 197
+        height: 391
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 68c243912ec838f428cda42c3697783e
+      internalID: 1317631173
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TileMapsomenos_34
+      rect:
+        serializedVersion: 2
+        x: 298
+        y: 21
+        width: 124
+        height: 382
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5b547c6638090f24bb5678b25669c786
+      internalID: -1945644904
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TileMapsomenos_37
+      rect:
+        serializedVersion: 2
+        x: 486
+        y: 277
+        width: 84
+        height: 122
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f85909eaf56ca4b418646f36ef69c85d
+      internalID: -1550234889
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TileMapsomenos_42
+      rect:
+        serializedVersion: 2
+        x: 644
+        y: 309
+        width: 48
+        height: 113
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b2c6a77cad4c49845baf6e440a316b12
+      internalID: -463979692
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TileMapsomenos_43
+      rect:
+        serializedVersion: 2
+        x: 781
+        y: 104
+        width: 108
+        height: 250
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d960f21726b50514d8fd8267d7a51dc3
+      internalID: -100497065
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TileMapsomenos_44
+      rect:
+        serializedVersion: 2
+        x: 476
+        y: 98
+        width: 103
+        height: 169
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f7ef3dd77176dcc4093c9983627af998
+      internalID: -1296966638
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TileMapsomenos_47
+      rect:
+        serializedVersion: 2
+        x: 637
+        y: 157
+        width: 68
+        height: 142
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c71d0ac0e24ef1c499a27d28af90180f
+      internalID: -913473923
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TileMapsomenos_48
+      rect:
+        serializedVersion: 2
+        x: 1444
+        y: 231
+        width: 93
+        height: 79
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3d6c567d310d5c64fae072973052a5b5
+      internalID: 1187420604
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TileMapsomenos_49
+      rect:
+        serializedVersion: 2
+        x: 1582
+        y: 247
+        width: 72
+        height: 57
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8460fa7dd6ca5794aac729459582a011
+      internalID: -1773427466
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TileMapsomenos_52
+      rect:
+        serializedVersion: 2
+        x: 1048
+        y: 29
+        width: 168
+        height: 187
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c2cae3ff6fe1a2e429cb762382f34ed0
+      internalID: 356439736
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TileMapsomenos_53
+      rect:
+        serializedVersion: 2
+        x: 1294
+        y: 200
+        width: 84
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 33f0e69bc8977c5468c3ab8ce58a5996
+      internalID: -258048037
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TileMapsomenos_54
+      rect:
+        serializedVersion: 2
+        x: 1474
+        y: 69
+        width: 93
+        height: 137
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 03b4f2bba217c1c4fb3b740a4c5940b7
+      internalID: 294596621
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TileMapsomenos_55
+      rect:
+        serializedVersion: 2
+        x: 1605
+        y: 63
+        width: 93
+        height: 155
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c38b3dfea35b4c44ab1f22672d57e03a
+      internalID: -154454554
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TileMapsomenos_61
+      rect:
+        serializedVersion: 2
+        x: 1265
+        y: 71
+        width: 166
+        height: 103
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 77e51588e96602c4bb2a26644f50fa0a
+      internalID: -1532299562
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TileMapsomenos_62
+      rect:
+        serializedVersion: 2
+        x: 638
+        y: 64
+        width: 62
+        height: 68
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ee12d5e2b26330143b781eb6f3991358
+      internalID: 761542429
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      TileMapsomenos_0: 1626206379
+      TileMapsomenos_1: -2026782499
+      TileMapsomenos_10: 432203447
+      TileMapsomenos_11: -766503372
+      TileMapsomenos_12: -442748227
+      TileMapsomenos_13: -1103885324
+      TileMapsomenos_14: 1897138181
+      TileMapsomenos_15: 1539376106
+      TileMapsomenos_16: 8564147
+      TileMapsomenos_17: -1123685744
+      TileMapsomenos_18: -207136168
+      TileMapsomenos_19: 1686630872
+      TileMapsomenos_2: -788308305
+      TileMapsomenos_20: -1727491145
+      TileMapsomenos_21: 25159261
+      TileMapsomenos_22: -341223155
+      TileMapsomenos_23: 1352345366
+      TileMapsomenos_24: 843084650
+      TileMapsomenos_25: 82814888
+      TileMapsomenos_26: -1501904013
+      TileMapsomenos_27: 1811281737
+      TileMapsomenos_28: 1884614750
+      TileMapsomenos_29: 247122810
+      TileMapsomenos_3: -71293019
+      TileMapsomenos_30: 606067199
+      TileMapsomenos_31: -624150331
+      TileMapsomenos_32: 1210180322
+      TileMapsomenos_33: 1317631173
+      TileMapsomenos_34: -1945644904
+      TileMapsomenos_35: 990281984
+      TileMapsomenos_36: 1737490666
+      TileMapsomenos_37: -1550234889
+      TileMapsomenos_38: -1728145678
+      TileMapsomenos_39: -375256129
+      TileMapsomenos_4: 820793925
+      TileMapsomenos_40: -2025643906
+      TileMapsomenos_41: 808118090
+      TileMapsomenos_42: -463979692
+      TileMapsomenos_43: -100497065
+      TileMapsomenos_44: -1296966638
+      TileMapsomenos_45: -597906309
+      TileMapsomenos_46: -1050964871
+      TileMapsomenos_47: -913473923
+      TileMapsomenos_48: 1187420604
+      TileMapsomenos_49: -1773427466
+      TileMapsomenos_5: -802465691
+      TileMapsomenos_50: -368961464
+      TileMapsomenos_51: -597152153
+      TileMapsomenos_52: 356439736
+      TileMapsomenos_53: -258048037
+      TileMapsomenos_54: 294596621
+      TileMapsomenos_55: -154454554
+      TileMapsomenos_56: 1165395444
+      TileMapsomenos_57: 1362138860
+      TileMapsomenos_58: -761154845
+      TileMapsomenos_59: 418174360
+      TileMapsomenos_6: 722288093
+      TileMapsomenos_60: -652606830
+      TileMapsomenos_61: -1532299562
+      TileMapsomenos_62: 761542429
+      TileMapsomenos_7: 467653256
+      TileMapsomenos_8: -1360994472
+      TileMapsomenos_9: 744683481
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

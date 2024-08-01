@@ -11,12 +11,20 @@ public class Habilidades : MonoBehaviour
 
     public Image attackBoostCooldownImage;
     public Image blockCooldownImage;
+    public Image revivalCooldownImage;
 
+    public float revivalDuration = 5f;
+    public float healthRestorePercentage = 0.3f;
+    public float staminaRestorePercentage = 0.7f;
+    public float revivalCooldown = 220f;
+    private float revivalEndTime = 0f;
     public float attackBoostDuration = 5f;
     public float attackBoostMultiplier = 2f;
     public float lifeCost = 4f;
-    public float blockDuration = 3f;
-    public bool isBlocking;
+    public float immuneDuration = 3f;
+
+    public bool isRevivalActive = false;  
+    public bool isImmune;
 
     [SerializeField]
     private float attackBoostCooldown = 8f;
@@ -33,6 +41,10 @@ public class Habilidades : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Q) && blockCooldownImage.fillAmount == 0)
         {
             StartCoroutine(BlockNextHit());
+        }
+        if (Input.GetKeyDown(KeyCode.R) && revivalCooldownImage.fillAmount == 0)
+        {
+            StartCoroutine(ActivateRevival());
         }
     }
 
@@ -73,20 +85,20 @@ public class Habilidades : MonoBehaviour
     {
         blockCooldownImage.fillAmount = 1;
         ShieldEffect.SetActive(true);
-        float totalCooldown = blockDuration + blockCooldown;
+        float totalCooldown = immuneDuration + blockCooldown;
         float elapsed = 0f;       
         while (elapsed < totalCooldown)
         {
-            if (elapsed < blockDuration)
+            if (elapsed < immuneDuration)
             {
-                isBlocking = true;
+                isImmune = true;
                 yield return null;
             }
             else
             {
                 ShieldEffect.SetActive(false);
-                isBlocking = false;
-                blockCooldownImage.fillAmount = 1 - ((elapsed - blockDuration) / blockCooldown);
+                isImmune = false;
+                blockCooldownImage.fillAmount = 1 - ((elapsed - immuneDuration) / blockCooldown);
                 yield return null;
             }
 
@@ -94,5 +106,37 @@ public class Habilidades : MonoBehaviour
         }
 
         blockCooldownImage.fillAmount = 0;
+    }
+
+    IEnumerator ActivateRevival()
+    {
+        if (isRevivalActive)
+        {
+            revivalCooldownImage.fillAmount = 1 - (Time.time - revivalEndTime) / revivalCooldown;
+            if (Time.time >= revivalEndTime)
+            {
+                isRevivalActive = false;
+                revivalCooldownImage.fillAmount = 0;
+            }
+        }
+        isRevivalActive = true;
+        revivalEndTime = Time.time + revivalCooldown + revivalDuration; 
+        yield return new WaitForSeconds(revivalDuration);
+
+    }
+
+    public bool IsRevivalActive()
+    {
+        return isRevivalActive;
+    }
+
+    public float GetHealthRestorePercentage()
+    {
+        return healthRestorePercentage;
+    }
+
+    public float GetStaminaRestorePercentage()
+    {
+        return staminaRestorePercentage;
     }
 }
