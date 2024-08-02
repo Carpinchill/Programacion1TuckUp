@@ -24,15 +24,15 @@ public class SouledShroom : MonoBehaviour
 
     private AudioSource audioSource;
     public AudioClip enemyHurtSound, enemyDeathSound, shootSound;
-    public float minPitch = 0.80f;
-    public float maxPitch = 1.25f;
+    public float minPitch = 1f;
+    public float maxPitch = 1.43f;
 
     //--------------------------------- V. A W A K E ---------------------------------//
 
     private void Awake()
     {
         audioSource = GetComponent<AudioSource>();
-        audioSource.volume = 0.5f;
+        audioSource.volume = 1f;
     }
 
     //--------------------------------- V. S T A R T ---------------------------------//

@@ -44,7 +44,7 @@ public class GlassKnight : MonoBehaviour
     private void Awake()
     {
         audioSource = GetComponent<AudioSource>();
-        audioSource.volume = 0.5f;
+        audioSource.volume = 1f;
     }
 
     //--------------------------------- V. S T A R T ---------------------------------//

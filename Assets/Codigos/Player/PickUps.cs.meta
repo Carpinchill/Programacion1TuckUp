@@ -3,7 +3,10 @@ guid: 3ff261518ea1dd542bf2a8024d99831d
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - movement: {instanceID: 0}
+  - CryxHSound: {fileID: 8300000, guid: f17d96b6407904043875b19dd7150666, type: 3}
+  - ShardsSound: {fileID: 8300000, guid: 0a606172a2b94e74eb77863f454c206e, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

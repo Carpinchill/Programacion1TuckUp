@@ -177,8 +177,8 @@ MonoBehaviour:
   enemyHurtSound: {fileID: 8300000, guid: 9282d185e4725164fa70321bb50da1e4, type: 3}
   enemyDeathSound: {fileID: 8300000, guid: 9839b98707e00c24daa58c224ab6740c, type: 3}
   shootSound: {fileID: 8300000, guid: 8be2fc8ba9eef8b43904101cd82f8c9d, type: 3}
-  minPitch: 0.8
-  maxPitch: 1.25
+  minPitch: 1
+  maxPitch: 1.43
 --- !u!212 &8264347447823179288
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -275,10 +275,10 @@ AudioSource:
   m_GameObject: {fileID: 8867776753774189617}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: -1547752865513218000, guid: a126259c15649c24b83034884a9c8a3b, type: 2}
   m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
-  m_Volume: 0.75
+  m_PlayOnAwake: 0
+  m_Volume: 1
   m_Pitch: 1
   Loop: 0
   Mute: 0

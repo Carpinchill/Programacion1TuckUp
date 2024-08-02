@@ -47,10 +47,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2eebd384e23691c4c949a8a2a4dacb16, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lifetime: 10
-  bulletSpeed: 15
+  lifetime: 6
+  bulletSpeed: 9
   damage: 5
-  knockbackForceBullet: 20
+  knockbackForceBullet: 5
 --- !u!212 &8534352799257758108
 SpriteRenderer:
   m_ObjectHideFlags: 0

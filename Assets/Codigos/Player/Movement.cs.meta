@@ -3,7 +3,18 @@ guid: b6f5e1bd655397b459f6497a73e9bbc7
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - attack: {instanceID: 0}
+  - habilidades: {instanceID: 0}
+  - DashEffect: {instanceID: 0}
+  - ShieldEffect: {instanceID: 0}
+  - BoostEffect: {instanceID: 0}
+  - BlockEffect: {instanceID: 0}
+  - health: {instanceID: 0}
+  - stamina: {instanceID: 0}
+  - shardsCounter: {instanceID: 0}
+  - playerHurtSound: {fileID: 8300000, guid: aaaa508294dd1a944a04e745d59f6471, type: 3}
+  - dashSound: {fileID: 8300000, guid: ac14f9d23cf67654dae43409db0b034d, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

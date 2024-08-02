@@ -3191,8 +3191,8 @@ MonoBehaviour:
   pickupType: 1
   healthRecover: 4
   movement: {fileID: 1074903711}
-  CryxHSound: {fileID: 0}
-  ShardsSound: {fileID: 0}
+  CryxHSound: {fileID: 8300000, guid: f17d96b6407904043875b19dd7150666, type: 3}
+  ShardsSound: {fileID: 8300000, guid: 0a606172a2b94e74eb77863f454c206e, type: 3}
 --- !u!61 &584223483
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3247,9 +3247,9 @@ AudioSource:
   m_GameObject: {fileID: 584223479}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 2409994510168075173, guid: a126259c15649c24b83034884a9c8a3b, type: 2}
   m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -3594,7 +3594,7 @@ GameObject:
   - component: {fileID: 624482447}
   - component: {fileID: 624482446}
   m_Layer: 0
-  m_Name: TileMapsomenos_3
+  m_Name: ChargedWaterr
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9992,7 +9992,7 @@ AudioSource:
   m_GameObject: {fileID: 1074903710}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: -1547752865513218000, guid: a126259c15649c24b83034884a9c8a3b, type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 0.5
@@ -10276,10 +10276,10 @@ AudioSource:
   m_GameObject: {fileID: 1121766188}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: -1547752865513218000, guid: a126259c15649c24b83034884a9c8a3b, type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 0.75
+  m_Volume: 1
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -11745,8 +11745,12 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -2938235499355280421, guid: 35c15cf9f09273c488d98ca1c33ebddc, type: 3}
       propertyPath: m_PlayOnAwake
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -2938235499355280421, guid: 35c15cf9f09273c488d98ca1c33ebddc, type: 3}
+      propertyPath: OutputAudioMixerGroup
+      value: 
+      objectReference: {fileID: 2409994510168075173, guid: a126259c15649c24b83034884a9c8a3b, type: 2}
     - target: {fileID: 928784038045180904, guid: 35c15cf9f09273c488d98ca1c33ebddc, type: 3}
       propertyPath: attack
       value: 
@@ -37532,10 +37536,10 @@ AudioSource:
   m_GameObject: {fileID: 2100512822}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: -4198078403016271356, guid: a126259c15649c24b83034884a9c8a3b, type: 2}
   m_audioClip: {fileID: 8300000, guid: b7f47bf722e796b4aa1552eae52d8c19, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.2
+  m_Volume: 1
   m_Pitch: 1
   Loop: 1
   Mute: 0

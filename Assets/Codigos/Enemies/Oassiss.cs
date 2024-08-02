@@ -33,18 +33,18 @@ public class Oassiss : MonoBehaviour
     public OA_Bullet OABullet;                  //ref al prefab de la bala
     public Transform OABulletSpawn;             //ref al transform del bullet spawn point
     public float bulletFrequency = 1f;          //cada cuánto se dispara cada bala
-    private float lastShot = 0f;                //tiempo desde el último disparo
+    //private float lastShot = 0f;                //tiempo desde el último disparo
 
     private AudioSource audioSource;
     public AudioClip enemyHurtSound, enemyDeathSound, shootSound, wallDestroySound;    
-    public float minPitch = 0.66f;
-    public float maxPitch = 1.33f;    
+    public float minPitch = 0.33f;
+    public float maxPitch = 1f;    
 
     //--------------------------------- V. A W A K E ---------------------------------//
     private void Awake()
     {
         audioSource = GetComponent<AudioSource>();
-        audioSource.volume = 0.75f;
+        audioSource.volume = 1f;
     }
 
     //--------------------------------- V. S T A R T ---------------------------------//

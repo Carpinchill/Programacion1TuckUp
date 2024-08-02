@@ -3,7 +3,13 @@ guid: ab745dbedc2443b4f8a01b5d9082e4ca
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - player: {instanceID: 0}
+  - playerAttack: {instanceID: 0}
+  - shardPrefab: {instanceID: 0}
+  - healthBar: {instanceID: 0}
+  - enemyHurtSound: {fileID: 8300000, guid: 9282d185e4725164fa70321bb50da1e4, type: 3}
+  - enemyDeathSound: {fileID: 8300000, guid: 9839b98707e00c24daa58c224ab6740c, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
