@@ -16,6 +16,8 @@ public class SouledShroom : MonoBehaviour
     public SS_Bullet SSBullet;          //ref al prefab de la bala
     public Transform SSBulletSpawn;     //ref al transform del bullet spawn point
     public GameObject shardPrefab;      //ref al prefab de los shards    
+    public Transform healthBar;                 //ref a la barra de vida
+    private Vector3 healthBarOriginalScale;     //ref a la escala original de la barra de vida
 
     public float bulletFrequency = 3f;  //cada cuánto se dispara cada bala
     private float lastShot = 0f;        //tiempo desde el último disparo
@@ -38,6 +40,7 @@ public class SouledShroom : MonoBehaviour
     private void Start()
     {
         currentHealth = maxHealth;
+        healthBarOriginalScale = healthBar.localScale;
     }
 
     //--------------------------------- V. U P D A T E ---------------------------------//
@@ -75,7 +78,7 @@ public class SouledShroom : MonoBehaviour
     public void ReceiveDamage(float damage, Vector2 knockbackDirection, float knockbackForce)
     {
         currentHealth -= damage;  //restamos el daño a la salud del enemigo
-
+        UpdateHealthBar();
         audioSource.pitch = Random.Range(minPitch, maxPitch);
         audioSource.PlayOneShot(enemyHurtSound);
 
@@ -96,5 +99,10 @@ public class SouledShroom : MonoBehaviour
 
             Destroy(gameObject);  //muere
         }
+    }
+    void UpdateHealthBar()
+    {
+        float healthRatio = currentHealth / maxHealth;
+        healthBar.localScale = new Vector3(healthBarOriginalScale.x * healthRatio, healthBarOriginalScale.y, healthBarOriginalScale.z);
     }
 }

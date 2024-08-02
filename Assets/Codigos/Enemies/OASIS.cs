@@ -32,6 +32,8 @@ public class OASIS : MonoBehaviour
     public float lastH, lastV;
     private Animator animatorOasis;
     private Vector3 lastPosition;
+    public Transform healthBar;                 //ref a la barra de vida
+    private Vector3 healthBarOriginalScale;     //ref a la escala original de la barra de vida
 
     private AudioSource audioSource;
     public AudioClip enemyHurtSound, enemyDeathSound, shootSound;
@@ -60,6 +62,7 @@ public class OASIS : MonoBehaviour
         animatorOasis = GetComponent<Animator>();
         lastPosition = transform.position;
         currentHealth = maxHealth;
+        healthBarOriginalScale = healthBar.localScale;
     }
     //--------------------------------- L. U P D A T E ---------------------------------//
 
@@ -202,7 +205,7 @@ public class OASIS : MonoBehaviour
     public void ReceiveDamage(float damage, Vector2 knockbackDirection, float knockbackForce)
     {
         currentHealth -= damage;  //restamos el daño a la salud del enemigo
-
+        UpdateHealthBar();
         audioSource.pitch = Random.Range(minPitch, maxPitch);
         audioSource.PlayOneShot(enemyHurtSound);
 
@@ -220,5 +223,10 @@ public class OASIS : MonoBehaviour
             Destroy(gameObject);  //muere
            
         }
+    }
+    void UpdateHealthBar()
+    {
+        float healthRatio = currentHealth / maxHealth;
+        healthBar.localScale = new Vector3(healthBarOriginalScale.x * healthRatio, healthBarOriginalScale.y, healthBarOriginalScale.z);
     }
 }

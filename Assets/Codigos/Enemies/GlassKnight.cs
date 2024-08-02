@@ -17,6 +17,8 @@ public class GlassKnight : MonoBehaviour
     public Movement player;                     //ref al script del jugador
     public Attack playerAttack;                 //ref al script del ataque del jugador   
     public GameObject shardPrefab;              //ref al prefab de los shards
+    public Transform healthBar;                 //ref a la barra de vida
+    private Vector3 healthBarOriginalScale;     //ref a la escala original de la barra de vida
 
     public Transform[] waypoints;               //array para almacenar waypoints
     int currentWaypoint = 0;                    //waypoint actual
@@ -53,6 +55,7 @@ public class GlassKnight : MonoBehaviour
         animatorGK = GetComponent<Animator>();
         lastPosition = transform.position;
         currentHealth = maxHealth;
+        healthBarOriginalScale = healthBar.localScale;
     }
 
 
@@ -179,7 +182,7 @@ public class GlassKnight : MonoBehaviour
     public void ReceiveDamage(float damage, Vector2 knockbackDirection, float knockbackForce)
     {
         currentHealth -= damage;  // Restamos el daño a la salud del enemigo
-
+        UpdateHealthBar();
         audioSource.pitch = Random.Range(minPitch, maxPitch);
         audioSource.PlayOneShot(enemyHurtSound);
 
@@ -200,5 +203,10 @@ public class GlassKnight : MonoBehaviour
 
             Destroy(gameObject);  // Muere
         }
+    }
+    void UpdateHealthBar()
+    {
+        float healthRatio = currentHealth / maxHealth;
+        healthBar.localScale = new Vector3(healthBarOriginalScale.x * healthRatio, healthBarOriginalScale.y, healthBarOriginalScale.z);
     }
 }

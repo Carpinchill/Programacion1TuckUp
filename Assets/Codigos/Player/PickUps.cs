@@ -53,7 +53,6 @@ public class PickUps : MonoBehaviour
         if (movement != null && movement.currentHealth < movement.maxHealth) //si la vida actual es menor a la vida maxima
         {            
             movement.currentHealth += healthRecover; //recupera la vida correspondiente
-            Debug.Log("Health collected. Current Health: " + movement.currentHealth);
             audioSource.PlayOneShot(CryxHSound);
             
             if (movement.currentHealth > movement.maxHealth)
@@ -87,14 +86,9 @@ public class PickUps : MonoBehaviour
 
         if (movement != null)
         {
-            Debug.Log("Shards collected. Shards: " + movement.shards);
             audioSource.PlayOneShot(ShardsSound);
             movement.shards++; //suma fragmentos y sube el ataque
             attack.damage = +5;
-        }
-        else
-        {
-            Debug.LogError("Movement or Attack component not found.");
         }
         Destroy(gameObject);
     }
