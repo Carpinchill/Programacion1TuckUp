@@ -23,7 +23,7 @@ public class HitBoxManager : MonoBehaviour
             enemyY.ReceiveDamage(attackScript.damage, knockbackDirection, attackScript.knockbackForce);
         }
 
-        OASIS enemyZ = other.gameObject.GetComponentInParent<OASIS>();
+        Oassiss enemyZ = other.gameObject.GetComponentInParent<Oassiss>();
         if (enemyZ != null)
         {
             enemyZ.ReceiveDamage(attackScript.damage, knockbackDirection, attackScript.knockbackForce);

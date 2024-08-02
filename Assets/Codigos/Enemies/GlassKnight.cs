@@ -9,10 +9,10 @@ public class GlassKnight : MonoBehaviour
 {
     //--------------------------------- V A R I A B L E S ---------------------------------//
 
-    public float currentHealth;                  //salud del enemigo
-    public float maxHealth = 40;
-    public float damage = 6f;                   //daño que hace el enemigo
-    public float speed = 9f;                    //velocidad del enemigo
+    public float currentHealth;                 //salud del enemigo
+    public float maxHealth = 30;
+    public float damage = 5f;                   //daño que hace el enemigo
+    public float speed = 2f;                    //velocidad del enemigo
 
     public Movement player;                     //ref al script del jugador
     public Attack playerAttack;                 //ref al script del ataque del jugador   
@@ -22,10 +22,10 @@ public class GlassKnight : MonoBehaviour
 
     public Transform[] waypoints;               //array para almacenar waypoints
     int currentWaypoint = 0;                    //waypoint actual
-    public float playerNear = 5f;               //cuán cerca tiene que estar el jugador para ser detectado
+    public float playerNear = 7f;               //cuán cerca tiene que estar el jugador para ser detectado
         
     public float attackCooldown = 2f;           //tiempo hasta volver a atacar
-    public float knockbackForceEnemy = 120f;    //retroceso aplicado POR ENEMIGO -> AL JUGADOR
+    public float knockbackForceEnemy = 10f;     //retroceso aplicado POR ENEMIGO -> AL JUGADOR
 
     private bool isKnockback = false;           //pregunta si si está retrocediendo
 
@@ -36,8 +36,8 @@ public class GlassKnight : MonoBehaviour
     private AudioSource audioSource;
 
     public AudioClip enemyHurtSound, enemyDeathSound;
-    public float minPitch = 0.80f;
-    public float maxPitch = 1.25f;
+    public float minPitch = 0.66f;
+    public float maxPitch = 1.33f;
 
 
     //--------------------------------- V. A W A K E ---------------------------------//
@@ -68,7 +68,7 @@ public class GlassKnight : MonoBehaviour
     }
     //--------------------------------- V. U P D A T E ---------------------------------//
 
-    //--- RUTINA DEL ENEMIGO X ---//
+    //--- RUTINA DE GLASS KNIGHT ---//
     void Update()
     {        
         if (isKnockback) return;    //si está en retroceso, que no haga nada más
@@ -152,7 +152,6 @@ public class GlassKnight : MonoBehaviour
         isKnockback = true;
         float knockbackTime = 0.7f; // duración del retroceso
         float timer = 0f;
-
 
         player.TakeDamage(damage, direction, knockbackForceEnemy);
 

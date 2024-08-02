@@ -67,7 +67,6 @@ public class Movement : MonoBehaviour
         currentHealth = maxHealth;
         currentStamina = maxStamina;
         animator = GetComponent<Animator>();
-
     }
 
     //---------------------------------- F. U P D A T E ----------------------------------------------------------------------------

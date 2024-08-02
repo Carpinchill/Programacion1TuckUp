@@ -11,7 +11,7 @@ public class SouledShroom : MonoBehaviour
 
     public Movement player;             //ref al player (posición para takedamage
     public Attack playerAttack;         //ref al script del ataque del jugador
-    public float playerNear = 7f;      //cuán cerca tiene que estar el jugador
+    public float playerNear = 7f;       //cuán cerca tiene que estar el jugador
 
     public SS_Bullet SSBullet;          //ref al prefab de la bala
     public Transform SSBulletSpawn;     //ref al transform del bullet spawn point
@@ -19,7 +19,7 @@ public class SouledShroom : MonoBehaviour
     public Transform healthBar;                 //ref a la barra de vida
     private Vector3 healthBarOriginalScale;     //ref a la escala original de la barra de vida
 
-    public float bulletFrequency = 3f;  //cada cuánto se dispara cada bala
+    public float bulletFrequency = 2f;  //cada cuánto se dispara cada bala
     private float lastShot = 0f;        //tiempo desde el último disparo
 
     private AudioSource audioSource;

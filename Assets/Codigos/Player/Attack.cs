@@ -13,7 +13,7 @@ public class Attack : MonoBehaviour
     public GameObject HitboxesRotation;
     public Movement movement;
 
-    public float damage = 12f;
+    public float damage = 10f;
     public float knockbackForce = 2f;
 
     [SerializeField]

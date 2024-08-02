@@ -6,12 +6,12 @@ public class SS_Bullet : MonoBehaviour
 {
     //--------------------------------- V A R I A B L E S ---------------------------------//
 
-    public float lifetime = 10f;                  //vida de la bala
-    public float bulletSpeed = 11f;               //velocidad de la bala
+    public float lifetime = 6f;                   //vida de la bala
+    public float bulletSpeed = 9f;                //velocidad de la bala
     private Vector3 bulletDirection;              //dirección de la bala ??
 
     public float damage = 5f;                     //daño que hace la bala
-    public float knockbackForceBullet = 20f;      //retroceso aplicado POR LA BALA -> AL JUGADOR
+    public float knockbackForceBullet = 10f;      //retroceso aplicado POR LA BALA -> AL JUGADOR
 
 
     //------------------------------------ V. S T A R T ---------------------------------//

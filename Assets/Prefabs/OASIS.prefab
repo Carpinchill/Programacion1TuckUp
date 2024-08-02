@@ -388,7 +388,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2443322045088469576}
   - component: {fileID: 7871662445849336725}
-  - component: {fileID: 6357117548695000962}
+  - component: {fileID: -2983539401623602789}
   - component: {fileID: 1881471720299862050}
   - component: {fileID: 6468986204085822105}
   - component: {fileID: -5905263546864065350}
@@ -458,54 +458,53 @@ SpriteRenderer:
   m_SortingLayerID: 359745981
   m_SortingLayer: 3
   m_SortingOrder: 0
-  m_Sprite: {fileID: -764471114, guid: e1e10c5dd0948274684a094454aa0cb3, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 7cf71d24a61f2a940ba3103af27b74b2, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 2, y: 2}
+  m_Size: {x: 1.41, y: 1.31}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &6357117548695000962
+--- !u!114 &-2983539401623602789
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9213063393559680354}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 314e34911fc0dee4b89bb86086d7e8b8, type: 3}
+  m_Script: {fileID: 11500000, guid: 734b0b136a9077049b99425c69946329, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentHealth: 0
-  maxHealth: 60
-  speed: 3
-  waypoints:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
   player: {fileID: 0}
-  playerNear: 9
   playerAttack: {fileID: 0}
-  breakableWall: {fileID: 0}
-  maxShots: 3
-  shotCooldown: 1
-  pushDamage: 10
-  pushForceEnemy: 10
+  playerNear: 9
+  healthBar: {fileID: 0}
+  shardPrefab: {fileID: 0}
+  wallDestroy: {fileID: 0}
+  maxHealth: 80
+  currentHealth: 0
+  waypoints: []
+  speed: 3
   lastH: 0
   lastV: 0
-  enemyHurtSound: {fileID: 8300000, guid: 9282d185e4725164fa70321bb50da1e4, type: 3}
-  enemyDeathSound: {fileID: 8300000, guid: 9839b98707e00c24daa58c224ab6740c, type: 3}
-  shootSound: {fileID: 0}
-  minPitch: 0.8
-  maxPitch: 1.25
+  damagePush: 10
+  attackCooldown: 2
+  knockbackForceOA: 20
   OABullet: {fileID: 0}
   OABulletSpawn: {fileID: 0}
+  bulletFrequency: 1
+  enemyHurtSound: {fileID: 0}
+  enemyDeathSound: {fileID: 0}
+  shootSound: {fileID: 0}
+  wallDestroySound: {fileID: 0}
+  minPitch: 0.66
+  maxPitch: 1.33
 --- !u!58 &1881471720299862050
 CircleCollider2D:
   m_ObjectHideFlags: 0
